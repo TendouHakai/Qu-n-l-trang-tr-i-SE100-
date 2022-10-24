@@ -15,20 +15,18 @@ using System.Windows.Shapes;
 namespace QuanLyTraiHeo
 {
     /// <summary>
-    /// Interaction logic for QuanLyThongTinChuong.xaml
+    /// Interaction logic for ThongTinHeo.xaml
     /// </summary>
-    public partial class QuanLyThongTinChuong : Window
+    public partial class ThongTinHeo : Window
     {
-        public QuanLyThongTinChuong()
+        public ThongTinHeo()
         {
             InitializeComponent();
-            Listview.Items.Add("acd");
         }
 
-        private void Show_Click(object sender, RoutedEventArgs e)
+        private void btn_Thoat_Click(object sender, RoutedEventArgs e)
         {
-            ThongTinChuong f = new ThongTinChuong();
-            f.ShowDialog();
+            this.Close();
         }
     }
 }
