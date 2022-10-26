@@ -1,4 +1,4 @@
-﻿using QuanLyTraiHeo.View.Windows.Quản_lý_chuồng_nuôi;
+﻿using QuanLyTraiHeo.View.Windows.Quản_lý_nhân_viên;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,34 +13,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace QuanLyTraiHeo
+namespace QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo
 {
     /// <summary>
-    /// Interaction logic for QuanLyThongTinChuong.xaml
+    /// Interaction logic for Quanlyloaiheo.xaml
     /// </summary>
-    public partial class QuanLyThongTinChuong : Window
+    public partial class Quanlyloaiheo : Window
     {
-        public QuanLyThongTinChuong()
+        public Quanlyloaiheo()
         {
             InitializeComponent();
-            Listview.Items.Add("acd");
         }
-
-        private void Show_Click(object sender, RoutedEventArgs e)
-        {
-            ThongTinChuong f = new ThongTinChuong();
-            f.ShowDialog();
-        }
-
         private void btn_ThemClick(object sender, RoutedEventArgs e)
         {
-            Themchuong themchuong = new Themchuong();
-            themchuong.ShowDialog();
+            ThemLoaiHeo themLoaiHeo = new ThemLoaiHeo();
+            themLoaiHeo.ShowDialog();
         }
         private void btn_SuaClick(object sender, RoutedEventArgs e)
         {
-            SuaChuong suaChuong = new SuaChuong();
-            suaChuong.ShowDialog();
+            SuaLoaiHeo suaLoaiHeo = new SuaLoaiHeo();
+            suaLoaiHeo.ShowDialog();
         }
     }
 }

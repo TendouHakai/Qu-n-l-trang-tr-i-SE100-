@@ -7,7 +7,7 @@ using static QuanLyTraiHeo.ViewModel.TrangChuVM;
 
 namespace QuanLyTraiHeo.ViewModel
 {
-    public class QuanLyNhatKyVM : BaseViewModel
+    public class QuanLyNhatKyVM: BaseViewModel
     {
         public List<HoatDong> LstNhatKy = new List<HoatDong>();
         public List<HoatDong> lstNhatKy { get => LstNhatKy; set { LstNhatKy = value; OnPropertyChanged(); } }
