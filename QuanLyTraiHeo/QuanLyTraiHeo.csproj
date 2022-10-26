@@ -78,6 +78,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\Phieu\PhieuBanHeoVM.cs" />
+    <Compile Include="View\Windows\Quản lý kho\ThongTinHangHoa.xaml.cs">
+      <DependentUpon>ThongTinHangHoa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý nhân viên\ThongTinNhanVien.xaml.cs">
+      <DependentUpon>ThongTinNhanVien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý chuồng nuôi\ThongTinChuong.xaml.cs">
+      <DependentUpon>ThongTinChuong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý đàn heo\ThongTinHeo.xaml.cs">
+      <DependentUpon>ThongTinHeo.xaml</DependentUpon>
+    </Compile>
+
+    <Compile Include="ViewModel\QuanLyNhatKyVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoThuChiVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTonKhoVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoSuaChuaVM.cs" />
@@ -94,6 +108,15 @@
     </Compile>
     <Compile Include="View\Windows\Quản lý đàn heo\PhieuNhapBanHeo.xaml.cs">
       <DependentUpon>PhieuNhapBanHeo.xaml</DependentUpon>
+
+    <Compile Include="ViewModel\Quản lý lập lịch\LapLichTiemVM.cs" />
+    <Compile Include="View\Windows\Lập lịch\LapLichTiem.xaml.cs">
+      <DependentUpon>LapLichTiem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Lập lịch\LichPhoiGiongWindow.xaml.cs">
+      <DependentUpon>LichPhoiGiongWindow.xaml</DependentUpon>
+    <Compile Include="View\Windows\Thiết lập cây mục tiêu\Caymuctieu.xaml.cs">
+      <DependentUpon>Caymuctieu.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Quản lý đàn heo\ThemSuaTTHeo.xaml.cs">
       <DependentUpon>ThemSuaTTHeo.xaml</DependentUpon>
@@ -159,7 +182,27 @@
     <Compile Include="View\Windows\wLogin.xaml.cs">
       <DependentUpon>wLogin.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Windows\Quản lý kho\ThongTinHangHoa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý nhân viên\ThongTinNhanVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý chuồng nuôi\ThongTinChuong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý đàn heo\ThongTinHeo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\CapNhatTaiKhoanWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Thiết lập cây mục tiêu\Caymuctieu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,6 +210,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
     <Page Include="View\Windows\Quản lý chuồng nuôi\PhieuSuaChua.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -181,7 +225,15 @@
     </Page>
     <Page Include="View\Windows\Quản lý đàn heo\PhieuNhapBanHeo.xaml">
       <SubType>Designer</SubType>
+
+    <Page Include="View\Windows\Lập lịch\LapLichTiem.xaml">
+
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\Lập lịch\LichPhoiGiongWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Windows\Quản lý đàn heo\ThemSuaTTHeo.xaml">
       <SubType>Designer</SubType>
