@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -96,6 +96,12 @@
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
     <Compile Include="ViewModel\CapNhatTaiKhoanVM.cs" />
+    <Compile Include="ViewModel\Quản lý lập lịch\LapLichTiemVM.cs" />
+    <Compile Include="View\Windows\Lập lịch\LapLichTiem.xaml.cs">
+      <DependentUpon>LapLichTiem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Lập lịch\LichPhoiGiongWindow.xaml.cs">
+      <DependentUpon>LichPhoiGiongWindow.xaml</DependentUpon>
     <Compile Include="View\Windows\Thiết lập cây mục tiêu\Caymuctieu.xaml.cs">
       <DependentUpon>Caymuctieu.xaml</DependentUpon>
     </Compile>
@@ -190,6 +196,14 @@
     <Page Include="View\Windows\DoiMatKhau.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Lập lịch\LapLichTiem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\Lập lịch\LichPhoiGiongWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Windows\Quản lý đàn heo\ThemSuaTTHeo.xaml">
       <SubType>Designer</SubType>
