@@ -89,11 +89,16 @@
     <Compile Include="View\Windows\Quản lý đàn heo\ThongTinHeo.xaml.cs">
       <DependentUpon>ThongTinHeo.xaml</DependentUpon>
     </Compile>
+
+    <Compile Include="ViewModel\QuanLyNhatKyVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoThuChiVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTonKhoVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
     <Compile Include="ViewModel\CapNhatTaiKhoanVM.cs" />
+    <Compile Include="View\Windows\Thiết lập cây mục tiêu\Caymuctieu.xaml.cs">
+      <DependentUpon>Caymuctieu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Quản lý đàn heo\ThemSuaTTHeo.xaml.cs">
       <DependentUpon>ThemSuaTTHeo.xaml</DependentUpon>
     </Compile>
@@ -175,6 +180,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\CapNhatTaiKhoanWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Thiết lập cây mục tiêu\Caymuctieu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
