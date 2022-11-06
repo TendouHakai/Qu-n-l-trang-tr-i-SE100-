@@ -46,32 +46,32 @@ namespace QuanLyTraiHeo.ViewModel
 
         void Login(Window p)
         {
-            //if (p == null) return;
+            if (p == null) return;
 
-            //string _pass = MD5Hash(Password);
+            string _pass = MD5Hash(Password);
 
-            //nhanVien = DataProvider.Ins.DB.NHANVIENs.Where(x => x.C_Username == Username && x.C_PassWord == _pass).SingleOrDefault();
+            nhanVien = DataProvider.Ins.DB.NHANVIENs.Where(x => x.C_Username == Username && x.C_PassWord == _pass).SingleOrDefault();
 
-            //if(nhanVien == null)
-            //{
-            //    MessageBox.Show("Nhập sai tài khoản hoặc mật khẩu!");
-            //    return;
-            //}
+            if(nhanVien == null)
+            {
+                MessageBox.Show("Nhập sai tài khoản hoặc mật khẩu!");
+                return;
+            }
 
-            //#region xử lý nhớ mật khẩu
-            //if ((p as wLogin).Cb_RememberAccount.IsChecked == true)
-            //{
-            //    Properties.Settings.Default.Username = Username;
-            //    Properties.Settings.Default.Password = Password;
-            //    Properties.Settings.Default.Save();
-            //}
-            //else
-            //{
-            //    Properties.Settings.Default.Username = "";
-            //    Properties.Settings.Default.Password = "";
-            //    Properties.Settings.Default.Save();
-            //}
-            //#endregion
+            #region xử lý nhớ mật khẩu
+            if ((p as wLogin).Cb_RememberAccount.IsChecked == true)
+            {
+                Properties.Settings.Default.Username = Username;
+                Properties.Settings.Default.Password = Password;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.Username = "";
+                Properties.Settings.Default.Password = "";
+                Properties.Settings.Default.Save();
+            }
+            #endregion
 
             IsLogin = true;
             p.Close();
