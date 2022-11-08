@@ -144,6 +144,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\NguoiGui.cs" />
     <Compile Include="Model\NHANVIEN.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -178,6 +179,8 @@
     <Compile Include="ViewModel\Quản lý đàn heo\QuanLyThongTinCaTheVM.cs" />
     <Compile Include="ViewModel\Quản lý đàn heo\SuaTTHeoVM.cs" />
     <Compile Include="ViewModel\Quản lý đàn heo\ThemTTHeoVM.cs" />
+    <Compile Include="ViewModel\Tạo thông báo\ChonNguoiGuiVM.cs" />
+    <Compile Include="ViewModel\Tạo thông báo\TaoThongBaoVM.cs" />
     <Compile Include="View\Windows\Quản lý kho\ThongTinHangHoa.xaml.cs">
       <DependentUpon>ThongTinHangHoa.xaml</DependentUpon>
     </Compile>
@@ -261,9 +264,6 @@
     <Compile Include="View\Windows\DoiMatKhau.xaml.cs">
       <DependentUpon>DoiMatKhau.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\TaoThongBaoWindow.xaml.cs">
-      <DependentUpon>TaoThongBaoWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Windows\Thiết lập cây mục tiêu\Caymuctieu.xaml.cs">
       <DependentUpon>Caymuctieu.xaml</DependentUpon>
     </Compile>
@@ -318,6 +318,12 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\LoginVM.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
+    <Compile Include="View\Windows\Tạo thông báo\ChonNguoiGui.xaml.cs">
+      <DependentUpon>ChonNguoiGui.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Tạo thông báo\TaoThongBaoWindow.xaml.cs">
+      <DependentUpon>TaoThongBaoWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\wLogin.xaml.cs">
       <DependentUpon>wLogin.xaml</DependentUpon>
     </Compile>
@@ -433,10 +439,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Windows\TaoThongBaoWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Windows\Thiết lập cây mục tiêu\Caymuctieu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -498,6 +500,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\Trang chủ\TrangChuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Tạo thông báo\ChonNguoiGui.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Tạo thông báo\TaoThongBaoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -51,7 +51,6 @@ C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Window
 C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhân viên\ThemNhanVien.g.cs
 C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\SuaTTHeo.g.cs
 C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\ThemTTHeo.g.cs
-C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\TaoThongBaoWindow.g.cs
 C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\Thiết lập cây mục tiêu\Caymuctieu.g.cs
 C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\Thiết lập cây mục tiêu\ThietLapCayMucTieuWindow.g.cs
 C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý báo cáo\BaoCaoTonKhoWindow.g.cs
@@ -104,7 +103,6 @@ C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Window
 C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhân viên\ThemNhanVien.baml
 C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\SuaTTHeo.baml
 C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\ThemTTHeo.baml
-C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\TaoThongBaoWindow.baml
 C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\Thiết lập cây mục tiêu\Caymuctieu.baml
 C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\Thiết lập cây mục tiêu\ThietLapCayMucTieuWindow.baml
 C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý báo cáo\BaoCaoTonKhoWindow.baml
@@ -130,3 +128,7 @@ C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\QuanLyTraiH
 C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.csproj.CopyComplete
 C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.exe
 C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.pdb
+C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\Tạo thông báo\ChonNguoiGui.g.cs
+C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\Tạo thông báo\TaoThongBaoWindow.g.cs
+C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\Tạo thông báo\ChonNguoiGui.baml
+C:\Users\TendouHakai\Desktop\đồ án SE100\QuanLyTraiHeo\obj\Debug\View\Windows\Tạo thông báo\TaoThongBaoWindow.baml

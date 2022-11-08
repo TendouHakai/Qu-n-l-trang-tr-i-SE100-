@@ -6,6 +6,8 @@
     <viewModel:LoginVM x:Key="LoginVM"></viewModel:LoginVM>
     <viewModel:TrangChuVM x:Key="TrangChuVM"></viewModel:TrangChuVM>
     <viewModel:CapNhatTaiKhoanVM x:Key="CapNhatTaiKhoanVM"></viewModel:CapNhatTaiKhoanVM>
+    <viewModel:TaoThongBaoVM x:Key="TaoThongBaoVM"></viewModel:TaoThongBaoVM>
+    <viewModel:ChonNguoiGuiVM x:Key="ChonNguoiGuiVM"></viewModel:ChonNguoiGuiVM>
     <viewModel:QuanLyThongTinCaTheVM x:Key="QuanLyThongTinCaTheVM"></viewModel:QuanLyThongTinCaTheVM>
     <viewModel:ThemTTHeoVM x:Key="ThemTTHeoVM"></viewModel:ThemTTHeoVM>
     <viewModel:SuaTTHeoVM x:Key="SuaTTHeoVM"></viewModel:SuaTTHeoVM>
