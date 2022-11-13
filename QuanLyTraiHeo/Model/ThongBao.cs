@@ -15,9 +15,14 @@ namespace QuanLyTraiHeo.Model
     public partial class ThongBao
     {
         public string MaThongBao { get; set; }
-        public string C_UserName { get; set; }
+        public string C_MaNguoiNhan { get; set; }
+        public string C_MaNguoiGui { get; set; }
+        public string TinhTrang { get; set; }
         public string TieuDe { get; set; }
         public string NoiDung { get; set; }
-        public Nullable<System.TimeSpan> ThoiGian { get; set; }
+        public Nullable<System.DateTime> ThoiGian { get; set; }
+    
+        public virtual NHANVIEN NHANVIEN { get; set; }
+        public virtual NHANVIEN NHANVIEN1 { get; set; }
     }
 }

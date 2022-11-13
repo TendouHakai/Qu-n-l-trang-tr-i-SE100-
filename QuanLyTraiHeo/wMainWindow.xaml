@@ -318,23 +318,29 @@
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition Width="30"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Margin="15,0,0,0" FontWeight="Bold" FontSize="16">Hồ sơ của bạn</TextBlock>
-                                <StackPanel Grid.Column="1" Width="30">
-                                    <materialDesign:PopupBox
-                                                StaysOpen="True" 
-                                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                                <TextBlock Grid.Column="0"
+                                           Margin="15,0,0,0"
+                                           FontWeight="Bold"
+                                           FontSize="16">Hồ sơ của bạn</TextBlock>
+                                <StackPanel Grid.Column="1"
+                                            Width="30">
+                                    <materialDesign:PopupBox StaysOpen="True"
+                                                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                                         <StackPanel Width="150">
-                                            <Button Name="btn_CapNhatMatKhau" Click="btn_CapNhatMatKhau_Click">
+                                            <Button Name="btn_CapNhatTaiKhoan"
+                                                    Command="{Binding OpenCapNhatTaiKhoan}"
+                                                    CommandParameter="{Binding ElementName=MainWindow}">
                                                 Cập nhật thông tin
                                             </Button>
-                                            <Button Name="btn_DoiMatKhau" Click="btn_DoiMatKhau_Click">
+                                            <Button Name="btn_DoiMatKhau"
+                                                    Command="{Binding OpenDoiMatKhau}"
+                                                    CommandParameter="{Binding ElementName=MainWindow}">
                                                 Đổi mật khẩu
                                             </Button>
                                         </StackPanel>
                                     </materialDesign:PopupBox>
                                 </StackPanel>
                             </Grid>
-
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="110"></ColumnDefinition>
@@ -343,8 +349,9 @@
                                 <Button Width="100" Height="100" Grid.Column="0"
                                     Style="{StaticResource MaterialDesignFloatingActionSecondaryButton}"
                                     ToolTip="Ảnh đại diện"
+                                        Background="Transparent"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                                    <Image Source="/Image/avatar.jpg"></Image>
+                                    <Image Source="{Binding MyImage}"></Image>
                                 </Button>
                                 <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
@@ -357,7 +364,7 @@
                                     </StackPanel>
                                     <StackPanel Grid.Row="1" Orientation="Vertical">
                                         <TextBlock FontWeight="Bold"
-                                                   FontSize="16" Text="{Binding NhanVien.HoTen}"></TextBlock>
+                                                   FontSize="16" Text="{Binding NhanVien.HoTen, Mode=OneWay}"></TextBlock>
                                         <TextBlock FontStyle="Italic" Text="{Binding NhanVien.CHUCVU.TenChucVu}"></TextBlock>
                                     </StackPanel>
                                 </Grid>
@@ -414,13 +421,40 @@
                                         Badge="2" BadgeBackground="Red" BadgeForeground="White">
                                     <materialDesign:PopupBox Foreground="White"
                                                 StaysOpen="True" 
-                                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                                >
+                                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                                         <materialDesign:PopupBox.ToggleContent>
                                             <materialDesign:PackIcon Kind="BellRing" Foreground="White" Width="20" Height="20">
                                             </materialDesign:PackIcon>
                                         </materialDesign:PopupBox.ToggleContent>
-                                        <StackPanel Width="450">
+                                        <ListBox Width="450" Padding="0" ItemsSource="{Binding listTHONGBAO}" SelectedItem="{Binding selectedItem, Mode=TwoWay}">
+                                            
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Vertical">
+                                                        <TextBlock FontWeight="Bold" TextWrapping="Wrap" Text="{Binding TieuDe}"></TextBlock>
+                                                        <TextBlock FontStyle="Italic" FontSize="10" Text="{Binding ThoiGian}"></TextBlock>
+                                                        <TextBlock TextWrapping="Wrap" Margin="0,5,0,0" Text="{Binding NoiDung}"></TextBlock>
+                                                    </StackPanel>
+                                                    <!--<DataTemplate.Triggers>
+                                                        <EventTrigger RoutedEvent="Selected">
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="Selected">
+                                                                    <i:InvokeCommandAction Command="{Binding OpenCTThongBao}"></i:InvokeCommandAction>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </EventTrigger>
+                                                    </DataTemplate.Triggers>-->
+                                                        
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                            
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="SelectionChanged">
+                                                    <i:InvokeCommandAction Command="{Binding OpenCTThongBao}"></i:InvokeCommandAction>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </ListBox>
+                                        <!--<StackPanel Width="450">
                                             <Button>
                                                 <StackPanel Orientation="Vertical">
                                                     <TextBlock FontWeight="Bold" TextWrapping="Wrap">Nhận lương cuối tháng</TextBlock>
@@ -436,7 +470,7 @@
                                                 </StackPanel>
                                             </Button>
 
-                                        </StackPanel>
+                                        </StackPanel>-->
                                     </materialDesign:PopupBox>
                                 </materialDesign:Badged>
                                 <Button
@@ -450,14 +484,15 @@
                                 <Rectangle Margin="8,0,8,0" HorizontalAlignment="Stretch" Fill="White" Width="2"/>
                                 <Button
                                     Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                                    ToolTip="TendouHakai"
+                                    ToolTip="{Binding NhanVien.HoTen}"
+                                    Background="Transparent"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                                    <Image Source="/Image/avatar.jpg"/>
+                                    <Image Source="{Binding MyImage}"/>
                                 </Button>
                                 <TextBlock
                             VerticalAlignment="Center"
                             Margin="8 0 8 0"
-                            Text="TendouHakai" />
+                            Text="{Binding NhanVien.HoTen}" />
                                 <ToggleButton
                                 Style="{StaticResource MaterialDesignActionToggleButton}"
                                 ToolTip="Xem tài khoản"

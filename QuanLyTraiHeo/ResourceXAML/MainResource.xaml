@@ -13,4 +13,19 @@
     <viewModel:PhieuBanHeoVM x:Key="PhieuBanHeoVM"></viewModel:PhieuBanHeoVM>
     <viewModel:QuanLyNhatKyVM x:Key="QuanLyNhatKyVM"></viewModel:QuanLyNhatKyVM>
     <viewModel:LapLichTiemVM x:Key="LapLichTiemVM"></viewModel:LapLichTiemVM>
+    <viewModel:DoiMatKhauVM x:Key="DoiMatKhauVM"></viewModel:DoiMatKhauVM>
+    <viewModel:TaoThongBaoVM x:Key="TaoThongBaoVM"></viewModel:TaoThongBaoVM>
+    <viewModel:ChonNguoiGuiVM x:Key="ChonNguoiGuiVM"></viewModel:ChonNguoiGuiVM>
+    <viewModel:ChiTietThongBaoVM x:Key="ChiTietThongBaoVM"></viewModel:ChiTietThongBaoVM>
+    <viewModel:NhanVienVM x:Key="NhanVienVM"></viewModel:NhanVienVM>
+    <viewModel:ThemNhanVienVM x:Key="ThemNhanVienVM"></viewModel:ThemNhanVienVM>
+    <viewModel:ChucVuVM x:Key="ChucVuVM"></viewModel:ChucVuVM>
+    <viewModel:SuaChucVuVM x:Key="SuaChucVuVM"></viewModel:SuaChucVuVM>
+    <viewModel:QuanLyThongTinCaTheVM x:Key="QuanLyThongTinCaTheVM"></viewModel:QuanLyThongTinCaTheVM>
+    <viewModel:SuaTTHeoVM x:Key="SuaTTHeoVM"></viewModel:SuaTTHeoVM>
+    <viewModel:ThemTTHeoVM x:Key="ThemTTHeoVM"></viewModel:ThemTTHeoVM>
+    <viewModel:SuaChuongVM x:Key="SuaChuongVM"></viewModel:SuaChuongVM>
+    <viewModel:QuanLyThongTinChuongVM x:Key="QuanLyThongTinChuongVM"></viewModel:QuanLyThongTinChuongVM>
+    <viewModel:ThemChuongVM x:Key="ThemChuongVM"></viewModel:ThemChuongVM>
+    <viewModel:QuanLyHangHoaWindowVM x:Key="QuanLyHangHoaWindowVM"></viewModel:QuanLyHangHoaWindowVM>
 </ResourceDictionary>

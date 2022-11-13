@@ -18,6 +18,7 @@ namespace QuanLyTraiHeo.ViewModel
         #region command
         public ICommand LoginCommand { get; set; }
         public ICommand PasswordChangedCommand { get; set; }
+        public ICommand EnterEvent { get; set; }
         #endregion
 
         #region attributes
@@ -40,38 +41,39 @@ namespace QuanLyTraiHeo.ViewModel
             _username = QuanLyTraiHeo.Properties.Settings.Default.Username;
             _password = QuanLyTraiHeo.Properties.Settings.Default.Password;
 
-            LoginCommand = new RelayCommand<Window>((p) => { return CheckEmtyUserNameAndPassword(); }, p => { Login(p); });
+            LoginCommand = new RelayCommand<Window>((p) => { return CheckEmtyUserNameAndPassword();}, p => { Login(p); });
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, p => { Password = p.Password; });
+            
         }
 
         void Login(Window p)
         {
-            //if (p == null) return;
+            if (p == null) return;
 
-            //string _pass = MD5Hash(Password);
+            string _pass = MD5Hash(Password);
 
-            //nhanVien = DataProvider.Ins.DB.NHANVIENs.Where(x => x.C_Username == Username && x.C_PassWord == _pass).SingleOrDefault();
+            nhanVien = DataProvider.Ins.DB.NHANVIENs.Where(x => x.C_Username == Username && x.C_PassWord == _pass).SingleOrDefault();
 
-            //if(nhanVien == null)
-            //{
-            //    MessageBox.Show("Nhập sai tài khoản hoặc mật khẩu!");
-            //    return;
-            //}
+            if(nhanVien == null)
+            {
+                MessageBox.Show("Nhập sai tài khoản hoặc mật khẩu!");
+                return;
+            }
 
-            //#region xử lý nhớ mật khẩu
-            //if ((p as wLogin).Cb_RememberAccount.IsChecked == true)
-            //{
-            //    Properties.Settings.Default.Username = Username;
-            //    Properties.Settings.Default.Password = Password;
-            //    Properties.Settings.Default.Save();
-            //}
-            //else
-            //{
-            //    Properties.Settings.Default.Username = "";
-            //    Properties.Settings.Default.Password = "";
-            //    Properties.Settings.Default.Save();
-            //}
-            //#endregion
+            #region xử lý nhớ mật khẩu
+            if ((p as wLogin).Cb_RememberAccount.IsChecked == true)
+            {
+                Properties.Settings.Default.Username = Username;
+                Properties.Settings.Default.Password = Password;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.Username = "";
+                Properties.Settings.Default.Password = "";
+                Properties.Settings.Default.Save();
+            }
+            #endregion
 
             IsLogin = true;
             p.Close();
@@ -79,7 +81,7 @@ namespace QuanLyTraiHeo.ViewModel
 
         bool CheckEmtyUserNameAndPassword()
         {
-            if (string.IsNullOrEmpty(_username) || string.IsNullOrEmpty(_password))
+            if (string.IsNullOrWhiteSpace(_username) || string.IsNullOrWhiteSpace(_password))
             {
                 return false;
             }
