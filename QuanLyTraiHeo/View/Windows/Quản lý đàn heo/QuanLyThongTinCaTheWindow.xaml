@@ -110,7 +110,7 @@
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
                                                 <CheckBox x:Name="cb_GiongHeo" Width="220" Content="{Binding TenGiongHeo}" >
-
+                                                   
                                                 </CheckBox>
                                             </DataTemplate>
                                         </ListBox.ItemTemplate>

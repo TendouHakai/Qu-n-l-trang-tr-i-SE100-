@@ -136,7 +136,7 @@
                                             Value="Center" />
                                     </Style>
                                 </DataGridCheckBoxColumn.HeaderStyle>
-
+                                
                             </DataGridCheckBoxColumn>
                             <DataGridTextColumn
                                     Binding="{Binding nhanvien.MaNhanVien}"

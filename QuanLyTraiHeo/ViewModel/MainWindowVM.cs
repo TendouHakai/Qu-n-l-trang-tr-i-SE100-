@@ -6,6 +6,7 @@ using QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo;
 using QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
@@ -27,12 +28,17 @@ namespace QuanLyTraiHeo.ViewModel
         public bool IsLoaded = false;
         private string _currentWindow = "";
         NHANVIEN nhanVien;
+        System.Windows.Media.Imaging.BitmapImage image;
+        private ObservableCollection<ThongBao> _listTHONGBAO;
+        private ThongBao _selectedItem;
         #endregion
 
         #region Property
         public string currentWindow { get => _currentWindow; set { _currentWindow = value; OnPropertyChanged(); } }
         public NHANVIEN NhanVien { get => nhanVien; set { nhanVien = value; OnPropertyChanged(); } }
-
+        public System.Windows.Media.Imaging.BitmapImage MyImage { get => image; set { image = value; OnPropertyChanged(); } }
+        public ObservableCollection<ThongBao> listTHONGBAO { get => _listTHONGBAO; set { _listTHONGBAO = value; OnPropertyChanged(); } }
+        public ThongBao selectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(); } }  
         #endregion
 
         #region CommandOpenWindow
@@ -55,16 +61,20 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand OpenQuanLyChucVu { get; set; }
         public ICommand OpenQuanLyNhatKyWindow { get; set; }
         public ICommand OpenThietLapCayMucTieuWindow { get; set; }
+
+        public ICommand OpenCapNhatTaiKhoan { get; set; }
+        public ICommand OpenDoiMatKhau { get; set; }
         #endregion
 
         #region Event Command
         public ICommand LoadedWindowCommand { get; set; }
-        
+        public ICommand OpenCTThongBao { get; set; }
         #endregion]
 
         public MainWindowVM()   
         {
             currentWindow = "Trang chủ";
+            
             LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, p => {
                 IsLoaded = true;
                 p.Hide();
@@ -81,7 +91,9 @@ namespace QuanLyTraiHeo.ViewModel
                     p.Show();
 
                     NhanVien = loginWD.NhanVien;
+                    MyImage = CapNhatTaiKhoanVM.BytesToBitmapImage(NhanVien.MyImage);
 
+                    listTHONGBAO = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == NhanVien.C_Username));
                 }
                 else
                 {
@@ -89,7 +101,20 @@ namespace QuanLyTraiHeo.ViewModel
                 }
 
             });
-            #region CodeCommandOpenWindow
+
+            CodeCommandOpenWindow();
+            
+        }
+
+        #region Method
+        public void UpdateNhanVien()
+        {
+            OnPropertyChanged("NhanVien");
+            OnPropertyChanged("MyImage");
+        }
+
+        void CodeCommandOpenWindow()
+        {
             OpenTrangChuWindow = new RelayCommand<Grid>((p) => { return true; }, p => {
                 TrangChuWindow wc = new TrangChuWindow();
                 wc.Close();
@@ -261,9 +286,33 @@ namespace QuanLyTraiHeo.ViewModel
                 p.Children.Add(content as UIElement);
                 currentWindow = "Thiết lập cây mục tiêu";
             });
-            #endregion
 
+            OpenCapNhatTaiKhoan = new RelayCommand<Window>((p) => { return true; }, p => {
+                CapNhatTaiKhoanWindow wc = new CapNhatTaiKhoanWindow();
+                CapNhatTaiKhoanVM capNhatTaiKhoanVM = new CapNhatTaiKhoanVM(this);
+                wc.DataContext = capNhatTaiKhoanVM;
+                wc.ShowDialog();
+
+            });
+
+            OpenDoiMatKhau = new RelayCommand<Window>((p) => { return true; }, p => {
+                DoiMatKhau wc = new DoiMatKhau();
+                DoiMatKhauVM capNhatTaiKhoanVM = new DoiMatKhauVM(this);
+                wc.DataContext = capNhatTaiKhoanVM;
+                wc.ShowDialog();
+
+            });
+
+            OpenCTThongBao = new RelayCommand<Window>((p) => { return true; }, p => {
+                if (selectedItem != null)
+                {
+                    ChitTietThongBaoWindow wc = new ChitTietThongBaoWindow();
+                    ChiTietThongBaoVM vm = new ChiTietThongBaoVM(this);
+                    wc.DataContext = vm;
+                    wc.ShowDialog();
+                }
+            });
         }
-        
+        #endregion
     }
 }

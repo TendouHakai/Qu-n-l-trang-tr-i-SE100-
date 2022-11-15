@@ -37,6 +37,7 @@ namespace QuanLyTraiHeo.Model
         public virtual DbSet<HEO> HEOs { get; set; }
         public virtual DbSet<LICHPHOIGIONG> LICHPHOIGIONGs { get; set; }
         public virtual DbSet<LICHTIEMHEO> LICHTIEMHEOs { get; set; }
+        public virtual DbSet<ListActionDetail> ListActionDetails { get; set; }
         public virtual DbSet<LOAICHUONG> LOAICHUONGs { get; set; }
         public virtual DbSet<LOAIHEO> LOAIHEOs { get; set; }
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
@@ -46,6 +47,7 @@ namespace QuanLyTraiHeo.Model
         public virtual DbSet<PHIEUHEO> PHIEUHEOs { get; set; }
         public virtual DbSet<PHIEUKIEMKHO> PHIEUKIEMKHOes { get; set; }
         public virtual DbSet<PHIEUSUACHUA> PHIEUSUACHUAs { get; set; }
+        public virtual DbSet<THAMSO> THAMSOes { get; set; }
         public virtual DbSet<ThongBao> ThongBaos { get; set; }
     }
 }
