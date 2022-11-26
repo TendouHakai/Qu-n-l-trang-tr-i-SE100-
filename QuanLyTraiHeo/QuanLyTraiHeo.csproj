@@ -190,7 +190,17 @@
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
     <Compile Include="ViewModel\CapNhatTaiKhoanVM.cs" />
+    <Compile Include="ViewModel\Tạo thông báo\listThongBaoTrongNgayVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\TaoThongBaoVM.cs" />
+    <Compile Include="View\UC\UClistThongBaoTrongNgay.xaml.cs">
+      <DependentUpon>UClistThongBaoTrongNgay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý đàn heo\ChonHeoXuat.xaml.cs">
+      <DependentUpon>ChonHeoXuat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý đàn heo\ThemHeoPhieu.xaml.cs">
+      <DependentUpon>ThemHeoPhieu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Tạo thông báo\ChitTietThongBaoWindow.xaml.cs">
       <DependentUpon>ChitTietThongBaoWindow.xaml</DependentUpon>
     </Compile>
@@ -345,6 +355,18 @@
     <Compile Include="View\Windows\wLogin.xaml.cs">
       <DependentUpon>wLogin.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\UC\UClistThongBaoTrongNgay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý đàn heo\ChonHeoXuat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý đàn heo\ThemHeoPhieu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\Tạo thông báo\ChitTietThongBaoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -586,7 +608,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModel\Nhật ký\" />
-    <Folder Include="View\UC\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\leaves_icon.png" />
