@@ -46,6 +46,6 @@
         <TextBlock Margin=" 99 0 0 0" Grid.Row="8"> 20/10/2021</TextBlock>
         <TextBlock Grid.Row="9" HorizontalAlignment="Left">Hệ số lương</TextBlock>
         <TextBlock Margin=" 99 0 0 0" Grid.Row="9"> 9.9</TextBlock>
-        <Button Grid.Row="10" Width="100" Background="#3ab19b" HorizontalAlignment="Center" Click="btn_Thoat_Click">Thoát</Button>
+        <Button x:Name="exit_button" Grid.Row="10" Width="100" Background="#3ab19b" HorizontalAlignment="Center" Click="btn_Thoat_Click">Thoát</Button>
     </Grid>
 </Window>

@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace QuanLyTraiHeo.View.UC
+namespace QuanLyTraiHeo.View.Windows
 {
     /// <summary>
-    /// Interaction logic for UCLichTiemHeo.xaml
+    /// Interaction logic for wDSLichChuong.xaml
     /// </summary>
-    public partial class UCLichTiemHeo : UserControl
+    public partial class wDSLichChuong : Window
     {
-        public UCLichTiemHeo()
+        public wDSLichChuong()
         {
             InitializeComponent();
         }

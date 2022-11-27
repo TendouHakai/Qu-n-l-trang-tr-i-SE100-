@@ -166,6 +166,7 @@ namespace QuanLyTraiHeo.ViewModel
             List<HEO> hEOs8 = new List<HEO>();
             ListHeo.Clear();
 
+
             if (matim != null && matim != "")
                 hEOs = DataProvider.Ins.DB.HEOs.Where(Heo => Heo.MaHeo.Contains(matim)).ToList();
             else hEOs = full;
@@ -235,6 +236,10 @@ namespace QuanLyTraiHeo.ViewModel
                                    select a;
 
             foreach (HEO h in heo)
+
+            var HeoTheoMa = DataProvider.Ins.DB.HEOs.Where(Heo => Heo.MaHeo.Contains(MaTim)).ToList();
+            foreach (var Heo in HeoTheoMa)
+
             {
                 ListHeo.Add(h);
             }
