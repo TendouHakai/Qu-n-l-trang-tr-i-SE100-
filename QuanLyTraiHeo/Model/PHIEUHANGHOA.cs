@@ -24,6 +24,7 @@ namespace QuanLyTraiHeo.Model
         public string SoPhieu { get; set; }
         public Nullable<System.DateTime> NgayLap { get; set; }
         public string MaNhanVien { get; set; }
+        public string MaNhanVienNhan { get; set; }
         public string MaDoiTac { get; set; }
         public string TrangThai { get; set; }
         public string LoaiPhieu { get; set; }

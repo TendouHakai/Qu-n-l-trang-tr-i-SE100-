@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyTraiHeo"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        DataContext="{ StaticResource TaoPhieuKhoVM}"
         mc:Ignorable="d"
         Title="Tạo phiếu mới"
         Height="480"
@@ -26,14 +27,31 @@
                         <ComboBoxItem Content="Phiếu xuất kho" />
                     </ComboBox>
 
-                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Grid.Column="1"
-                             materialDesign:HintAssist.Hint="Mã phiếu"
-                             Margin="0,0,5,5" />
-                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                   
+                    <!--<TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Grid.Column="1"
                              materialDesign:HintAssist.Hint="Mã nhân viên"
-                             Margin="0,0,5,5" />
+                             Margin="0,0,5,5" />-->
+                    <ComboBox 
+                  Margin="0,0,5,5" Name="CBMaNhanVien"
+                  materialDesign:HintAssist.Hint="Mã nhân viên"
+                  VerticalAlignment="Center"
+                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                  ItemsSource="{Binding listNhanVien, Mode=OneWay}"
+                  DisplayMemberPath="MaNhanVien"
+                  SelectedIndex="0"
+                  SelectedItem="{Binding nhanvien}">
+                    </ComboBox>
+                    <ComboBox 
+                  Margin="0,0,5,5" Name="CBMaNhanVienNhan"
+                  materialDesign:HintAssist.Hint="Mã nhân viên nhận"
+                  VerticalAlignment="Center"
+                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                  ItemsSource="{Binding listNhanVien, Mode=OneWay}"
+                  DisplayMemberPath="MaNhanVien"
+                  SelectedIndex="0"
+                  SelectedItem="{Binding nhanviennhan}">
+                    </ComboBox>
                     <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Grid.Column="1"
                              materialDesign:HintAssist.Hint="Mã khách hàng"
@@ -68,14 +86,27 @@
                                  Padding="5,0">
                 <StackPanel Margin="0,10">
 
-                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    <!--<TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Grid.Column="1"
                              materialDesign:HintAssist.Hint="Mã mặt hàng"
-                             Margin="0,0,5,5" />
+                             Margin="0,0,5,5" />-->
+                    <ComboBox Grid.Column="1"
+                  Margin="0,0,5,5" Name="CBMaHangHoa"
+                  materialDesign:HintAssist.Hint="Mã hàng hoá"
+                  VerticalAlignment="Center"
+                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                  ItemsSource="{Binding listHangHoa, Mode=OneWay}"
+                  DisplayMemberPath="MaHangHoa"
+                  SelectedIndex="0"
+                  SelectedItem="{Binding Hanghoa}">
+                    </ComboBox>
                     <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Grid.Column="1"
+                             IsReadOnly="True"
                              materialDesign:HintAssist.Hint="Mặt hàng"
-                             Margin="0,0,5,5" />
+                             Margin="0,0,5,5"
+                             Text="{Binding Hanghoa.TenHangHoa}"
+                             />
 
                     <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Grid.Column="1"
@@ -84,8 +115,10 @@
 
                     <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Grid.Column="1"
+                             IsReadOnly="True"
                              materialDesign:HintAssist.Hint="Giá"
-                             Margin="0,0,5,5" />
+                             Margin="0,0,5,5"
+                             Text="{Binding Hanghoa.DonGia}"/>
                 </StackPanel>
             </materialDesign:Card>
 

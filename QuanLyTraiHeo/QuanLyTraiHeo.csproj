@@ -130,6 +130,7 @@
     <Compile Include="Model\LOAICHUONG.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\LoaiHangHoaModel.cs" />
     <Compile Include="Model\LOAIHEO.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -177,6 +178,14 @@
     <Compile Include="Model\ThongBao.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\TinhTrangHangHoaModel.cs" />
+    <Compile Include="Model\TrangThaiPhieuKhoModel.cs" />
+    <Compile Include="ViewModel\Quản lý kho\LapPhieuKhoWindowVM.cs" />
+    <Compile Include="ViewModel\Quản lý kho\QuanLyHangHoaWindowVM.cs" />
+    <Compile Include="ViewModel\Quản lý kho\TaoPhieuKhoVM.cs" />
+    <Compile Include="ViewModel\Quản lý kho\TaoPhieuKiemKhoVM.cs" />
+    <Compile Include="ViewModel\Quản lý kho\ThemHangHoaVM.cs" />
+    <Compile Include="ViewModel\Quản lý kho\ThongTinHangHoaVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\ChiTietThongBaoVM.cs" />
     <Compile Include="ViewModel\DoiMatKhauVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\ChonNguoiGuiVM.cs" />
@@ -191,6 +200,9 @@
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
     <Compile Include="ViewModel\CapNhatTaiKhoanVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\TaoThongBaoVM.cs" />
+    <Compile Include="View\Windows\Quản lý kho\ThemHangHoawindow.xaml.cs">
+      <DependentUpon>ThemHangHoawindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Tạo thông báo\ChitTietThongBaoWindow.xaml.cs">
       <DependentUpon>ChitTietThongBaoWindow.xaml</DependentUpon>
     </Compile>
@@ -345,6 +357,10 @@
     <Compile Include="View\Windows\wLogin.xaml.cs">
       <DependentUpon>wLogin.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Windows\Quản lý kho\ThemHangHoawindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\Tạo thông báo\ChitTietThongBaoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
