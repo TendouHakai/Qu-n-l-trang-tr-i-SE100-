@@ -10,7 +10,10 @@
     <viewModel:BaoCaoSuaChuaVM x:Key="BaoCaoSuaChuaVM"></viewModel:BaoCaoSuaChuaVM>
     <viewModel:BaoCaoThuChiVM x:Key="BaoCaoThuChiVM"></viewModel:BaoCaoThuChiVM>
     <viewModel:BaoCaoTonKhoVM x:Key="BaoCaoTonKhoVM"></viewModel:BaoCaoTonKhoVM>
-    <viewModel:PhieuBanHeoVM x:Key="PhieuBanHeoVM"></viewModel:PhieuBanHeoVM>
+    <viewModel:LapPhieuBanNhapHeoVM x:Key="LapPhieuBanNhapHeoVM"></viewModel:LapPhieuBanNhapHeoVM>
+    <viewModel:PhieuBanNhapHeoVM x:Key="PhieuBanNhapHeoVM"></viewModel:PhieuBanNhapHeoVM>
+    <viewModel:ThemHeoPhieuVM x:Key="ThemHeoPhieuVM"></viewModel:ThemHeoPhieuVM>
+    <viewModel:ChonHeoXuatVM x:Key="ChonHeoXuatVM"></viewModel:ChonHeoXuatVM>
     <viewModel:QuanLyNhatKyVM x:Key="QuanLyNhatKyVM"></viewModel:QuanLyNhatKyVM>
     <viewModel:LapLichTiemVM x:Key="LapLichTiemVM"></viewModel:LapLichTiemVM>
     <viewModel:LaplichtiemVM x:Key="LaplichTiemVM"></viewModel:LaplichtiemVM>
@@ -18,6 +21,7 @@
     <viewModel:TaoThongBaoVM x:Key="TaoThongBaoVM"></viewModel:TaoThongBaoVM>
     <viewModel:ChonNguoiGuiVM x:Key="ChonNguoiGuiVM"></viewModel:ChonNguoiGuiVM>
     <viewModel:ChiTietThongBaoVM x:Key="ChiTietThongBaoVM"></viewModel:ChiTietThongBaoVM>
+    <viewModel:listThongBaoTrongNgayVM x:Key="listThongBaoTrongNgayVM"></viewModel:listThongBaoTrongNgayVM>
     <viewModel:NhanVienVM x:Key="NhanVienVM"></viewModel:NhanVienVM>
     <viewModel:ThemNhanVienVM x:Key="ThemNhanVienVM"></viewModel:ThemNhanVienVM>
     <viewModel:ChucVuVM x:Key="ChucVuVM"></viewModel:ChucVuVM>
@@ -28,5 +32,7 @@
     <viewModel:SuaChuongVM x:Key="SuaChuongVM"></viewModel:SuaChuongVM>
     <viewModel:QuanLyThongTinChuongVM x:Key="QuanLyThongTinChuongVM"></viewModel:QuanLyThongTinChuongVM>
     <viewModel:ThemChuongVM x:Key="ThemChuongVM"></viewModel:ThemChuongVM>
+    <viewModel:SoDoVM x:Key="SoDoVM"></viewModel:SoDoVM>
+    <viewModel:ChuongUC_VM x:Key="ChuongUC_VM"></viewModel:ChuongUC_VM>
     <viewModel:QuanlygiongheoVM x:Key="QuanlygiongheoVVM"></viewModel:QuanlygiongheoVM>
 </ResourceDictionary>

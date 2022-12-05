@@ -43,6 +43,15 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=6.1.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.6.1.1\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=6.1.1.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.Interfaces.6.1.1\lib\net462\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=6.1.1.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.System.Drawing.6.1.1\lib\net462\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
     </Reference>
@@ -58,12 +67,17 @@
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
@@ -118,6 +132,7 @@
     <Compile Include="Model\HEO.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\HEOXUAT.cs" />
     <Compile Include="Model\LICHPHOIGIONG.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -179,31 +194,27 @@
     </Compile>
     <Compile Include="ViewModel\Lập lịch\LaplichtiemVM.cs" />
     <Compile Include="ViewModel\Quản lý giống heo\QuanlygiongheoVM.cs" />
+    <Compile Include="ViewModel\Phieu\ChonHeoXuatVM.cs" />
+    <Compile Include="ViewModel\Phieu\LapPhieuBanNhapHeoVM.cs" />
+    <Compile Include="ViewModel\Phieu\ThemHeoPhieuVM.cs" />
+    <Compile Include="ViewModel\Sơ đồ\ChuongUC_VM.cs" />
+    <Compile Include="ViewModel\Sơ đồ\DSHeoVM.cs" />
+    <Compile Include="ViewModel\Sơ đồ\SoDoVM.cs" />
+    <Compile Include="ViewModel\Tạo thông báo\listThongBaoTrongNgayVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\ChiTietThongBaoVM.cs" />
-    <Compile Include="ViewModel\DoiMatKhauVM.cs" />
+    <Compile Include="ViewModel\QL thông tin cá nhân\DoiMatKhauVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\ChonNguoiGuiVM.cs" />
     <Compile Include="ViewModel\Quản lý chức vụ\ChucVuVM.cs" />
     <Compile Include="ViewModel\Quản lý chức vụ\SuaChucVuVM.cs" />
     <Compile Include="ViewModel\Quản lý nhân viên\NhanVienVM.cs" />
-    <Compile Include="ViewModel\Phieu\PhieuBanHeoVM.cs" />
+    <Compile Include="ViewModel\Phieu\PhieuBanNhapHeoVM.cs" />
     <Compile Include="ViewModel\QuanLyNhatKyVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoThuChiVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTonKhoVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
-    <Compile Include="ViewModel\CapNhatTaiKhoanVM.cs" />
-    <Compile Include="ViewModel\Tạo thông báo\listThongBaoTrongNgayVM.cs" />
+    <Compile Include="ViewModel\QL thông tin cá nhân\CapNhatTaiKhoanVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\TaoThongBaoVM.cs" />
-
-    <Compile Include="View\UC\UClistThongBaoTrongNgay.xaml.cs">
-      <DependentUpon>UClistThongBaoTrongNgay.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Windows\Quản lý đàn heo\ChonHeoXuat.xaml.cs">
-      <DependentUpon>ChonHeoXuat.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Windows\Quản lý đàn heo\ThemHeoPhieu.xaml.cs">
-      <DependentUpon>ThemHeoPhieu.xaml</DependentUpon>
-
     <Compile Include="View\Windows\Lập lịch\DanhsachHeo.xaml.cs">
       <DependentUpon>DanhsachHeo.xaml</DependentUpon>
     </Compile>
@@ -218,7 +229,39 @@
     </Compile>
     <Compile Include="View\Windows\Lập lịch\SuaLichHeo.xaml.cs">
       <DependentUpon>SuaLichHeo.xaml</DependentUpon>
-
+    </Compile>
+    <Compile Include="View\Windows\Quản lý đàn heo\ChonHeoXuat.xaml.cs">
+      <DependentUpon>ChonHeoXuat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý đàn heo\ThemHeoPhieu.xaml.cs">
+      <DependentUpon>ThemHeoPhieu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\UClistThongBaoTrongNgay.xaml.cs">
+      <DependentUpon>UClistThongBaoTrongNgay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Heo_UC.xaml.cs">
+      <DependentUpon>Heo_UC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\IconChuongUC.xaml.cs">
+      <DependentUpon>IconChuongUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\LichUC.xaml.cs">
+      <DependentUpon>LichUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Sơ đồ\wDSHeo.xaml.cs">
+      <DependentUpon>wDSHeo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Sơ đồ\wDSLichChuong.xaml.cs">
+      <DependentUpon>wDSLichChuong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Sơ đồ\wSoDo.xaml.cs">
+      <DependentUpon>wSoDo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Thiết lập cây mục tiêu\DatMucTieu.xaml.cs">
+      <DependentUpon>DatMucTieu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Thiết lập cây mục tiêu\ThongTinCanBiet.xaml.cs">
+      <DependentUpon>ThongTinCanBiet.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Tạo thông báo\ChitTietThongBaoWindow.xaml.cs">
       <DependentUpon>ChitTietThongBaoWindow.xaml</DependentUpon>
@@ -277,9 +320,6 @@
     <Compile Include="View\Windows\Quản lý chức vụ\SuaChucVu.xaml.cs">
       <DependentUpon>SuaChucVu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\Quản lý chức vụ\ThemChucVu.xaml.cs">
-      <DependentUpon>ThemChucVu.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Windows\Quản lý giống heo\Quanlygiongheo.xaml.cs">
       <DependentUpon>Quanlygiongheo.xaml</DependentUpon>
     </Compile>
@@ -308,10 +348,10 @@
       <DependentUpon>SuaTTHeo.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\TrangChuVM.cs" />
-    <Compile Include="View\Windows\CapNhatTaiKhoanWindow.xaml.cs">
+    <Compile Include="View\Windows\QL thông tin cá nhân\CapNhatTaiKhoanWindow.xaml.cs">
       <DependentUpon>CapNhatTaiKhoanWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\DoiMatKhau.xaml.cs">
+    <Compile Include="View\Windows\QL thông tin cá nhân\DoiMatKhau.xaml.cs">
       <DependentUpon>DoiMatKhau.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Tạo thông báo\TaoThongBaoWindow.xaml.cs">
@@ -374,17 +414,6 @@
     <Compile Include="View\Windows\wLogin.xaml.cs">
       <DependentUpon>wLogin.xaml</DependentUpon>
     </Compile>
-
-    <Page Include="View\UC\UClistThongBaoTrongNgay.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\Quản lý đàn heo\ChonHeoXuat.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\Quản lý đàn heo\ThemHeoPhieu.xaml">
-
     <Page Include="View\Windows\Lập lịch\DanhsachHeo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -402,9 +431,52 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\Lập lịch\SuaLichHeo.xaml">
-
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý đàn heo\ChonHeoXuat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý đàn heo\ThemHeoPhieu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UC\Heo_UC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UC\IconChuongUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UC\LichUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Sơ đồ\wDSHeo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Sơ đồ\wDSLichChuong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Sơ đồ\wSoDo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UC\UClistThongBaoTrongNgay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Thiết lập cây mục tiêu\DatMucTieu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\Thiết lập cây mục tiêu\ThongTinCanBiet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Windows\Tạo thông báo\ChitTietThongBaoWindow.xaml">
       <SubType>Designer</SubType>
@@ -426,11 +498,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Windows\CapNhatTaiKhoanWindow.xaml">
+    <Page Include="View\Windows\QL thông tin cá nhân\CapNhatTaiKhoanWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Windows\DoiMatKhau.xaml">
+    <Page Include="View\Windows\QL thông tin cá nhân\DoiMatKhau.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -475,10 +547,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\Quản lý chức vụ\SuaChucVu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\Quản lý chức vụ\ThemChucVu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -666,6 +734,7 @@
     <Resource Include="Image\thumbs-up-solid.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Image\ChuongHeo.png" />
     <Content Include="Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model.Context.cs</LastGenOutput>

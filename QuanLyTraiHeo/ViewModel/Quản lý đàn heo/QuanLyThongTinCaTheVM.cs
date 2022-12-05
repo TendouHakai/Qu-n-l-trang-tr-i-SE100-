@@ -26,7 +26,7 @@ namespace QuanLyTraiHeo.ViewModel
         public HEO SelectedHeo { get; set; }
         public LOAIHEO SelectedLoai { get; set; }
         public GIONGHEO SelectedGiong { get; set; }
-        public List<string> ListTinhTrang { get; set; }
+        public List <string> ListTinhTrang { get; set; }
         public List<string> ListNguonGoc { get; set; }
 
         public ICommand AddCommand { get; set; }
@@ -46,8 +46,8 @@ namespace QuanLyTraiHeo.ViewModel
         string matim;
         DateTime? mindate;
         DateTime? maxdate;
-        int minTL = 0;
-        int maxTL = 0;
+        int minTL=0;
+        int maxTL=0;
         public QuanLyThongTinCaTheVM()
         {
             ListHeo = new ObservableCollection<HEO>(DataProvider.Ins.DB.HEOs);
@@ -106,7 +106,7 @@ namespace QuanLyTraiHeo.ViewModel
                 {
                     mindate = p.SelectedDate;
                     TimKiem();
-                }
+                }         
             });
             TimKiemTheoNgaySinhMaxCommand = new RelayCommand<DatePicker>((p) => { return true; }, p =>
             {
@@ -123,7 +123,7 @@ namespace QuanLyTraiHeo.ViewModel
                 return false;
             }, p =>
             {
-                minTL = int.Parse(p.Text);
+              minTL = int.Parse(p.Text);
                 TimKiem();
             });
             TimKiemTheoTrongLuongMaxCommand = new RelayCommand<TextBox>((p) => {
@@ -133,14 +133,14 @@ namespace QuanLyTraiHeo.ViewModel
                 return false;
             }, p =>
             {
-                maxTL = int.Parse(p.Text);
+                maxTL=int.Parse(p.Text);
                 TimKiem();
 
             });
             TTCheck = new RelayCommand<CheckBox>((p) => { return true; }, p =>
             {
-                if (p.IsChecked == true)
-                    ListTinhTrang.Add(p.Content.ToString());
+               if(p.IsChecked==true)
+                   ListTinhTrang.Add(p.Content.ToString());
                 else ListTinhTrang.Remove(p.Content.ToString());
                 TimKiem();
             });
@@ -154,7 +154,7 @@ namespace QuanLyTraiHeo.ViewModel
         }
         void TimKiem()
         {
-            List<HEO> full = DataProvider.Ins.DB.HEOs.ToList();
+            List<HEO> full=DataProvider.Ins.DB.HEOs.ToList();
             List<HEO> hEOs;
             List<HEO> hEOs1;
             List<HEO> hEOs2;
@@ -166,9 +166,8 @@ namespace QuanLyTraiHeo.ViewModel
             List<HEO> hEOs8 = new List<HEO>();
             ListHeo.Clear();
 
-
-            if (matim != null && matim != "")
-                hEOs = DataProvider.Ins.DB.HEOs.Where(Heo => Heo.MaHeo.Contains(matim)).ToList();
+            if(matim!=null && matim!="")
+                 hEOs = DataProvider.Ins.DB.HEOs.Where(Heo => Heo.MaHeo.Contains(matim)).ToList();
             else hEOs = full;
             if (mindate != null && mindate != DateTime.Now.Date)
                 hEOs1 = DataProvider.Ins.DB.HEOs.Where(x => x.NgaySinh >= mindate).ToList();
@@ -178,11 +177,11 @@ namespace QuanLyTraiHeo.ViewModel
                 hEOs2 = DataProvider.Ins.DB.HEOs.Where(x => x.NgaySinh <= maxdate).ToList();
             else
                 hEOs2 = full;
-            if (minTL > 0)
+            if ( minTL >0)
                 hEOs3 = DataProvider.Ins.DB.HEOs.Where(x => x.TrongLuong >= minTL).ToList();
             else hEOs3 = full;
 
-            if (maxTL > minTL)
+            if ( maxTL > minTL)
                 hEOs4 = DataProvider.Ins.DB.HEOs.Where(x => x.TrongLuong <= maxTL).ToList();
             else
                 hEOs4 = full;
@@ -194,12 +193,12 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 foreach (string i in ListTinhTrang)
                 {
-                    List<HEO> x = DataProvider.Ins.DB.HEOs.Where(a => a.TinhTrang == i).ToList();
-                    foreach (HEO h in x)
+                    List <HEO> x = DataProvider.Ins.DB.HEOs.Where(a => a.TinhTrang == i).ToList();
+                    foreach( HEO h in x)
                     {
                         hEOs7.Add(h);
                     }
-                }
+                }    
             }
             else
                 hEOs7 = full;
@@ -216,33 +215,29 @@ namespace QuanLyTraiHeo.ViewModel
             }
             else
                 hEOs8 = full;
-            IEnumerable<HEO> heo = from HEO a in hEOs
-                                   join HEO b in hEOs1
-                                   on a.MaHeo equals b.MaHeo
-                                   join HEO c in hEOs2
-                                   on a.MaHeo equals c.MaHeo
-                                   join HEO d in hEOs3
-                                   on a.MaHeo equals d.MaHeo
-                                   join HEO e in hEOs4
-                                   on a.MaHeo equals e.MaHeo
-                                   join HEO f in hEOs5
-                                   on a.MaHeo equals f.MaHeo
-                                   join HEO g in hEOs6
-                                   on a.MaHeo equals g.MaHeo
-                                   join HEO h in hEOs7
-                                   on a.MaHeo equals h.MaHeo
-                                   join HEO j in hEOs8
-                                   on a.MaHeo equals j.MaHeo
-                                   select a;
+            IEnumerable <HEO> heo = from HEO a in hEOs
+                                    join HEO b in hEOs1
+                                    on a.MaHeo equals b.MaHeo
+                                    join HEO c in hEOs2
+                                    on a.MaHeo equals c.MaHeo
+                                    join HEO d in hEOs3
+                                    on a.MaHeo equals d.MaHeo
+                                    join HEO e in hEOs4
+                                    on a.MaHeo equals e.MaHeo
+                                    join HEO f in hEOs5
+                                    on a.MaHeo equals f.MaHeo
+                                    join HEO g in hEOs6
+                                    on a.MaHeo equals g.MaHeo
+                                    join HEO h in hEOs7
+                                    on a.MaHeo equals h.MaHeo
+                                    join HEO j in hEOs8
+                                    on a.MaHeo equals j.MaHeo
+                                    select a;
 
-            foreach (HEO h in heo)
-
-            var HeoTheoMa = DataProvider.Ins.DB.HEOs.Where(Heo => Heo.MaHeo.Contains(MaTim)).ToList();
-            foreach (var Heo in HeoTheoMa)
-
+            foreach(HEO h in heo)
             {
                 ListHeo.Add(h);
-            }
+            }    
         }
     }
 }
