@@ -203,7 +203,7 @@
     </Compile>
     <Compile Include="View\Windows\Quản lý đàn heo\ThemHeoPhieu.xaml.cs">
       <DependentUpon>ThemHeoPhieu.xaml</DependentUpon>
-
+    </Compile>
     <Compile Include="View\Windows\Lập lịch\DanhsachHeo.xaml.cs">
       <DependentUpon>DanhsachHeo.xaml</DependentUpon>
     </Compile>
@@ -384,7 +384,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\Quản lý đàn heo\ThemHeoPhieu.xaml">
-
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\Lập lịch\DanhsachHeo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
