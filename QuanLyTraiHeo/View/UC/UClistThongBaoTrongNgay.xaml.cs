@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace QuanLyTraiHeo.View.UC
@@ -17,7 +18,7 @@ namespace QuanLyTraiHeo.View.UC
     /// <summary>
     /// Interaction logic for UClistThongBaoTrongNgay.xaml
     /// </summary>
-    public partial class UClistThongBaoTrongNgay : Window
+    public partial class UClistThongBaoTrongNgay : UserControl
     {
         public UClistThongBaoTrongNgay()
         {

@@ -14,10 +14,10 @@ using System.Windows.Media.Animation;
 
 namespace QuanLyTraiHeo.ViewModel
 {
-    public class listThongBaoTrongNgayVM : BaseViewModel
+    public class listThongBaoTrongNgayVM: BaseViewModel
     {
         private bool _IsActive;
-        public bool IsActive { get => _IsActive; set { _IsActive = value; OnPropertyChanged(); } }
+        public bool IsActive { get=> _IsActive; set { _IsActive = value; OnPropertyChanged(); } }
         public ChiTietThongBaoVM vmCTThongBao;
         private DateTime _NgayThongBao;
         public DateTime NgayThongBao { get => _NgayThongBao; set { _NgayThongBao = value; OnPropertyChanged(); } }
@@ -43,17 +43,17 @@ namespace QuanLyTraiHeo.ViewModel
 
             selectThongBaotrongngayCommand = new RelayCommand<Object>((p) => { return true; }, p => {
                 if (selectedThongBao != null)
-                {
+                { 
                     vmCTThongBao.SelectedItem = selectedThongBao;
                     selectedThongBao.TinhTrang = "Đã đọc";
                     DataProvider.Ins.DB.SaveChanges();
                 }
                 selectedThongBao = null;
             });
-        }
+        }   
         void LoadDSThongBaoTrongNgay()
         {
-            thongbaotrongngay = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.ThoiGian.Value.Day == NgayThongBao.Day && x.C_MaNguoiNhan == vmCTThongBao.maNhanVien).OrderByDescending(x => x.ThoiGian));
+            thongbaotrongngay = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.ThoiGian.Value.Day == NgayThongBao.Day && x.C_MaNguoiNhan==vmCTThongBao.maNhanVien).OrderByDescending(x=> x.ThoiGian));
             if (thongbaotrongngay.Count == 0)
             {
                 IsActive = false;
@@ -89,7 +89,7 @@ namespace QuanLyTraiHeo.ViewModel
                 thongbaotrongngay.Add(thongbao);
             }
 
-            if (thongbaotrongngay.Count == 0)
+            if(thongbaotrongngay.Count == 0)
             {
                 IsActive = false;
             }

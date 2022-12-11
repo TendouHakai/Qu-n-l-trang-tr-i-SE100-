@@ -23,6 +23,7 @@ namespace QuanLyTraiHeo.View.UC
         public IconChuongUC()
         {
             InitializeComponent();
+            //btn.Tag
         }
     }
 }
