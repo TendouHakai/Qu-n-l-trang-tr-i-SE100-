@@ -16,7 +16,7 @@ using System.Windows.Controls;
 
 namespace QuanLyTraiHeo.ViewModel
 {
-    public class ChiTietThongBaoVM : BaseViewModel
+    public class ChiTietThongBaoVM:BaseViewModel
     {
         public MainWindowVM vmMainW;
         public string maNhanVien = "";
@@ -77,12 +77,12 @@ namespace QuanLyTraiHeo.ViewModel
                     else if (SelectedItem.NHANVIEN.MaNhanVien == maNhanVien)
                         return true;
                     else return false;
-                },
+                }, 
                 p => {
                     var listThongBao = new List<ThongBao>();
-                    foreach (var listhongbaoNgay in thongBaoTheoNgays)
+                    foreach(var listhongbaoNgay in thongBaoTheoNgays)
                     {
-                        foreach (var thongbao in listhongbaoNgay.thongbaotrongngay)
+                        foreach(var thongbao in listhongbaoNgay.thongbaotrongngay)
                         {
                             listThongBao.Add(thongbao);
                         }
@@ -105,8 +105,8 @@ namespace QuanLyTraiHeo.ViewModel
                                     SelectedItem = listThongBao[0];
                                 }
                                 else
-                                {
-                                    SelectedItem = listThongBao[i + 1];
+                                { 
+                                    SelectedItem = listThongBao[i + 1]; 
                                 }
                                 break;
                             }
@@ -124,7 +124,7 @@ namespace QuanLyTraiHeo.ViewModel
         {
             thongBaoTheoNgays = new ObservableCollection<listThongBaoTrongNgayVM>();
             //listTHONGBAOs = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == maNhanVien || x.C_MaNguoiGui == maNhanVien).OrderByDescending(x=>x.ThoiGian));
-            var listThongBao = new List<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == maNhanVien || x.C_MaNguoiGui == maNhanVien).OrderByDescending(x => x.ThoiGian).ToList());
+            var listThongBao = new List<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == maNhanVien || x.C_MaNguoiGui == maNhanVien).OrderByDescending(x=>x.ThoiGian).ToList());
             var listNgayThongBao = listThongBao.Select(x => x.ThoiGian.Value.Date).Distinct().ToList();
             foreach (var NgaythongBao in listNgayThongBao)
             {

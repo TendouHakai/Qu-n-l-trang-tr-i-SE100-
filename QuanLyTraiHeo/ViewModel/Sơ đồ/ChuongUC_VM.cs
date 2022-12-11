@@ -12,8 +12,6 @@ namespace QuanLyTraiHeo.ViewModel
 {
     public class ChuongUC_VM: BaseViewModel
     {
-        public int _SoLuongHeo;
-
         #region command
         public ICommand OpenLichChuongCommand { get; set; }
         public ICommand OpenListHeoCommand { get; set; }
@@ -30,12 +28,9 @@ namespace QuanLyTraiHeo.ViewModel
         {
             if (p == null) return;
 
-            CHUONGTRAI chuong = p.Tag as CHUONGTRAI;
-
             wDSLichChuong wd = new wDSLichChuong();
-            DSLichChuongVM dsLichChuong = new DSLichChuongVM() { MaChuong = chuong.MaChuong, LoaiChuong = DataProvider.Ins.DB.LOAICHUONGs.Where(x => x.MaLoaiChuong == chuong.MaLoaiChuong).SingleOrDefault().TenLoai, SucChuaToiDa = chuong.SuaChuaToiDa, SoLuongHeo = _SoLuongHeo };
-            wd.DataContext = dsLichChuong;
             wd.ShowDialog();
+
 
         }
 
@@ -43,10 +38,10 @@ namespace QuanLyTraiHeo.ViewModel
         {
             if (p == null) return;
 
-            CHUONGTRAI chuong = p.Tag as CHUONGTRAI;
+            //CHUONGTRAI chuong = p.Tag as CHUONGTRAI;
 
             wDSHeo wd = new wDSHeo();
-            wd.DataContext = new DSHeoVM(chuong);
+            wd.DataContext = new DSHeoVM();
             wd.ShowDialog();
 
         }
