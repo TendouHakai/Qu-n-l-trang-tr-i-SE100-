@@ -16,6 +16,7 @@ namespace QuanLyTraiHeo.ViewModel
     public class TaoThongBaoVM: BaseViewModel
     {
         #region Attributes
+        public NHANVIEN nguoigui;
         private CHUCVU _selectCHUCVU;
         private ObservableCollection<CHUCVU> _listCHUCVU;
         private ObservableCollection<NHANVIEN> _listNGUOIGUI;
@@ -55,6 +56,11 @@ namespace QuanLyTraiHeo.ViewModel
             #region code button chọn người gửi
             ChonNguoiGuiCommand = new RelayCommand<Grid>((p) => { return true; }, p => {
                 ChonNguoiGui wc = new ChonNguoiGui();
+                if(selectCHUCVU == null)
+                {
+                    MessageBox.Show("Bạn phải chọn bộ phận để gửi trước!!!");
+                    return;
+                }    
                 ChonNguoiGuiVM vm = new ChonNguoiGuiVM(this);
                 wc.DataContext = vm;
                 wc.ShowDialog();
@@ -77,7 +83,10 @@ namespace QuanLyTraiHeo.ViewModel
                     {
                         ThongBao thongbao = new ThongBao();
                         thongbao.MaThongBao = TaoMaThongBao();
-                        thongbao.C_MaNguoiNhan = nguoinhan.C_Username;
+                        thongbao.C_MaNguoiGui = nguoigui.MaNhanVien;
+                        thongbao.C_MaNguoiNhan = nguoinhan.MaNhanVien;
+                        thongbao.TinhTrang = "Chưa đọc";
+                        thongbao.ThoiGian = DateTime.Now;
                         thongbao.TieuDe = Tieude;
                         thongbao.NoiDung = Noidung;
 
@@ -127,14 +136,18 @@ namespace QuanLyTraiHeo.ViewModel
             else
             {
                 int STT = soThongBao;
-                STT++;
-                string strSTT = STT.ToString();
-                for (int i = strSTT.Length; i <= 6; i++)
+                do
                 {
-                    strSTT = "0" + strSTT;
-                }
+                    STT++;
+                    string strSTT = STT.ToString();
+                    for (int i = strSTT.Length; i <= 6; i++)
+                    {
+                        strSTT = "0" + strSTT;
+                    }
 
-                maTB = "TB" + strSTT;
+                    maTB = "TB" + strSTT;
+                }
+                while (DataProvider.Ins.DB.ThongBaos.Count(x => x.MaThongBao == maTB) > 0);
             }
             return maTB;
         }

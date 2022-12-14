@@ -1,4 +1,5 @@
-﻿using QuanLyTraiHeo.Model;
+﻿using OfficeOpenXml.ConditionalFormatting;
+using QuanLyTraiHeo.Model;
 using QuanLyTraiHeo.View.Windows.Quản_lý_nhân_viên;
 using System;
 using System.Collections.Generic;
@@ -14,19 +15,19 @@ using System.Windows.Media.Animation;
 
 namespace QuanLyTraiHeo.ViewModel
 {
-    public class listThongBaoTrongNgayVM : BaseViewModel
+    public class listThongBaoTrongNgayVM: BaseViewModel
     {
         private bool _IsActive;
-        public bool IsActive { get => _IsActive; set { _IsActive = value; OnPropertyChanged(); } }
+        public bool IsActive { get=> _IsActive; set { _IsActive = value; OnPropertyChanged(); } }
         public ChiTietThongBaoVM vmCTThongBao;
         private DateTime _NgayThongBao;
         public DateTime NgayThongBao { get => _NgayThongBao; set { _NgayThongBao = value; OnPropertyChanged(); } }
 
-        private ObservableCollection<ThongBao> _thongbaotrongngay;
-        public ObservableCollection<ThongBao> thongbaotrongngay { get => _thongbaotrongngay; set { _thongbaotrongngay = value; OnPropertyChanged(); } }
+        private ObservableCollection<THONGBAOCHITIET> _thongbaotrongngay;
+        public ObservableCollection<THONGBAOCHITIET> thongbaotrongngay { get => _thongbaotrongngay; set { _thongbaotrongngay = value; OnPropertyChanged(); } }
 
-        private ThongBao _selectedThongBao;
-        public ThongBao selectedThongBao { get => _selectedThongBao; set { _selectedThongBao = value; OnPropertyChanged(); } }
+        private THONGBAOCHITIET _selectedThongBao;
+        public THONGBAOCHITIET selectedThongBao { get => _selectedThongBao; set { _selectedThongBao = value; OnPropertyChanged(); } }
 
         public ICommand selectThongBaotrongngayCommand { get; set; }
         public listThongBaoTrongNgayVM()
@@ -38,22 +39,42 @@ namespace QuanLyTraiHeo.ViewModel
             IsActive = true;
             NgayThongBao = ngayThongBao;
             vmCTThongBao = vm;
+            thongbaotrongngay = new ObservableCollection<THONGBAOCHITIET>();
 
             LoadDSThongBaoTrongNgay();
 
             selectThongBaotrongngayCommand = new RelayCommand<Object>((p) => { return true; }, p => {
                 if (selectedThongBao != null)
                 {
-                    vmCTThongBao.SelectedItem = selectedThongBao;
-                    selectedThongBao.TinhTrang = "Đã đọc";
+                    if (vmCTThongBao.cbTinhTrang.Content.ToString() == "Đã gửi")
+                    {
+                        vmCTThongBao.SelectedItem = selectedThongBao.tb;
+                        selectedThongBao = null;
+                        return;
+                    }    
+                    vmCTThongBao.SelectedItem = selectedThongBao.tb;
+                    selectedThongBao.tb.TinhTrang = "Đã đọc";
                     DataProvider.Ins.DB.SaveChanges();
                 }
                 selectedThongBao = null;
             });
-        }
+        }   
         void LoadDSThongBaoTrongNgay()
         {
-            thongbaotrongngay = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.ThoiGian.Value.Day == NgayThongBao.Day && x.C_MaNguoiNhan == vmCTThongBao.maNhanVien).OrderByDescending(x => x.ThoiGian));
+            thongbaotrongngay.Clear();
+            var Thongbaotrongngay = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.ThoiGian.Value.Day == NgayThongBao.Day && x.C_MaNguoiNhan==vmCTThongBao.maNhanVien).OrderByDescending(x=> x.ThoiGian)).ToList();
+
+            foreach(var item in Thongbaotrongngay)
+            {
+                THONGBAOCHITIET tb = new THONGBAOCHITIET();
+                if(vmCTThongBao.cbTinhTrang.Content.ToString() == "Đã gửi")
+                {
+                    tb.isTBGui = 1;
+                }
+                tb.tb = item;
+                thongbaotrongngay.Add(tb);  
+            }
+
             if (thongbaotrongngay.Count == 0)
             {
                 IsActive = false;
@@ -86,10 +107,16 @@ namespace QuanLyTraiHeo.ViewModel
 
             foreach (var thongbao in thongbaos)
             {
-                thongbaotrongngay.Add(thongbao);
+                THONGBAOCHITIET tb = new THONGBAOCHITIET();
+                if(vmCTThongBao.cbTinhTrang.Content.ToString() == "Đã gửi")
+                {
+                    tb.isTBGui = 1;
+                }
+                tb.tb = thongbao;
+                thongbaotrongngay.Add(tb);
             }
 
-            if (thongbaotrongngay.Count == 0)
+            if(thongbaotrongngay.Count == 0)
             {
                 IsActive = false;
             }
@@ -98,6 +125,16 @@ namespace QuanLyTraiHeo.ViewModel
                 IsActive = true;
             }
 
+        }
+        public class THONGBAOCHITIET
+        {
+            public int isTBGui { get; set; }
+            public ThongBao tb { get; set; }
+            public THONGBAOCHITIET()
+            {
+                isTBGui = 0;
+                tb = null;
+            }
         }
     }
 }

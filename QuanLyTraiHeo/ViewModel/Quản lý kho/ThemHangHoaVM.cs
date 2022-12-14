@@ -11,7 +11,7 @@ using ListView = System.Windows.Controls.ListView;
 
 namespace QuanLyTraiHeo.ViewModel
 {
-    public class ThemHangHoaVM:BaseViewModel
+    public class ThemHangHoaVM : BaseViewModel
     {
         private HANGHOA hHANGHOA;
 
@@ -35,8 +35,6 @@ namespace QuanLyTraiHeo.ViewModel
                 MessageBox.Show("Vui lòng nhập ten hàng hoá! ", "Thông báo!", MessageBoxButton.OK);
                 return;
             }
-            
-
             newHangHoa.TenHangHoa.ToString().Replace(" ", "");
             newHangHoa.LoaiHangHoa = loaihanghoa.loaiHangHoa;
             newHangHoa.MaHangHoa = ("HH" + DataProvider.Ins.DB.HANGHOAs.Count().ToString()).Replace(" ", "");

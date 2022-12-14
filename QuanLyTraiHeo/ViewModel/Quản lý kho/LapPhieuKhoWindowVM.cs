@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace QuanLyTraiHeo.ViewModel
 {
-    class LapPhieuKhoWindowVM:BaseViewModel
+    class LapPhieuKhoWindowVM : BaseViewModel
     {
         public ObservableCollection<PHIEUHANGHOA> listPhieuNhapKho { get; set; }
         public ObservableCollection<PHIEUHANGHOA> listPhieuXuatKho { get; set; }
@@ -45,16 +45,16 @@ namespace QuanLyTraiHeo.ViewModel
 
         private void TaoPhieu(Window p)
         {
-                TaoPhieuKho taophieukho = new TaoPhieuKho();
-                taophieukho.ShowDialog();
-            
+            TaoPhieuKho taophieukho = new TaoPhieuKho();
+            taophieukho.ShowDialog();
+
         }
 
         private void LoadListTrangThai()
         {
             listTrangThai.Clear();
             var listtrangthai = from c in DataProvider.Ins.DB.PHIEUHANGHOAs
-                                  select new { c.TrangThai };
+                                select new { c.TrangThai};
             var listtrangthainodupes = listtrangthai.Distinct().ToList();
             foreach (var items in listtrangthainodupes)
             {
@@ -64,18 +64,16 @@ namespace QuanLyTraiHeo.ViewModel
 
         private void TimKiemTheoNgayMaxChanged(DatePicker p)
         {
-            
-                maxdate = p.SelectedDate;
-                LoadPhieuHangHoa();
-            
+            maxdate = p.SelectedDate;
+            LoadPhieuHangHoa();
         }
 
         private void TimKiemTheoNgayMinChanged(DatePicker p)
         {
-           
-                mindate = p.SelectedDate;
-                LoadPhieuHangHoa();
-            
+
+            mindate = p.SelectedDate;
+            LoadPhieuHangHoa();
+
         }
 
         private void TextTimKiemChanged(ListView p)
@@ -94,12 +92,12 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 listphieuhanghoa = listphieuhanghoa.Where(x => x.NgayLap >= mindate).ToList();
             }
-            
+
             if (maxdate != null && maxdate != DateTime.Now.Date)
             {
                 listphieuhanghoa = listphieuhanghoa.Where(x => x.NgayLap <= maxdate).ToList();
             }
-            
+
             foreach (var items in listphieuhanghoa.ToList())
             {
                 int flag = 0;
@@ -118,11 +116,11 @@ namespace QuanLyTraiHeo.ViewModel
 
             foreach (var items in listphieuhanghoa)
             {
-                if (items.LoaiPhieu == "NK")
+                if (items.LoaiPhieu == "Nhập kho")
                 {
                     listPhieuNhapKho.Add(items);
                 }
-                else if (items.LoaiPhieu == "XK")
+                else if (items.LoaiPhieu == "Xuất kho")
                 {
                     listPhieuXuatKho.Add(items);
                 }

@@ -62,6 +62,18 @@ CREATE TABLE LOAICHUONG
 )
 
 
+CREATE TABLE LICHCHUONG
+(
+	MaLichChuong char(16),
+	MaChuong char(16),
+	NgayLam smalldatetime,
+	TrangThai nvarchar(50),
+	TenLich nvarchar(50),
+	Mota nvarchar(50)
+
+	CONSTRAINT PK_LC PRIMARY KEY (MaLichChuong)
+)
+
 
 GO
 CREATE TABLE LICHTIEMHEO
@@ -81,8 +93,9 @@ CREATE TABLE LICHPHOIGIONG
 	MaLichPhoi char(16),
 	MaHeoDuc char(16),
 	MaHeoCai char(16),
+	NgayPhoiGiong smalldatetime,
 	Trangthai nvarchar(64),
-
+		
 	NgayDuKienDe smalldatetime ,
 	NgayDeThucTe smalldatetime ,
 
@@ -91,6 +104,7 @@ CREATE TABLE LICHPHOIGIONG
 	NgayCaiSua smalldatetime,
 
 	SoConChon int,
+	NgayPhoiGiongLaiDuKien smalldatetime,
 	CONSTRAINT PK_LPG PRIMARY KEY (MaLichPhoi)
 )
 
@@ -134,8 +148,8 @@ go
 Create table ThongBao
 (
 	MaThongBao char(16),
-	_MaNguoiNhan char(16),
 	_MaNguoiGui char(16),
+	_MaNguoiNhan char(16),
 	TinhTrang nvarchar(16),
 	TieuDe ntext,
 	NoiDung ntext,
@@ -199,6 +213,7 @@ Create table PHIEUSUACHUA
 	MaNhanVien char(16),
 	GhiChu ntext,
 	TrangThai nvarchar(64),
+	MaDoiTac char(16),
 	TongTien int,	
 	constraint PK_PSC PRIMARY KEY (SoPhieu)
 )
@@ -265,6 +280,7 @@ Create table	PHIEUHANGHOA
 	SoPhieu char(16),
 	NgayLap smalldatetime,
 	MaNhanVien char(16),
+	MaNhanVienNhan char(16),
 	MaDoiTac char(16),
 	TrangThai nvarchar(64),
 	LoaiPhieu nvarchar(64),
@@ -287,14 +303,66 @@ GO
 CREATE TABLE THAMSO
 (
 	id INT IDENTITY primary key,
-	TrongLuongToiThieu int
+	XuatChuongMin	int,
+	XuatChuongMax	int,
+	MonthXuatChuongMin	int,
+	MonthXuatChuongMax int,
+	TuoiNhapDan		int,
+	CanHuyet	int,
+	TuoiPhoiGiongDuc int,
+	TuoiPhoiGiongCai int,
+	RePhoiGiongDuc int,
+	RePhoiGiongCai int,
+	ThucAnMotNgay int,
+	ThucAnMax int
 )
+
+insert into THAMSO values (0,0,0,0,0,0,0,0,0,0,0,0)
+
+Go 
+Create Table QuyDinhTiemHeo
+(
+	MaTiemHeo char(16),
+	MaVaxin char(16),
+	TuoiTiem int,
+	MoTa ntext,
+	constraint PK_QDTH_MTH primary key (MaTiemHeo)
+
+)
+Go 	
+Create table MuaDichBenh
+(
+	MaDichBenh char(16),
+	TenDichBenh nchar(200),
+	NgayBatDau smalldatetime,
+	NgayKetThuc smalldatetime,
+	NguyenNhan ntext,
+	BienPhap ntext,
+		constraint PK_MDB_MDB primary key (MaDichBenh)
+
+
+)
+
 
 go 
 create table ListActionDetail
 (
 	id INT IDENTITY primary key,
 	ActionDetail nvarchar(64)
+)
+
+Create table	BAOCAOTONKHO
+(
+	MaBCTK char(16),
+	Thang int,
+	Nam int,
+	MaHH char(16),
+	TonDau int,
+	TonCuoi int,
+	SoLuongNhapThem int,
+	SoLuongXuatRa int,
+
+	constraint PK_BCTK primary key (MaBCTK)
 )
 
 GO
@@ -311,6 +379,10 @@ FOREIGN KEY (MaChuong) REFERENCES CHUONGTRAI(MaChuong)
 --table ChuongTrai--
 ALTER TABLE CHUONGTRAI ADD CONSTRAINT FK_CT_MC
 FOREIGN KEY (MaLoaiChuong) REFERENCES LOAICHUONG(MaLoaiChuong)
+
+-- table LichChuong--
+ALTER TABLE LICHCHUONG ADD CONSTRAINT FK_LC_MC 
+FOREIGN KEY (MaChuong) REFERENCES CHUONGTRAI(MaChuong)
 
 --table LICHTIEMHEO--
 ALTER TABLE LICHTIEMHEO ADD CONSTRAINT FK_LTH_MH
@@ -347,6 +419,9 @@ FOREIGN KEY (ID_Permision) REFERENCES PERMISION(ID_Permision)
 ALTER TABLE PHIEUSUACHUA ADD CONSTRAINT FK_PSC_MNV
 FOREIGN KEY (MaNhanVien) REFERENCES NHANVIEN(MaNhanVien)
 
+ALTER TABLE PHIEUSUACHUA ADD CONSTRAINT FK_PSC_MDT
+FOREIGN KEY (MaDoiTac) REFERENCES DOITAC(MaDoiTac)
+
 ALTER TABLE CT_PHIEUSUACHUA ADD CONSTRAINT FK_CT_PSC_SP
 FOREIGN KEY (SoPhieu) REFERENCES PHIEUSUACHUA(SoPhieu)
 
@@ -370,6 +445,9 @@ FOREIGN KEY (MaHeo) REFERENCES HEO(MaHeo)
 ALTER TABLE PHIEUHANGHOA ADD CONSTRAINT FK_PHH_MNV
 FOREIGN KEY (MaNhanVien) REFERENCES NHANVIEN(MaNhanVien)
 
+ALTER TABLE PHIEUHANGHOA ADD CONSTRAINT FK_PHH_MNVN
+FOREIGN KEY (MaNhanVienNhan) REFERENCES NHANVIEN(MaNhanVien)
+
 ALTER TABLE PHIEUHANGHOA ADD CONSTRAINT FK_PHH_MDT
 FOREIGN KEY (MaDoiTac) REFERENCES DOITAC(MaDoiTac)
 
@@ -389,6 +467,14 @@ FOREIGN KEY (SoPhieu) REFERENCES PHIEUHANGHOA(SoPhieu)
 ALTER TABLE CT_PHIEUKIEMKHO ADD CONSTRAINT FK_CT_PKK_MHH
 FOREIGN KEY (MaHangHoa) REFERENCES HANGHOA(MaHangHoa)
 
+--table BAOCAOTONKHO
+ALTER TABLE BAOCAOTONKHO ADD CONSTRAINT FK_BCTK_HH
+FOREIGN KEY (MaHH) REFERENCES HANGHOA(MaHangHoa)
+
+--table  QuyDinhTiemHeo
+alter table QuyDinhTiemHeo add constraint FK_QDTH_HH
+
+FOREIGN KEY (MaVaxin) REFERENCES HANGHOA(MaHangHoa)
 go
 
 

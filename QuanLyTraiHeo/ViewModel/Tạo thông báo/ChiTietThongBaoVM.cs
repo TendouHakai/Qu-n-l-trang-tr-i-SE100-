@@ -16,7 +16,7 @@ using System.Windows.Controls;
 
 namespace QuanLyTraiHeo.ViewModel
 {
-    public class ChiTietThongBaoVM : BaseViewModel
+    public class ChiTietThongBaoVM:BaseViewModel
     {
         public MainWindowVM vmMainW;
         public string maNhanVien = "";
@@ -72,51 +72,58 @@ namespace QuanLyTraiHeo.ViewModel
             });
             deleteThongBao = new RelayCommand<Object>(
                 (p) => {
-                    if (SelectedItem == null)
-                        return false;
-                    else if (SelectedItem.NHANVIEN.MaNhanVien == maNhanVien)
-                        return true;
-                    else return false;
-                },
-                p => {
-                    var listThongBao = new List<ThongBao>();
-                    foreach (var listhongbaoNgay in thongBaoTheoNgays)
+                    try
                     {
-                        foreach (var thongbao in listhongbaoNgay.thongbaotrongngay)
+                        if (SelectedItem != null)
                         {
-                            listThongBao.Add(thongbao);
-                        }
-                    }
-                    if (listThongBao.Count <= 1)
-                    {
-                        SelectedItem = null;
-                    }
-                    else
-                    {
-                        int i = 0;
-                        for (; i < listThongBao.Count; i++)
-                        {
-                            if (listThongBao[i].MaThongBao == SelectedItem.MaThongBao)
+                            if (SelectedItem.C_MaNguoiGui == maNhanVien)
                             {
-                                DataProvider.Ins.DB.ThongBaos.Remove(SelectedItem);
-                                DataProvider.Ins.DB.SaveChanges();
-                                if (i == listThongBao.Count - 1)
-                                {
-                                    SelectedItem = listThongBao[0];
-                                }
-                                else
-                                {
-                                    SelectedItem = listThongBao[i + 1];
-                                }
-                                break;
+                                return true;
                             }
+                            else return false;
                         }
-                        if (i == listThongBao.Count)
-                        {
-                            SelectedItem = null;
-                        }
-                        TimKiem();
+                        else return false;
                     }
+                    catch(Exception e)
+                    {
+                        return false;
+                    }
+                }, 
+                p => {
+                    ThongBao deleteTB = SelectedItem;
+                    SelectedItem = null;
+                    var listThongBao = new List<ThongBao>();
+                    foreach(var listhongbaoNgay in thongBaoTheoNgays)
+                    {
+                        foreach(var thongbao in listhongbaoNgay.thongbaotrongngay)
+                        {
+                            listThongBao.Add(thongbao.tb);
+                        }
+                    }
+                    int i = 0;
+                    for (; i < listThongBao.Count; i++)
+                    {
+                        if (listThongBao[i].MaThongBao == deleteTB.MaThongBao)
+                        {
+                            DataProvider.Ins.DB.ThongBaos.Remove(deleteTB);
+                            DataProvider.Ins.DB.SaveChanges();
+                            if (listThongBao.Count > 1)
+                            {
+                                SelectedItem = listThongBao[i + 1];
+                            }
+                            else if(listThongBao.Count == 1)
+                            {
+                                SelectedItem = null;
+                            }
+                            else if(i == listThongBao.Count - 1)
+                            {
+                                SelectedItem = listThongBao[0];
+                            }
+                            break;
+                        }
+                    }
+                    TimKiem();
+
 
                 });
         }
@@ -124,7 +131,7 @@ namespace QuanLyTraiHeo.ViewModel
         {
             thongBaoTheoNgays = new ObservableCollection<listThongBaoTrongNgayVM>();
             //listTHONGBAOs = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == maNhanVien || x.C_MaNguoiGui == maNhanVien).OrderByDescending(x=>x.ThoiGian));
-            var listThongBao = new List<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == maNhanVien || x.C_MaNguoiGui == maNhanVien).OrderByDescending(x => x.ThoiGian).ToList());
+            var listThongBao = new List<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == maNhanVien || x.C_MaNguoiGui == maNhanVien).OrderByDescending(x=>x.ThoiGian).ToList());
             var listNgayThongBao = listThongBao.Select(x => x.ThoiGian.Value.Date).Distinct().ToList();
             foreach (var NgaythongBao in listNgayThongBao)
             {

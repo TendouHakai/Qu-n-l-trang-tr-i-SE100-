@@ -1,5 +1,7 @@
-﻿using System;
+﻿using QuanLyTraiHeo.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace QuanLyTraiHeo.View.Windows.Quản_lý_đàn_heo
+namespace QuanLyTraiHeo.View.Windows
 {
     /// <summary>
     /// Interaction logic for ThemHeoPhieu.xaml

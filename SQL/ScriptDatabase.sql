@@ -1,4 +1,8 @@
 ﻿--giống heo
+go
+use TRANGTRAINUOIHEO
+
+go
 INSERT INTO GIONGHEO VALUES('GH02112022000001', N'Heo Móng Cái', N'Màu sắc lông da trắng, lưng và mông có khoang đen yên ngựa, da mỏng mịn, lông thưa và thô. Đầu to, miệng nhỏ dài, tai nhỏ và nhọn, có nếp nhăn to và ngắn ở miệng. Cổ to và ngắn, ngực nở và sâu, lưng dài và hơi võng, bụng hơi xệ, mông rộng và xuôi. Bốn chân tương đối cao thẳng, móng xoè.
 Khối lượng heo sơ sinh: 450-500 gr/ con, heo trưởng thành: 140-170 kg/con. Có con tới 200 kg nhưng thời gian nuôi rất lâu. Tỷ lệ mỡ/thịt xẻ 35-38%.
 Sinh sản: Heo đực 3 tháng tuổi biết nhảy cái và trong tinh dịch đã có tinh trùng, lượng tinh dịch 80- 100 ml. Heo cái 3 tháng tuổi đã bắt đầu động hớn nhưng chưa có khả năng thụ thai. Thường thì heo cái đến khoảng 7-8 tháng tuổi trở đi mới có đủ điều kiện tốt nhất cho phối giống và có chửa, thời điểm đó heo đã đạt khối lượng khoảng 40-50 kg hoặc lớn hơn .')
@@ -124,6 +128,7 @@ INSERT INTO NHANVIEN VALUES ('NV000010', N'Phạm Thị Hân', NULL, NULL, NULL,
 INSERT INTO NHANVIEN VALUES ('NV000011', N'Nguyễn Thị Diệu', NULL, NULL, NULL, 'CV000005', N'Nữ', '05/02/2002', N'Dĩ An, Bình Dương', 'DieuNguyen@gmail.com', '0321654998', '11/29/2022', '1', 'Dieu', '1') 
 INSERT INTO NHANVIEN VALUES ('NV000012', N'Phạm Thị Như Quỳnh', NULL, NULL, NULL, 'CV000005', N'Nữ', '08/26/2002', N'Thủ Dầu 1, Bình Dương', 'BaCuNon@gmail.com', '0126953444', '11/03/2022', '1', 'Quynh', '1') 
 
+
 -- Đối tác
 INSERT INTO DOITAC VALUES ('DT000001', N'Khách hàng ', N'CÔNG TY CỔ PHẦN VISSAN', N'42 Nguyễn Thái Học, Phường Cầu Ông Lãnh, Quận 1, TPHCM', '028 3553 3999', 'vissanco@vissan.com.vn')
 INSERT INTO DOITAC VALUES ('DT000002', N'Khách hàng ', N'Kingmeat', N'14/7 Bis Kỳ Đồng, Quận 3, TP. Hồ Chí Minh', '913906653', 'kingmeat.vn')
@@ -150,20 +155,19 @@ INSERT INTO HANGHOA VALUES ('HH000011', N'Vacxin phó thương hàn', '140000', 
 INSERT INTO HANGHOA VALUES ('HH000012', N'Vacxin dịch tả lợn ', '50000', '42', N'Vẫn còn', N'Vacxin')
 INSERT INTO HANGHOA VALUES ('HH000013', N'Vacxin tụ huyết trùng ', '120000', '11', N'Vẫn còn', N'Vacxin')
 
-INSERT INTO PHIEUHANGHOA VALUES ('001', '03/16/2002','NV000006','DT000001', '', '',100 )
-INSERT INTO PHIEUHANGHOA VALUES ('002', '03/16/2020','NV000006','DT000001', '', '',100 )
-INSERT INTO PHIEUHANGHOA VALUES ('003', '03/15/2011','NV000006','DT000001', '', '',100 )
-INSERT INTO PHIEUHANGHOA VALUES ('004', '03/16/2002','NV000006','DT000001', '', '',100 )
-INSERT INTO PHIEUHANGHOA VALUES ('005', '03/16/2002','NV000006','DT000001', '', '',100 )
-INSERT INTO PHIEUHANGHOA VALUES ('006', '03/16/2003','NV000006','DT000001', '', '',100 )
-INSERT INTO PHIEUHANGHOA VALUES ('007', '03/16/2002','NV000006','DT000001', '', '',100 )
-INSERT INTO PHIEUHANGHOA VALUES ('008', '03/16/2002','NV000006','DT000001', '', '',100 )
-INSERT INTO PHIEUHANGHOA VALUES ('009', '03/16/2003','NV000006','DT000001', '', '',100 )
-INSERT INTO PHIEUHANGHOA VALUES ('0010', '03/16/2002','NV000006','DT000001', '', '',100 )
-INSERT INTO PHIEUHANGHOA VALUES ('0011', '03/16/2002','NV000006','DT000001', '', '',100 )
-INSERT INTO PHIEUHANGHOA VALUES ('0012', '03/16/2002','NV000006','DT000001', '', '',100 )
-INSERT INTO PHIEUHANGHOA VALUES ('0013', '03/16/2002','NV000006','DT000001', '', '',100 )
-INSERT INTO PHIEUHANGHOA VALUES ('0014', '03/16/2002','NV000006','DT000001', '', '',100 )
-INSERT INTO PHIEUHANGHOA VALUES ('0015', '03/16/2002','NV000006','DT000001', '', '',100 )
-INSERT INTO PHIEUHANGHOA VALUES ('0016', '03/16/2002','NV000006','DT000001', '', '',100 )
-
+INSERT INTO PHIEUHANGHOA VALUES ('001', '03/16/2002','NV000006','NV000001','DT000001', N'Mới tạo', N'Nhập kho',100 )
+INSERT INTO PHIEUHANGHOA VALUES ('002', '03/16/2022','NV000006','NV000001','DT000001', N'Mới tạo', N'Nhập kho',100 )
+INSERT INTO PHIEUHANGHOA VALUES ('003', '04/15/2022','NV000006','NV000001','DT000001', N'Mới tạo', N'Nhập kho',100 )
+INSERT INTO PHIEUHANGHOA VALUES ('004', '04/16/2022','NV000006','NV000001','DT000001', N'Mới tạo', N'Nhập kho',100 )
+INSERT INTO PHIEUHANGHOA VALUES ('005', '04/16/2022','NV000006','NV000001','DT000001', N'Mới tạo', N'Nhập kho',100 )
+INSERT INTO PHIEUHANGHOA VALUES ('006', '05/16/2022','NV000006','NV000001','DT000001', N'Mới tạo', N'Nhập kho',100 )
+INSERT INTO PHIEUHANGHOA VALUES ('007', '06/16/2022','NV000006','NV000001','DT000001', N'Hoàn thành', N'Nhập kho',100 )
+INSERT INTO PHIEUHANGHOA VALUES ('008', '08/16/2022','NV000006','NV000001','DT000001', N'Hoàn thành', N'Nhập kho',100 )
+INSERT INTO PHIEUHANGHOA VALUES ('009', '08/16/2022','NV000006','NV000001','DT000001', N'Hoàn thành', N'Xuất kho',100 )
+INSERT INTO PHIEUHANGHOA VALUES ('0010', '08/16/2022','NV000006','NV000001','DT000001', N'Hoàn thành', N'Xuất kho',100 )
+INSERT INTO PHIEUHANGHOA VALUES ('0011', '03/16/2022','NV000006','NV000001','DT000001', N'Hoàn thành', N'Xuất kho',100 )
+INSERT INTO PHIEUHANGHOA VALUES ('0012', '10/16/2022','NV000006','NV000001','DT000001', N'Hoàn thành', N'Xuất kho',100 )
+INSERT INTO PHIEUHANGHOA VALUES ('0013', '10/16/2022','NV000006','NV000001','DT000001', N'Đã huỷ', N'Xuất kho',100 )
+INSERT INTO PHIEUHANGHOA VALUES ('0014', '10/16/2022','NV000006','NV000001','DT000001', N'Đã huỷ', N'Xuất kho',100 )
+INSERT INTO PHIEUHANGHOA VALUES ('0015', '12/16/2022','NV000006','NV000001','DT000001', N'Đã huỷ', N'Xuất kho',100 )
+INSERT INTO PHIEUHANGHOA VALUES ('0016', '12/16/2022','NV000006','NV000001','DT000001', N'Đã huỷ', N'Xuất kho',100 )

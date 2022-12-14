@@ -1,6 +1,5 @@
 ﻿using QuanLyTraiHeo.Model;
 using QuanLyTraiHeo.View.Windows.Quản_lý_kho;
-using QuanLyTraiHeo.ViewModel.Quản_lý_kho;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -56,14 +55,14 @@ namespace QuanLyTraiHeo.ViewModel
         private void LoadListLoaiHangHoa()
         {
             listLoaiHangHoa.Clear();
-            var listloaihanghoa = from c in DataProvider.Ins.DB.HANGHOAs 
+            var listloaihanghoa = from c in DataProvider.Ins.DB.HANGHOAs
                                   select new { c.LoaiHangHoa };
             var listloaihanghoanodupes = listloaihanghoa.Distinct().ToList();
             foreach (var items in listloaihanghoanodupes)
             {
                 listLoaiHangHoa.Add(new LoaiHangHoaModel(true, items.LoaiHangHoa));
             }
-            
+
         }
 
         private void SoluongtoidaChanged(ListView p)
@@ -90,7 +89,7 @@ namespace QuanLyTraiHeo.ViewModel
         {
             listTinhTrang.Clear();
             var listtinhtrang = from c in DataProvider.Ins.DB.HANGHOAs
-                                  select new { c.TinhTrang };
+                                select new { c.TinhTrang };
             var listtinhtrangnodupes = listtinhtrang.Distinct().ToList();
             foreach (var items in listtinhtrangnodupes)
             {
@@ -133,12 +132,12 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 listhanghoa = listhanghoa.Where(s => s.SoLuongTonKho >= int.Parse(textSoLuongToiThieu)).ToList();
             }
-            if (!string.IsNullOrWhiteSpace(textSoLuongToiDa) )
+            if (!string.IsNullOrWhiteSpace(textSoLuongToiDa))
             {
                 listhanghoa = listhanghoa.Where(s => s.SoLuongTonKho <= int.Parse(textSoLuongToiDa)).ToList();
             }
 
-            
+
             foreach (var items in listhanghoa.ToList())
             {
                 int flag = 0;

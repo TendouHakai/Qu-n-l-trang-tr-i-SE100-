@@ -26,7 +26,9 @@ namespace QuanLyTraiHeo.ViewModel
         public HEO SelectedHeo { get; set; }
         public LOAIHEO SelectedLoai { get; set; }
         public GIONGHEO SelectedGiong { get; set; }
-        public List<string> ListTinhTrang { get; set; }
+        public List<string> ListTenLoai { get; set; }
+        public List<string> ListTenGiong { get; set; }
+        public List <string> ListTinhTrang { get; set; }
         public List<string> ListNguonGoc { get; set; }
 
         public ICommand AddCommand { get; set; }
@@ -39,6 +41,7 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand TimKiemTheoTrongLuongMinCommand { get; set; }
         public ICommand TimKiemTheoTrongLuongMaxCommand { get; set; }
         public ICommand TimKiemTheoLoaiCommand { get; set; }
+        public ICommand TimKiemTheoGiongCommand { get; set; }
 
         public ICommand TTCheck { get; set; }
         public ICommand NGCheck { get; set; }
@@ -46,13 +49,15 @@ namespace QuanLyTraiHeo.ViewModel
         string matim;
         DateTime? mindate;
         DateTime? maxdate;
-        int minTL = 0;
-        int maxTL = 0;
+        int minTL=0;
+        int maxTL=0;
         public QuanLyThongTinCaTheVM()
         {
             ListHeo = new ObservableCollection<HEO>(DataProvider.Ins.DB.HEOs);
             ListLoai = new ObservableCollection<LOAIHEO>(DataProvider.Ins.DB.LOAIHEOs);
             ListGiong = new ObservableCollection<GIONGHEO>(DataProvider.Ins.DB.GIONGHEOs);
+            ListTenLoai = new List<string>();
+            ListTenGiong = new List<string>();  
             ListTinhTrang = new List<string>();
             ListNguonGoc = new List<string>();
 
@@ -75,16 +80,14 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 if (SelectedHeo == null)
                     return false;
-                if (SelectedHeo.CT_PHIEUHEO.Count() > 0)
-                    return false;
-                if (SelectedHeo.LICHTIEMHEOs.Count() > 0)
-                    return false;
-                if (SelectedHeo.LICHPHOIGIONGs.Count() > 0)
-                    return false;
-
-                return true;
+                else return true;
             }, p =>
             {
+                if (SelectedHeo.CT_PHIEUHEO.Count() > 0 || SelectedHeo.LICHTIEMHEOs.Count() > 0 || SelectedHeo.LICHPHOIGIONGs.Count() > 0)
+                {
+                    MessageBox.Show("Không thẻ xoá con heo này. Vì đang tồn tại trong lịch hoặc phiếu?", "Chú ý");
+                    return;
+                }
                 MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn xoá ?", "Cảnh báo", MessageBoxButton.OKCancel);
                 if (result == MessageBoxResult.OK)
                 {
@@ -106,7 +109,7 @@ namespace QuanLyTraiHeo.ViewModel
                 {
                     mindate = p.SelectedDate;
                     TimKiem();
-                }
+                }         
             });
             TimKiemTheoNgaySinhMaxCommand = new RelayCommand<DatePicker>((p) => { return true; }, p =>
             {
@@ -123,7 +126,7 @@ namespace QuanLyTraiHeo.ViewModel
                 return false;
             }, p =>
             {
-                minTL = int.Parse(p.Text);
+              minTL = int.Parse(p.Text);
                 TimKiem();
             });
             TimKiemTheoTrongLuongMaxCommand = new RelayCommand<TextBox>((p) => {
@@ -133,14 +136,30 @@ namespace QuanLyTraiHeo.ViewModel
                 return false;
             }, p =>
             {
-                maxTL = int.Parse(p.Text);
+                maxTL=int.Parse(p.Text);
                 TimKiem();
 
             });
+            TimKiemTheoLoaiCommand = new RelayCommand<CheckBox>((p) => { return true; }, p =>
+            {
+
+                if (p.IsChecked == true)
+                    ListTenLoai.Add(p.Content.ToString());
+                else ListTenLoai.Remove(p.Content.ToString());
+                TimKiem();
+            });
+            TimKiemTheoGiongCommand = new RelayCommand<CheckBox>((p) => { return true; }, p =>
+            {
+
+                if (p.IsChecked == true)
+                    ListTenGiong.Add(p.Content.ToString());
+                else ListTenGiong.Remove(p.Content.ToString());
+                TimKiem();
+            });
             TTCheck = new RelayCommand<CheckBox>((p) => { return true; }, p =>
             {
-                if (p.IsChecked == true)
-                    ListTinhTrang.Add(p.Content.ToString());
+               if(p.IsChecked==true)
+                   ListTinhTrang.Add(p.Content.ToString());
                 else ListTinhTrang.Remove(p.Content.ToString());
                 TimKiem();
             });
@@ -166,35 +185,56 @@ namespace QuanLyTraiHeo.ViewModel
             List<HEO> hEOs8 = new List<HEO>();
             ListHeo.Clear();
 
-
             if (matim != null && matim != "")
-                hEOs = DataProvider.Ins.DB.HEOs.Where(Heo => Heo.MaHeo.Contains(matim)).ToList();
+                hEOs = full.Where(Heo => Heo.MaHeo.Contains(matim)).ToList();
             else hEOs = full;
             if (mindate != null && mindate != DateTime.Now.Date)
-                hEOs1 = DataProvider.Ins.DB.HEOs.Where(x => x.NgaySinh >= mindate).ToList();
+                hEOs1 = full.Where(x => x.NgaySinh >= mindate).ToList();
             else hEOs1 = full;
 
             if (maxdate != null && maxdate != DateTime.Now.Date)
-                hEOs2 = DataProvider.Ins.DB.HEOs.Where(x => x.NgaySinh <= maxdate).ToList();
+                hEOs2 = full.Where(x => x.NgaySinh <= maxdate).ToList();
             else
                 hEOs2 = full;
             if (minTL > 0)
-                hEOs3 = DataProvider.Ins.DB.HEOs.Where(x => x.TrongLuong >= minTL).ToList();
+                hEOs3 = full.Where(x => x.TrongLuong >= minTL).ToList();
             else hEOs3 = full;
 
             if (maxTL > minTL)
-                hEOs4 = DataProvider.Ins.DB.HEOs.Where(x => x.TrongLuong <= maxTL).ToList();
+                hEOs4 = full.Where(x => x.TrongLuong <= maxTL).ToList();
             else
                 hEOs4 = full;
-
-            hEOs5 = full;
-            hEOs6 = full;
-
+            if (ListTenLoai.Count > 0)
+            {
+                foreach (string i in ListTenLoai)
+                {
+                    List<HEO> x = full.Where(a => a.LOAIHEO.TenLoaiHeo == i).ToList();
+                    foreach (HEO h in x)
+                    {
+                        hEOs5.Add(h);
+                    }
+                }
+            }
+            else
+                hEOs5 = full;
+            if (ListTenGiong.Count > 0)
+            {
+                foreach (string i in ListTenGiong)
+                {
+                    List<HEO> x = full.Where(a => a.GIONGHEO.TenGiongHeo == i).ToList();
+                    foreach (HEO h in x)
+                    {
+                        hEOs6.Add(h);
+                    }
+                }
+            }
+            else
+                hEOs6 = full;
             if (ListTinhTrang.Count > 0)
             {
                 foreach (string i in ListTinhTrang)
                 {
-                    List<HEO> x = DataProvider.Ins.DB.HEOs.Where(a => a.TinhTrang == i).ToList();
+                    List<HEO> x = full.Where(a => a.TinhTrang == i).ToList();
                     foreach (HEO h in x)
                     {
                         hEOs7.Add(h);
@@ -207,7 +247,7 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 foreach (string i in ListNguonGoc)
                 {
-                    List<HEO> x = DataProvider.Ins.DB.HEOs.Where(a => a.NguonGoc == i).ToList();
+                    List<HEO> x = full.Where(a => a.NguonGoc == i).ToList();
                     foreach (HEO h in x)
                     {
                         hEOs8.Add(h);
@@ -236,10 +276,6 @@ namespace QuanLyTraiHeo.ViewModel
                                    select a;
 
             foreach (HEO h in heo)
-
-            var HeoTheoMa = DataProvider.Ins.DB.HEOs.Where(Heo => Heo.MaHeo.Contains(MaTim)).ToList();
-            foreach (var Heo in HeoTheoMa)
-
             {
                 ListHeo.Add(h);
             }

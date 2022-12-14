@@ -4,6 +4,7 @@ using QuanLyTraiHeo.View.Windows;
 using QuanLyTraiHeo.View.Windows.Quản_lý_chức_vụ;
 using QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo;
 using QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo;
+using QuanLyTraiHeo.View.Windows.Quy_Định;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,6 +19,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
 using WpfApp_MVVM.View.Windows;
 
 namespace QuanLyTraiHeo.ViewModel
@@ -30,6 +32,7 @@ namespace QuanLyTraiHeo.ViewModel
         NHANVIEN nhanVien;
         System.Windows.Media.Imaging.BitmapImage image;
         private ObservableCollection<ThongBao> _listTHONGBAO;
+        private int _countThongBaoChuaDoc;
         private ThongBao _selectedItem;
         #endregion
 
@@ -38,6 +41,7 @@ namespace QuanLyTraiHeo.ViewModel
         public NHANVIEN NhanVien { get => nhanVien; set { nhanVien = value; OnPropertyChanged(); } }
         public System.Windows.Media.Imaging.BitmapImage MyImage { get => image; set { image = value; OnPropertyChanged(); } }
         public ObservableCollection<ThongBao> listTHONGBAO { get => _listTHONGBAO; set { _listTHONGBAO = value; OnPropertyChanged(); } }
+        public int countThongBaoChuaDoc { get => _countThongBaoChuaDoc; set { _countThongBaoChuaDoc = value; OnPropertyChanged(); } }
         public ThongBao selectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(); } }  
         #endregion
 
@@ -50,6 +54,7 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand OpenLapLichTiemWindow { get; set; } 
         public ICommand OpenLaplichPhoiGiongWindow { get; set; }   
         public ICommand OpenQuanLyThongTinChuongWindow { get; set; }
+        public ICommand OpenSoDoChuongWindow { get; set; }
         public ICommand OpenLapPhieuSuaChuaWindow { get; set; }
         public ICommand OpenQuanLyHangHoaTrongKhoWindow { get; set; }
         public ICommand OpenLapPhieuKhoWindow { get; set; }
@@ -61,6 +66,7 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand OpenQuanLyChucVu { get; set; }
         public ICommand OpenQuanLyNhatKyWindow { get; set; }
         public ICommand OpenThietLapCayMucTieuWindow { get; set; }
+        public ICommand OpenQuyDinhWindow { get; set; }
 
         public ICommand OpenCapNhatTaiKhoan { get; set; }
         public ICommand OpenDoiMatKhau { get; set; }
@@ -68,7 +74,8 @@ namespace QuanLyTraiHeo.ViewModel
 
         #region Event Command
         public ICommand LoadedWindowCommand { get; set; }
-        public ICommand OpenCTThongBao { get; set; }
+        public ICommand OpenCTThongBaoCommand { get; set; }
+        public ICommand OpenTaoThongBaoCommand { get; set; }
         #endregion]
 
         public MainWindowVM()   
@@ -93,7 +100,9 @@ namespace QuanLyTraiHeo.ViewModel
                     NhanVien = loginWD.NhanVien;
                     MyImage = CapNhatTaiKhoanVM.BytesToBitmapImage(NhanVien.MyImage);
 
-                    listTHONGBAO = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == NhanVien.C_Username));
+                    listTHONGBAO = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == NhanVien.MaNhanVien));
+
+                    loadCountThongBao();
                 }
                 else
                 {
@@ -103,7 +112,6 @@ namespace QuanLyTraiHeo.ViewModel
             });
 
             CodeCommandOpenWindow();
-            
         }
 
         #region Method
@@ -111,6 +119,12 @@ namespace QuanLyTraiHeo.ViewModel
         {
             OnPropertyChanged("NhanVien");
             OnPropertyChanged("MyImage");
+        }
+
+        public void loadCountThongBao()
+        {
+            var listTHONGBAOchuadoc = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.TinhTrang == "Chưa đọc" && x.C_MaNguoiNhan == NhanVien.MaNhanVien));
+            countThongBaoChuaDoc = listTHONGBAOchuadoc.Count;
         }
 
         void CodeCommandOpenWindow()
@@ -186,6 +200,15 @@ namespace QuanLyTraiHeo.ViewModel
                 p.Children.Clear();
                 p.Children.Add(content as UIElement);
                 currentWindow = "Quản lý thông tin chuồng nuôi";
+            });
+            OpenSoDoChuongWindow = new RelayCommand<Grid>((p) => { return true; }, p => {
+                wSoDo wc = new wSoDo();
+                wc.Close();
+                Object content = wc.Content;
+                wc.Content = null;
+                p.Children.Clear();
+                p.Children.Add(content as UIElement);
+                currentWindow = "Sơ đồ chuồng nuôi";
             });
             OpenLapPhieuSuaChuaWindow = new RelayCommand<Grid>((p) => { return true; }, p => {
                 LapPhieuSuaChuaWindow wc = new LapPhieuSuaChuaWindow();
@@ -286,6 +309,15 @@ namespace QuanLyTraiHeo.ViewModel
                 p.Children.Add(content as UIElement);
                 currentWindow = "Thiết lập cây mục tiêu";
             });
+            OpenQuyDinhWindow = new RelayCommand<Grid>((p) => { return true; }, p => {
+                QuyDinhWindow wc = new QuyDinhWindow();
+                wc.Close();
+                Object content = wc.Content;
+                wc.Content = null;
+                p.Children.Clear();
+                p.Children.Add(content as UIElement);
+                currentWindow = "Thiết lập cây mục tiêu";
+            });
 
             OpenCapNhatTaiKhoan = new RelayCommand<Window>((p) => { return true; }, p => {
                 CapNhatTaiKhoanWindow wc = new CapNhatTaiKhoanWindow();
@@ -303,7 +335,7 @@ namespace QuanLyTraiHeo.ViewModel
 
             });
 
-            OpenCTThongBao = new RelayCommand<Window>((p) => { return true; }, p => {
+            OpenCTThongBaoCommand = new RelayCommand<Window>((p) => { return true; }, p => {
                 if (selectedItem != null)
                 {
                     ChitTietThongBaoWindow wc = new ChitTietThongBaoWindow();
@@ -311,6 +343,13 @@ namespace QuanLyTraiHeo.ViewModel
                     wc.DataContext = vm;
                     wc.ShowDialog();
                 }
+            });
+            OpenTaoThongBaoCommand = new RelayCommand<Window>((p) => { return true; }, p => {
+                TaoThongBaoWindow wc = new TaoThongBaoWindow();
+                TaoThongBaoVM vm = new TaoThongBaoVM();
+                vm.nguoigui = NhanVien;
+                wc.DataContext = vm;
+                wc.ShowDialog();
             });
         }
         #endregion
