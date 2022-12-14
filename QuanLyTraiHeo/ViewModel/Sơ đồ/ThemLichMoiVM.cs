@@ -41,6 +41,7 @@ namespace QuanLyTraiHeo.ViewModel
                 lichMoi.MaNguoiTao = Account.TaiKhoan.MaNhanVien;
                 lichMoi.TenLich = wd.tb_TieuDe.Text;
                 lichMoi.NgayLam = wd.dtp_ChonNgay.SelectedDate.Value;
+                lichMoi.TrangThai = "Chưa làm";
 
                 List<LICHCHUONG> lstLich = DataProvider.Ins.DB.LICHCHUONGs.Where(x => x.MaChuong == MaChuong).ToList();
                 foreach (var item in lstLich)

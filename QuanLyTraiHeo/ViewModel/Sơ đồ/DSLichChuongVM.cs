@@ -41,14 +41,18 @@ namespace QuanLyTraiHeo.ViewModel
         {
             LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, p => { wd = p as wDSLichChuong; ; Load(); });
             AddCommand = new RelayCommand<Window>((p) => { return true; }, p => { ThemLichMoi(); });
+            TickCommand = new RelayCommand<Window>((p) => { return true; }, p => { TickIsDone(); });
             DeleteCommand = new RelayCommand<Window>((p) => { return true; }, p => { Delete(); });
         }
 
         public void Load()
         {
+            wd.tb_nguoiTao.Visibility = Visibility.Hidden;
+            wd.tb_thoiGian.Visibility = Visibility.Hidden;
+
             wd.sp_ListLich.Children.Clear();
 
-            foreach (var item in DataProvider.Ins.DB.LICHCHUONGs.Where(x => x.MaChuong == MaChuong))
+            foreach (var item in DataProvider.Ins.DB.LICHCHUONGs.Where(x => x.MaChuong == MaChuong).OrderByDescending(x => x.NgayLam))
             {
                 LichUC lich = new LichUC();
                 lich.tb_NguoiLap.Text = DataProvider.Ins.DB.NHANVIENs.Where(x => x.MaNhanVien == item.MaNguoiTao).SingleOrDefault().HoTen;
@@ -111,6 +115,35 @@ namespace QuanLyTraiHeo.ViewModel
             LICHCHUONG lich = DataProvider.Ins.DB.LICHCHUONGs.Where(x => x.NgayLam == ngayLam  && x.TenLich == tieuDe && x.MaNguoiTao == maNguoiTao).SingleOrDefault();
 
             DataProvider.Ins.DB.LICHCHUONGs.Remove(lich);
+
+            DataProvider.Ins.DB.SaveChanges();
+
+            lichSelected = null;
+            wd.tb_Lich.Text = "";
+            wd.tb_NguoiTao.Text = "";
+            wd.tb_ThoiGian.Text = "";
+            wd.rtb_ChiTiet.Document.Blocks.Clear();
+
+            wd.btn_Delete.Visibility = Visibility.Hidden;
+            wd.btn_Tick.Visibility = Visibility.Hidden;
+
+            Load();
+        }
+
+        void TickIsDone()
+        {
+            if (lichSelected == null) return;
+
+            string tieuDe = lichSelected.tb_TieuDeLich.Text;
+            string maNguoiTao = (lichSelected.Tag as LICHCHUONG).MaNguoiTao;
+            DateTime ngayLam = (lichSelected.Tag as LICHCHUONG).NgayLam;
+
+            LICHCHUONG lich = DataProvider.Ins.DB.LICHCHUONGs.Where(x => x.NgayLam == ngayLam && x.TenLich == tieuDe && x.MaNguoiTao == maNguoiTao).SingleOrDefault();
+
+            lich.TrangThai = "Đã làm";
+            lich.MaNguoiLam = Account.TaiKhoan.MaNhanVien;
+
+            //DataProvider.Ins.DB.LICHCHUONGs.(lich);
 
             DataProvider.Ins.DB.SaveChanges();
 
