@@ -22,10 +22,10 @@ using System.IO;
 
 namespace QuanLyTraiHeo.ViewModel
 {
-    public class listBCTK : BaseViewModel
+    public class listBCTK:BaseViewModel
     {
         private string _STT;
-        public string STT { get => _STT; set { _STT = value; OnPropertyChanged(); } }
+        public string STT { get=>_STT; set { _STT = value; OnPropertyChanged(); } }
         private BAOCAOTONKHO _bctk;
         public BAOCAOTONKHO bctk { get => _bctk; set { _bctk = value; OnPropertyChanged(); } }
 
@@ -45,10 +45,10 @@ namespace QuanLyTraiHeo.ViewModel
             this.bctk = bctk;
         }
     }
-    public class BaoCaoTonKhoVM : BaseViewModel
+    public class BaoCaoTonKhoVM:BaseViewModel
     {
         private int _TongTonDau;
-        public int TongTonDau { get => _TongTonDau; set { _TongTonDau = value; OnPropertyChanged(); } }
+        public int TongTonDau { get=> _TongTonDau; set { _TongTonDau = value; OnPropertyChanged(); } }
         private int _TongTonCuoi;
         public int TongTonCuoi { get => _TongTonCuoi; set { _TongTonCuoi = value; OnPropertyChanged(); } }
         private int _TongSLNhap;
@@ -147,7 +147,7 @@ namespace QuanLyTraiHeo.ViewModel
                 {
                     MessageBox.Show("Đường dẫn không hợp lệ!");
                     return;
-                }
+                }   
                 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                 try
                 {
@@ -184,7 +184,7 @@ namespace QuanLyTraiHeo.ViewModel
                         ws.Cells[1, 1, 1, countColHeader].Merge = true;
                         ws.Cells[1, 1, 1, countColHeader].Style.Font.Bold = true;
                         ws.Cells[1, 1, 1, countColHeader].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-
+                        
                         ws.Cells[2, 1].Value = "Nhân viên thực hiện: ";
                         ws.Cells[2, 1, 2, 2].Merge = true;
                         ws.Cells[2, 3].Value = "Trần Trung Thành";
@@ -223,7 +223,7 @@ namespace QuanLyTraiHeo.ViewModel
                                 ws.Cells[rowIndex, 7].Value = item.bctk.SoLuongNhapThem.ToString();
                                 ws.Cells[rowIndex, 8].Value = item.bctk.SoLuongXuatRa.ToString();
                                 break;
-                            }
+                            }    
                             ws.Cells[rowIndex, colIndex++].Value = item.STT.ToString();
                             ws.Cells[rowIndex, colIndex++].Value = item.bctk.MaHH.ToString();
                             ws.Cells[rowIndex, colIndex++].Value = item.bctk.HANGHOA.TenHangHoa.ToString();
@@ -249,7 +249,7 @@ namespace QuanLyTraiHeo.ViewModel
         void LoadBCTK()
         {
             ListBCTKs.Clear();
-            ObservableCollection<BAOCAOTONKHO> lstBCTK;
+            ObservableCollection<BAOCAOTONKHO> lstBCTK; 
             if (SelectedLoaiHH != "Tất cả")
             {
                 lstBCTK = new ObservableCollection<BAOCAOTONKHO>(DataProvider.Ins.DB.BAOCAOTONKHOes.Where(x => x.Thang == SelectedThang && x.Nam == SelectedNam && x.HANGHOA.LoaiHangHoa == SelectedLoaiHH));
@@ -278,8 +278,8 @@ namespace QuanLyTraiHeo.ViewModel
             listBCTK lTong = new listBCTK(tong);
             ListBCTKs.Add(lTong);
         }
-
+        
 
     }
-
+    
 }

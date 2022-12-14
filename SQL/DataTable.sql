@@ -303,14 +303,66 @@ GO
 CREATE TABLE THAMSO
 (
 	id INT IDENTITY primary key,
-	TrongLuongToiThieu int
+	XuatChuongMin	int,
+	XuatChuongMax	int,
+	MonthXuatChuongMin	int,
+	MonthXuatChuongMax int,
+	TuoiNhapDan		int,
+	CanHuyet	int,
+	TuoiPhoiGiongDuc int,
+	TuoiPhoiGiongCai int,
+	RePhoiGiongDuc int,
+	RePhoiGiongCai int,
+	ThucAnMotNgay int,
+	ThucAnMax int
 )
+
+insert into THAMSO values (0,0,0,0,0,0,0,0,0,0,0,0)
+
+Go 
+Create Table QuyDinhTiemHeo
+(
+	MaTiemHeo char(16),
+	MaVaxin char(16),
+	TuoiTiem int,
+	MoTa ntext,
+	constraint PK_QDTH_MTH primary key (MaTiemHeo)
+
+)
+Go 	
+Create table MuaDichBenh
+(
+	MaDichBenh char(16),
+	TenDichBenh nchar(200),
+	NgayBatDau smalldatetime,
+	NgayKetThuc smalldatetime,
+	NguyenNhan ntext,
+	BienPhap ntext,
+		constraint PK_MDB_MDB primary key (MaDichBenh)
+
+
+)
+
 
 go 
 create table ListActionDetail
 (
 	id INT IDENTITY primary key,
 	ActionDetail nvarchar(64)
+)
+
+Create table	BAOCAOTONKHO
+(
+	MaBCTK char(16),
+	Thang int,
+	Nam int,
+	MaHH char(16),
+	TonDau int,
+	TonCuoi int,
+	SoLuongNhapThem int,
+	SoLuongXuatRa int,
+
+	constraint PK_BCTK primary key (MaBCTK)
 )
 
 GO
@@ -415,6 +467,14 @@ FOREIGN KEY (SoPhieu) REFERENCES PHIEUHANGHOA(SoPhieu)
 ALTER TABLE CT_PHIEUKIEMKHO ADD CONSTRAINT FK_CT_PKK_MHH
 FOREIGN KEY (MaHangHoa) REFERENCES HANGHOA(MaHangHoa)
 
+--table BAOCAOTONKHO
+ALTER TABLE BAOCAOTONKHO ADD CONSTRAINT FK_BCTK_HH
+FOREIGN KEY (MaHH) REFERENCES HANGHOA(MaHangHoa)
+
+--table  QuyDinhTiemHeo
+alter table QuyDinhTiemHeo add constraint FK_QDTH_HH
+
+FOREIGN KEY (MaVaxin) REFERENCES HANGHOA(MaHangHoa)
 go
 
 

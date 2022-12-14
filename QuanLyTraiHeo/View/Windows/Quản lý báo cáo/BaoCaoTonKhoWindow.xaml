@@ -43,7 +43,7 @@
                                         <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
-
+                                        
                                     </Grid.ColumnDefinitions>
                                     <ComboBox Grid.Column="0" x:Name="CB_Thang"
                                                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
@@ -143,7 +143,7 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-
+                    
                 </StackPanel>
 
             </materialDesign:Card>

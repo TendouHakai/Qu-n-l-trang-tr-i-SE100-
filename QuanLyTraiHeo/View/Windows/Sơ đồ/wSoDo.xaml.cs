@@ -23,13 +23,5 @@ namespace QuanLyTraiHeo.View.Windows
         {
             InitializeComponent();
         }
-
-        private void Txt_SoChuong_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Back)
-            {
-                Txt_SoChuong.Text = " ";
-            }
-        }
     }
 }

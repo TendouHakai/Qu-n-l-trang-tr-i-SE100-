@@ -14,12 +14,12 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
-//using static OfficeOpenXml.ExcelErrorValue;
+using static OfficeOpenXml.ExcelErrorValue;
 using static QuanLyTraiHeo.ViewModel.BaoCaoSuaChuaVM;
 
 namespace QuanLyTraiHeo.ViewModel
 {
-    public class TrangChuVM : BaseViewModel
+    public class TrangChuVM:BaseViewModel
     {
         private Func<ChartPoint, string> pointLabel;
         public Func<ChartPoint, string> PointLabel { get => pointLabel; set { pointLabel = value; OnPropertyChanged(); } }
@@ -32,45 +32,45 @@ namespace QuanLyTraiHeo.ViewModel
         public List<int> listNamColumnChartDoanhThuChiTieu { get => _listNamColumnChartDoanhThuChiTieu; set { _listNamColumnChartDoanhThuChiTieu = value; OnPropertyChanged(); } }
 
         private int _SoLuongHeoTot;
-        public int SoLuongHeoTot { get => _SoLuongHeoTot; set { _SoLuongHeoTot = value; OnPropertyChanged(); } }
+        public int SoLuongHeoTot { get => _SoLuongHeoTot; set { _SoLuongHeoTot = value; OnPropertyChanged(); }  }
 
         private float _PhanTramHeoTot;
         public float PhanTramHeoTot { get => _PhanTramHeoTot; set { _PhanTramHeoTot = value; OnPropertyChanged(); } }
 
         private int _SoLuongHeoBenhChet;
-        public int SoLuongHeoBenhChet { get => _SoLuongHeoBenhChet; set { _SoLuongHeoBenhChet = value; OnPropertyChanged(); } }
+        public int SoLuongHeoBenhChet { get => _SoLuongHeoBenhChet; set { _SoLuongHeoBenhChet = value; OnPropertyChanged();} }
 
         private float _PhanTramHeoBenhChet;
-        public float PhanTramHeoBenhChet { get => _PhanTramHeoBenhChet; set { _PhanTramHeoBenhChet = value; OnPropertyChanged(); } }
+        public float PhanTramHeoBenhChet { get => _PhanTramHeoBenhChet; set { _PhanTramHeoBenhChet = value; OnPropertyChanged();} }
 
         private int _SoLuongChuongHong;
-        public int SoLuongChuongHong { get => _SoLuongChuongHong; set { _SoLuongChuongHong = value; OnPropertyChanged(); } }
+        public int SoLuongChuongHong { get => _SoLuongChuongHong; set { _SoLuongChuongHong = value; OnPropertyChanged();} }
 
         private float _PhanTramChuongHong;
-        public float PhanTramChuongHong { get => _PhanTramChuongHong; set { _PhanTramChuongHong = value; OnPropertyChanged(); } }
+        public float PhanTramChuongHong { get => _PhanTramChuongHong; set { _PhanTramChuongHong = value; OnPropertyChanged();} }
 
         private int Doanhthutrongngay;
         private string _DoanhThuTrongNgay;
-        public string DoanhThuTrongNgay { get => _DoanhThuTrongNgay; set { _DoanhThuTrongNgay = value; OnPropertyChanged(); } }
+        public string DoanhThuTrongNgay { get => _DoanhThuTrongNgay; set { _DoanhThuTrongNgay = value; OnPropertyChanged();} }
 
         private float _TangTruongDoanhThu;
-        public float TangTruongDoanhThu { get => _TangTruongDoanhThu; set { _TangTruongDoanhThu = value; OnPropertyChanged(); } }
+        public float TangTruongDoanhThu { get => _TangTruongDoanhThu; set { _TangTruongDoanhThu = value; OnPropertyChanged();} }
 
         private bool _IsTangDoanhThu;
-        public bool IsTangDoanhThu { get => _IsTangDoanhThu; set { _IsTangDoanhThu = value; OnPropertyChanged(); } }
+        public bool IsTangDoanhThu { get => _IsTangDoanhThu; set { _IsTangDoanhThu = value; OnPropertyChanged();} }  
 
         private int Chitieutrongngay;
         private string _ChiTieuTrongNgay;
-        public string ChiTieuTrongNgay { get => _ChiTieuTrongNgay; set { _ChiTieuTrongNgay = value; OnPropertyChanged(); } }
+        public string ChiTieuTrongNgay { get => _ChiTieuTrongNgay; set { _ChiTieuTrongNgay = value; OnPropertyChanged();} }
 
         private float _SuyGiamChiPhi;
-        public float SuyGiamChiPhi { get => _SuyGiamChiPhi; set { _SuyGiamChiPhi = value; OnPropertyChanged(); } }
+        public float SuyGiamChiPhi { get => _SuyGiamChiPhi; set { _SuyGiamChiPhi = value; OnPropertyChanged();} }
 
         private bool _IsGiamChiPhi;
         public bool IsGiamChiPhi { get => _IsGiamChiPhi; set { _IsGiamChiPhi = value; OnPropertyChanged(); } }
 
         private SeriesCollection _SeriesCoCauHeo;
-        public SeriesCollection SeriesCoCauHeo { get => _SeriesCoCauHeo; set { _SeriesCoCauHeo = value; OnPropertyChanged(); } }
+        public SeriesCollection SeriesCoCauHeo { get => _SeriesCoCauHeo; set { _SeriesCoCauHeo = value; OnPropertyChanged();} }
 
         private SeriesCollection _SeriesCoCauChuong;
         public SeriesCollection SeriesCoCauChuong { get => _SeriesCoCauChuong; set { _SeriesCoCauChuong = value; OnPropertyChanged(); } }
@@ -102,7 +102,7 @@ namespace QuanLyTraiHeo.ViewModel
             var listNamColumnChartDoanhThuChiTieuTheoPhieuSuaChua = DataProvider.Ins.DB.PHIEUSUACHUAs.Select(x => x.NgaySuaChua.Value.Year).Distinct().ToList();
             var listNamColumnChartDoanhThuChiTieuTheoPhieuHangHoa = DataProvider.Ins.DB.PHIEUHANGHOAs.Select(x => x.NgayLap.Value.Year).Distinct().ToList();
 
-            foreach (var item in listNamColumnChartDoanhThuChiTieuTheoPhieuHeo)
+            foreach(var item in listNamColumnChartDoanhThuChiTieuTheoPhieuHeo)
             {
                 listNamColumnChartDoanhThuChiTieu.Add(item);
             }
@@ -162,7 +162,7 @@ namespace QuanLyTraiHeo.ViewModel
         void loadPhanTramHeoTot()
         {
             var TongSoheo = DataProvider.Ins.DB.HEOs.Count();
-            if (TongSoheo > 0)
+            if(TongSoheo > 0)
                 PhanTramHeoTot = SoLuongHeoTot * 100 / TongSoheo;
             else
                 PhanTramHeoTot = 0;
@@ -174,14 +174,14 @@ namespace QuanLyTraiHeo.ViewModel
         void loadPhanTramHeoBenhChet()
         {
             var TongSoheo = DataProvider.Ins.DB.HEOs.Count();
-            if (TongSoheo > 0)
-                PhanTramHeoBenhChet = SoLuongHeoBenhChet * 100 / TongSoheo;
+            if(TongSoheo > 0)
+                PhanTramHeoBenhChet = SoLuongHeoBenhChet*100 / TongSoheo;
             else
                 PhanTramHeoBenhChet = 0;
         }
         void loadSoLuongChuongHong()
         {
-            SoLuongChuongHong = DataProvider.Ins.DB.CHUONGTRAIs.Where(x => x.TinhTrang == "Đang hư hỏng").Count();
+            SoLuongChuongHong = DataProvider.Ins.DB.CHUONGTRAIs.Where(x => x.TinhTrang=="Đang hư hỏng").Count();
         }
         void loadPhanTramHeoChuongHong()
         {
@@ -195,14 +195,14 @@ namespace QuanLyTraiHeo.ViewModel
             Doanhthutrongngay = 0;
             try
             {
-                Doanhthutrongngay = int.Parse(DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu xuất heo" && x.NgayLap == DateTime.Today && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
+                Doanhthutrongngay = int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu xuất ngoại" && x.NgayLap == DateTime.Today && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
             }
-            catch (Exception e) { }
+            catch(Exception e) { }
             try
             {
                 Doanhthutrongngay += int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu xuất ngoại" && x.NgayLap == DateTime.Today && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
             }
-            catch (Exception e) { }
+            catch(Exception e) { }
             DoanhThuTrongNgay = String.Format("{0:#,##0}", Doanhthutrongngay);
         }
         void loadTangTruongDoanhThu()
@@ -213,7 +213,7 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 DoanhThuHomQua = int.Parse(DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu xuất heo" && x.NgayLap == homqua && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
             }
-            catch (Exception e) { }
+            catch(Exception e) { }
             try
             {
                 DoanhThuHomQua += int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu xuất ngoại" && x.NgayLap == homqua && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
@@ -222,7 +222,7 @@ namespace QuanLyTraiHeo.ViewModel
             if (DoanhThuHomQua > Doanhthutrongngay) IsTangDoanhThu = false;
             else IsTangDoanhThu = true;
             if (DoanhThuHomQua > 0)
-                TangTruongDoanhThu = Math.Abs((Doanhthutrongngay - DoanhThuHomQua) * 100 / DoanhThuHomQua);
+                TangTruongDoanhThu = Math.Abs((Doanhthutrongngay - DoanhThuHomQua)*100/DoanhThuHomQua);
             else TangTruongDoanhThu = 100;
         }
         void loadChiPhiTrongNgay()
@@ -232,7 +232,7 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 Chitieutrongngay = int.Parse(DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu nhập heo" && x.NgayLap == DateTime.Today && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).GetValueOrDefault().ToString());
             }
-            catch (Exception e) { }
+            catch(Exception e) { }
             try
             {
                 Chitieutrongngay += int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu nhập kho" && x.NgayLap == DateTime.Today && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
@@ -240,7 +240,7 @@ namespace QuanLyTraiHeo.ViewModel
             catch (Exception e) { }
             try
             {
-                Chitieutrongngay += int.Parse(DataProvider.Ins.DB.PHIEUSUACHUAs.Where(x => x.NgaySuaChua == DateTime.Today && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
+                Chitieutrongngay += int.Parse(DataProvider.Ins.DB.PHIEUSUACHUAs.Where(x =>x.NgaySuaChua == DateTime.Today && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
             }
             catch (Exception e) { }
             ChiTieuTrongNgay = String.Format("{0:#,##0}", Chitieutrongngay);
@@ -258,15 +258,15 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 ChiPhiHomQua += int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu xuất ngoại" && x.NgayLap == homqua && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
             }
-            catch (Exception e) { }
+            catch(Exception e) { }
             if (ChiPhiHomQua < Chitieutrongngay) IsGiamChiPhi = false;
             else IsGiamChiPhi = true;
-            if (ChiPhiHomQua > 0)
+            if (ChiPhiHomQua>0)
                 SuyGiamChiPhi = Math.Abs((Chitieutrongngay - ChiPhiHomQua) * 100 / ChiPhiHomQua);
-            else
+            else 
                 SuyGiamChiPhi = 100;
         }
-        void LoadDSThongSo()
+        void LoadDSThongSo() 
         {
             loadSoLuongHeoTot();
             loadPhanTramHeoTot();
@@ -284,7 +284,7 @@ namespace QuanLyTraiHeo.ViewModel
         {
             SeriesCoCauHeo.Clear();
             var listLoaiHeo = DataProvider.Ins.DB.HEOs.GroupBy(x => x.LOAIHEO.TenLoaiHeo).ToList();
-            foreach (var item in listLoaiHeo)
+            foreach(var item in listLoaiHeo)
             {
                 var pieseries = new PieSeries();
                 pieseries.Title = item.Key.ToString();
@@ -321,7 +321,7 @@ namespace QuanLyTraiHeo.ViewModel
             SeriesCollectionDSCPChart.Add(lineDoanhThu);
 
             var listDoanhThuTheoPhieuHeo = DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu xuất heo" && x.NgayLap.Value.Year == selectedNamChartDoanhthuChiTieu && x.TrangThai == "Đã hoàn thành").GroupBy(x => x.NgayLap.Value.Month).ToList();
-            foreach (var item in listDoanhThuTheoPhieuHeo)
+            foreach(var item in listDoanhThuTheoPhieuHeo)
             {
                 double Tongtien = double.Parse(lineDoanhThu.Values[item.Key - 1].ToString()) + double.Parse(item.Sum(x => x.TongTien).ToString());
                 lineDoanhThu.Values[item.Key - 1] = Tongtien;
@@ -333,7 +333,7 @@ namespace QuanLyTraiHeo.ViewModel
                 lineDoanhThu.Values[item.Key - 1] = Tongtien;
             }
             var listDoanhThuTheoPhieuSuaChua = DataProvider.Ins.DB.PHIEUSUACHUAs.Where(x => x.NgaySuaChua.Value.Year == selectedNamChartDoanhthuChiTieu && x.TrangThai == "Đã hoàn thành").GroupBy(x => x.NgaySuaChua.Value.Month).ToList();
-            foreach (var item in listDoanhThuTheoPhieuSuaChua)
+            foreach(var item in listDoanhThuTheoPhieuSuaChua)
             {
                 double Tongtien = double.Parse(lineDoanhThu.Values[item.Key - 1].ToString()) + double.Parse(item.Sum(x => x.TongTien).ToString());
                 lineDoanhThu.Values[item.Key - 1] = Tongtien;
@@ -388,7 +388,7 @@ namespace QuanLyTraiHeo.ViewModel
                 var hoatdong = new HoatDong();
                 hoatdong.icon = "PiggyBank";
                 hoatdong.TenNhanVien = item.NHANVIEN.HoTen;
-                hoatdong.Mota = "Đã thực hiện 1 phiếu " + item.LoaiPhieu + " trị giá " + string.Format("{0:#,##0}", item.TongTien) + " VND";
+                hoatdong.Mota = "Đã thực hiện 1 phiếu " + item.LoaiPhieu+ " trị giá "+ string.Format("{0:#,##0}", item.TongTien) + " VND";
                 hoatdong.MaPhieu = "Mã phiếu: " + item.SoPhieu;
                 lstHoatDong.Add(hoatdong);
             }
@@ -405,7 +405,7 @@ namespace QuanLyTraiHeo.ViewModel
             }
 
             var lstHDKho = DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.NgayLap == DateTime.Today && x.TrangThai == "Đã hoàn thành").ToList();
-            foreach (var item in lstHDKho)
+            foreach(var item in lstHDKho)
             {
                 var hoatdong = new HoatDong();
                 hoatdong.icon = "Warehouse";
