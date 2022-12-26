@@ -128,7 +128,7 @@ namespace QuanLyTraiHeo.ViewModel
             NgaySinh = MainWindowMD.NhanVien.NgaySinh;
             HeSoLuong = MainWindowMD.NhanVien.HeSoLuong;
             HoTenGoc = HoTen;
-            MyImage = BytesToBitmapImage(MainWindowMD.NhanVien.MyImage);
+            MyImage = BytesToBitmapImage(MainWindowMD.NhanVien.BytesImage);
             TenChucVu = MainWindowMD.NhanVien.CHUCVU.TenChucVu;
 
 
@@ -144,6 +144,12 @@ namespace QuanLyTraiHeo.ViewModel
         }
         void UpdateInformation()
         {
+            if (!IsValidEmail(Email))
+            {
+                MessageBox.Show("Email không hợp lệ");
+                return;
+            }
+
             if (MessageBox.Show("Bạn có chắc muốn thay đổi thông tin?", "Chú ý", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 MainWindowMD.NhanVien.HoTen = HoTen;
@@ -154,7 +160,7 @@ namespace QuanLyTraiHeo.ViewModel
                 MainWindowMD.NhanVien.NgaySinh = NgaySinh;
                 MainWindowMD.NhanVien.HeSoLuong = HeSoLuong;
                 MainWindowMD.NhanVien.GioiTinh = GioiTinh;
-                MainWindowMD.NhanVien.MyImage = imageBytes;
+                MainWindowMD.NhanVien.BytesImage = imageBytes;
                 MainWindowMD.MyImage = MyImage;
                 DataProvider.Ins.DB.SaveChanges();
                 MainWindowMD.UpdateNhanVien();
@@ -231,6 +237,25 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 imageIn.Save(ms, imageIn.RawFormat);
                 return ms.ToArray();
+            }
+        }
+
+        bool IsValidEmail(string email)
+        {
+            var trimmedEmail = email.Trim();
+
+            if (trimmedEmail.EndsWith("."))
+            {
+                return false; // suggested by @TK-421
+            }
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == trimmedEmail;
+            }
+            catch
+            {
+                return false;
             }
         }
 

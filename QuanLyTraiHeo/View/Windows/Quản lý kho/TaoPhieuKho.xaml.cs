@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace QuanLyTraiHeo.View.Windows.Quản_lý_kho
 {
@@ -22,6 +23,17 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_kho
         public TaoPhieuKho()
         {
             InitializeComponent();
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void txtDonGia_ContextMenuClosing(object sender, ContextMenuEventArgs e)
+        {
+
         }
     }
 }

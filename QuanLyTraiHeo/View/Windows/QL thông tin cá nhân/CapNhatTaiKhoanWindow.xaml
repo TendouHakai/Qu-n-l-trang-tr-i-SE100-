@@ -187,14 +187,10 @@
                                                 Width="180"
                                                 Name="dp_NgaySinh"
                                                 materialDesign:HintAssist.Hint="Pick Date"
-                                                materialDesign:HintAssist.HelperText="Helper text"
                                                 Style="{StaticResource MaterialDesignOutlinedDatePicker}">
                                         <DatePicker.SelectedDate>
                                             <Binding Path="NgaySinh"
                                                      UpdateSourceTrigger="PropertyChanged">
-                                                <Binding.ValidationRules>
-                                                    <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True" />
-                                                </Binding.ValidationRules>
                                             </Binding>
                                         </DatePicker.SelectedDate>
                                         <i:Interaction.Triggers>
@@ -280,14 +276,11 @@
                                                 Width="180"
                                                 Name="dp_NgayVaoLam"
                                                 materialDesign:HintAssist.Hint="Pick Date"
-                                                materialDesign:HintAssist.HelperText="Helper text"
                                                 Style="{StaticResource MaterialDesignOutlinedDatePicker}">
                                         <DatePicker.SelectedDate>
                                             <Binding Path="NgayVaoLam"
                                                      UpdateSourceTrigger="PropertyChanged">
-                                                <Binding.ValidationRules>
-                                                    <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True" />
-                                                </Binding.ValidationRules>
+                                                
                                             </Binding>
                                         </DatePicker.SelectedDate>
                                         <i:Interaction.Triggers>
@@ -313,7 +306,8 @@
                                              Name="tb_HeSoLuong"
                                              PreviewTextInput="tb_HeSoLuong_PreviewTextInput"
                                              Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                             VerticalAlignment="Top">
+                                             VerticalAlignment="Top"
+                                             IsEnabled="False">
                                         <TextBox.Text>
                                             <Binding Path="HeSoLuong"
                                                      UpdateSourceTrigger="PropertyChanged">

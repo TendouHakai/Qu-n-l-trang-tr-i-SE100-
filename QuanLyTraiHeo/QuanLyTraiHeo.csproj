@@ -140,6 +140,7 @@
     <Compile Include="Model\BAOCAOTONKHO.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ChonHeo.cs" />
     <Compile Include="Model\CHUCVU.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -173,6 +174,7 @@
     <Compile Include="Model\HEO.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\HEONHAP.cs" />
     <Compile Include="Model\HEOXUAT.cs" />
     <Compile Include="Model\LICHCHUONG.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -183,12 +185,14 @@
     <Compile Include="Model\LICHTIEMHEO.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\LichTiem_TenThuoc.cs" />
     <Compile Include="Model\ListActionDetail.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\LOAICHUONG.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\LoaiHangHoaModel.cs" />
     <Compile Include="Model\LOAIHEO.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -242,19 +246,34 @@
     <Compile Include="Model\ThongBao.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Account\Account.cs" />
+    <Compile Include="Model\TinhTrangHangHoaModel.cs" />
+    <Compile Include="Model\TrangThaiPhieuKhoModel.cs" />
+    <Compile Include="ViewModel\Lập lịch\LapLichPhoiGiongVM.cs" />
+    <Compile Include="ViewModel\Phieu\ChiTietPhieuKhoVM.cs" />
+    <Compile Include="ViewModel\ChonHangHoaVM.cs" />
+    <Compile Include="ViewModel\Phieu\LapPhieuKhoVM.cs" />
     <Compile Include="ViewModel\Phieu\ChiTietPhieuVM.cs" />
     <Compile Include="ViewModel\Lập lịch\LaplichtiemVM.cs" />
     <Compile Include="ViewModel\QuyDinhVM.cs" />
     <Compile Include="ViewModel\Quản lý chuồng\ChiTietPhieuSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý chuồng\LapPhieuSuaChuaVM.cs" />
+    <Compile Include="ViewModel\Quản lý chuồng\SuaTrangThaiVM.cs" />
     <Compile Include="ViewModel\Quản lý chuồng\ThemPhieuSuaChuaVM.cs" />
+    <Compile Include="ViewModel\Quản lý chức vụ\PhanQuyenVM.cs" />
     <Compile Include="ViewModel\Quản lý giống heo\QuanlygiongheoVM.cs" />
     <Compile Include="ViewModel\Phieu\ChonHeoXuatVM.cs" />
     <Compile Include="ViewModel\Phieu\LapPhieuBanNhapHeoVM.cs" />
     <Compile Include="ViewModel\Phieu\ThemHeoPhieuVM.cs" />
+    <Compile Include="ViewModel\Quản lý kho\QuanLyHangHoaWindowVM.cs" />
+    <Compile Include="ViewModel\Quản lý kho\ThemHangHoaVM.cs" />
+    <Compile Include="ViewModel\Quản lý kho\ThongTinHangHoaVM.cs" />
     <Compile Include="ViewModel\Sơ đồ\ChuongUC_VM.cs" />
     <Compile Include="ViewModel\Sơ đồ\DSHeoVM.cs" />
+    <Compile Include="ViewModel\Sơ đồ\DSLichChuongVM.cs" />
     <Compile Include="ViewModel\Sơ đồ\SoDoVM.cs" />
+    <Compile Include="ViewModel\Sơ đồ\ThemLichMoiVM.cs" />
+    <Compile Include="ViewModel\Phieu\TaoPhieuKhoVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\listThongBaoTrongNgayVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\ChiTietThongBaoVM.cs" />
     <Compile Include="ViewModel\QL thông tin cá nhân\DoiMatKhauVM.cs" />
@@ -270,8 +289,29 @@
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
     <Compile Include="ViewModel\QL thông tin cá nhân\CapNhatTaiKhoanVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\TaoThongBaoVM.cs" />
+    <Compile Include="View\Windows\Quy Định\EditMDBWindow.xaml.cs">
+      <DependentUpon>EditMDBWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quy Định\EditQDTHWindow.xaml.cs">
+      <DependentUpon>EditQDTHWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Quy Định\QuyDinhWindow.xaml.cs">
       <DependentUpon>QuyDinhWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý chức vụ\PhanQuyenWindow.xaml.cs">
+      <DependentUpon>PhanQuyenWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý kho\ChiTietPhieuKhoWindow.xaml.cs">
+      <DependentUpon>ChiTietPhieuKhoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý kho\ChonHangHoaWindow.xaml.cs">
+      <DependentUpon>ChonHangHoaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý chuồng nuôi\SuaTrangThai.xaml.cs">
+      <DependentUpon>SuaTrangThai.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý kho\ThemHangHoawindow.xaml.cs">
+      <DependentUpon>ThemHangHoawindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Quản lý đàn heo\ChiTietPhieuWindow.xaml.cs">
       <DependentUpon>ChiTietPhieuWindow.xaml</DependentUpon>
@@ -300,6 +340,9 @@
     <Compile Include="View\Windows\Quản lý đàn heo\ChonHeoXuat.xaml.cs">
       <DependentUpon>ChonHeoXuat.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\Quản lý đàn heo\DonGia.xaml.cs">
+      <DependentUpon>DonGia.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Quản lý đàn heo\ThemHeoPhieu.xaml.cs">
       <DependentUpon>ThemHeoPhieu.xaml</DependentUpon>
     </Compile>
@@ -327,8 +370,12 @@
     <Compile Include="View\Windows\Thiết lập cây mục tiêu\DatMucTieu.xaml.cs">
       <DependentUpon>DatMucTieu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\Thiết lập cây mục tiêu\ThamSo.cs" />
     <Compile Include="View\Windows\Thiết lập cây mục tiêu\ThongTinCanBiet.xaml.cs">
       <DependentUpon>ThongTinCanBiet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Sơ đồ\wThemLichMoi.xaml.cs">
+      <DependentUpon>wThemLichMoi.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Tạo thông báo\ChitTietThongBaoWindow.xaml.cs">
       <DependentUpon>ChitTietThongBaoWindow.xaml</DependentUpon>
@@ -481,7 +528,35 @@
     <Compile Include="View\Windows\wLogin.xaml.cs">
       <DependentUpon>wLogin.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Windows\Quy Định\EditMDBWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quy Định\EditQDTHWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\Quy Định\QuyDinhWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý chức vụ\PhanQuyenWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý kho\ChiTietPhieuKhoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý kho\ChonHangHoaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý chuồng nuôi\SuaTrangThai.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý kho\ThemHangHoawindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -518,6 +593,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\Quản lý đàn heo\ChonHeoXuat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý đàn heo\DonGia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -558,6 +637,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\Thiết lập cây mục tiêu\ThongTinCanBiet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Sơ đồ\wThemLichMoi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -818,16 +901,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\ChuongHeo.png" />
-    <Content Include="Model\Model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
-    <Content Include="Model\Model.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.cs</LastGenOutput>
-    </Content>
+    <Resource Include="Image\pig-pigsty-icon-237822462.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -860,6 +934,19 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
+    <Resource Include="View\Windows\Quy Định\tooltip.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.6.1\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.6.1\build\MaterialDesignThemes.targets')" />

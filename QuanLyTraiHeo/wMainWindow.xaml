@@ -337,7 +337,7 @@
                              ToolTip="Thiết lập cây mục tiêu"
                              Selected="MenuCayMucTieu_Selected" />
                 <ListBoxItem Name="Menu_QuyDinh"
-                             Content="{materialDesign:PackIcon Kind=BullseyeArrow,Size=25}"
+                             Content="{materialDesign:PackIcon Kind=cog,Size=25}"
                              Foreground="LightGray"
                              ToolTip="Quy Định"
                              Selected="Menu_QuyDinh_Selected" />
@@ -520,6 +520,7 @@
                                                                      Height="20">
                                             </materialDesign:PackIcon>
                                         </materialDesign:PopupBox.ToggleContent>
+                                        <StackPanel>
                                         <ListBox Width="400"
                                                  Padding="0"
                                                  ItemsSource="{Binding listTHONGBAO}"
@@ -547,8 +548,9 @@
                                                                    FontStyle="Italic"
                                                                    FontSize="10"
                                                                    Text="{Binding ThoiGian}"></TextBlock>
-                                                        <TextBlock Margin="5,7,5,0"
+                                                        <TextBlock Margin="5,3,5,10"
                                                                    TextWrapping="Wrap"
+                                                                   MaxHeight="47"
                                                                    Text="{Binding NoiDung}"></TextBlock>
                                                     </StackPanel>
 
@@ -561,6 +563,13 @@
                                                 </i:EventTrigger>
                                             </i:Interaction.Triggers>
                                         </ListBox>
+                                            <Button Foreground="#0e5600"
+  Style="{StaticResource MaterialDesignFlatSecondaryDarkButton}"
+  ToolTip="MaterialDesignFlatButton"
+  Content="Xem thêm"
+                                                    Command="{Binding XemthemTHONGBAOcommand}"
+  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+                                        </StackPanel>
                                         <!--<StackPanel Width="450">
                                             <Button>
                                                 <StackPanel Orientation="Vertical">

@@ -11,9 +11,8 @@ using ListView = System.Windows.Controls.ListView;
 
 namespace QuanLyTraiHeo.ViewModel
 {
-    public class ThemHangHoaVM:BaseViewModel
+    public class ThemHangHoaVM : BaseViewModel
     {
-        private HANGHOA hHANGHOA;
 
         public ICommand ThemCommand { get; set; }
         public ObservableCollection<LoaiHangHoaModel> listLoaiHangHoa { get; set; }
@@ -25,9 +24,8 @@ namespace QuanLyTraiHeo.ViewModel
             listLoaiHangHoa = new ObservableCollection<LoaiHangHoaModel>();
             LoadListLoaiHangHoa();
             ThemCommand = new RelayCommand<Window>((p) => { return true; }, p => { Them(p); });
-
         }
-
+  
         private void Them(Window p)
         {
             if (newHangHoa.TenHangHoa == String.Empty || newHangHoa.TenHangHoa == null)
@@ -35,8 +33,6 @@ namespace QuanLyTraiHeo.ViewModel
                 MessageBox.Show("Vui lòng nhập ten hàng hoá! ", "Thông báo!", MessageBoxButton.OK);
                 return;
             }
-            
-
             newHangHoa.TenHangHoa.ToString().Replace(" ", "");
             newHangHoa.LoaiHangHoa = loaihanghoa.loaiHangHoa;
             newHangHoa.MaHangHoa = ("HH" + DataProvider.Ins.DB.HANGHOAs.Count().ToString()).Replace(" ", "");

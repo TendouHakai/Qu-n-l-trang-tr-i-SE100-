@@ -12,11 +12,11 @@ namespace QuanLyTraiHeo.ViewModel
     public class ThongTinHangHoaVM : BaseViewModel
     {
         public ICommand SuaCommand { get; set; }
-        public HANGHOA TTHangHoa{ get; set; }
+        public HANGHOA TTHangHoa { get; set; }
 
         public ThongTinHangHoaVM()
         {
-            System.Windows.MessageBox.Show("Khởi tạo không tham số, BUG !!!!");
+
         }
         public ThongTinHangHoaVM(HANGHOA hangHoa)
         {
@@ -42,7 +42,7 @@ namespace QuanLyTraiHeo.ViewModel
                 MessageBox.Show("Vui lòng nhập tình trạng hàng hoá! ", "Thông báo!", MessageBoxButton.OK);
                 return;
             }
-            if (TTHangHoa.SoLuongTonKho.ToString()== String.Empty || TTHangHoa.SoLuongTonKho.ToString() == null)
+            if (TTHangHoa.SoLuongTonKho.ToString() == String.Empty || TTHangHoa.SoLuongTonKho.ToString() == null)
             {
                 MessageBox.Show("Vui lòng nhập số lượng tồn kho! ", "Thông báo!", MessageBoxButton.OK);
                 return;

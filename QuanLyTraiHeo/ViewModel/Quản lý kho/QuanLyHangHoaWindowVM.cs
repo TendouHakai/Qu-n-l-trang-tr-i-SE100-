@@ -1,6 +1,5 @@
 ﻿using QuanLyTraiHeo.Model;
 using QuanLyTraiHeo.View.Windows.Quản_lý_kho;
-using QuanLyTraiHeo.ViewModel.Quản_lý_kho;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,7 +16,7 @@ namespace QuanLyTraiHeo.ViewModel
     public class QuanLyHangHoaWindowVM : BaseViewModel
     {
         public ObservableCollection<HANGHOA> listHangHoa { get; set; }
-
+        public HANGHOA SelectedHangHoa { get; set; }
         public ObservableCollection<TinhTrangHangHoaModel> listTinhTrang { get; set; }
         public ObservableCollection<LoaiHangHoaModel> listLoaiHangHoa { get; set; }
         public int listviewSelectedIndex { get; set; }
@@ -43,7 +42,11 @@ namespace QuanLyTraiHeo.ViewModel
             listTinhTrang = new ObservableCollection<TinhTrangHangHoaModel>();
             listviewSelectedIndex = 0;
             ThemHangHoaCommand = new RelayCommand<Window>((p) => { return true; }, p => { ThemHangHoa(p); });
-            EditCommand = new RelayCommand<Window>((p) => { return true; }, p => { Edit(p); });
+            EditCommand = new RelayCommand<Window>((p) => {
+                if (SelectedHangHoa == null)
+                    return false;
+                else return true; ; }, p => { Edit(p); });
+            DeleteCommand = new RelayCommand<Window>((p) => { return true; }, p => { Delete(p); });
             TextTimKiemChangeCommand = new RelayCommand<ListView>((p) => { return true; }, p => { TextTimKiemChanged(p); });
             DongiatoithieuChangeCommand = new RelayCommand<ListView>((p) => { return true; }, p => { DongiatoithieuChanged(p); });
             DongiatoidaChangeCommand = new RelayCommand<ListView>((p) => { return true; }, p => { DongiatoidaChanged(p); });
@@ -53,17 +56,34 @@ namespace QuanLyTraiHeo.ViewModel
             LoadListTinhTrang();
         }
 
+        private void Delete(Window p)
+        {
+            if (SelectedHangHoa.CT_PHIEUHANGHOA.Count() > 0 || SelectedHangHoa.CT_PHIEUKIEMKHO.Count() > 0)
+            {
+                MessageBox.Show("Không thể xoá hàng hoá này. Vì đang tồn tại trong phiếu?", "Chú ý");
+                return;
+            }
+            MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn xoá ?", "Cảnh báo", MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                DataProvider.Ins.DB.HANGHOAs.Remove(SelectedHangHoa);
+                listHangHoa.Remove(SelectedHangHoa);
+                DataProvider.Ins.DB.SaveChanges();
+
+            }
+        }
+
         private void LoadListLoaiHangHoa()
         {
             listLoaiHangHoa.Clear();
-            var listloaihanghoa = from c in DataProvider.Ins.DB.HANGHOAs 
+            var listloaihanghoa = from c in DataProvider.Ins.DB.HANGHOAs
                                   select new { c.LoaiHangHoa };
             var listloaihanghoanodupes = listloaihanghoa.Distinct().ToList();
             foreach (var items in listloaihanghoanodupes)
             {
                 listLoaiHangHoa.Add(new LoaiHangHoaModel(true, items.LoaiHangHoa));
             }
-            
+
         }
 
         private void SoluongtoidaChanged(ListView p)
@@ -90,7 +110,7 @@ namespace QuanLyTraiHeo.ViewModel
         {
             listTinhTrang.Clear();
             var listtinhtrang = from c in DataProvider.Ins.DB.HANGHOAs
-                                  select new { c.TinhTrang };
+                                select new { c.TinhTrang };
             var listtinhtrangnodupes = listtinhtrang.Distinct().ToList();
             foreach (var items in listtinhtrangnodupes)
             {
@@ -100,24 +120,7 @@ namespace QuanLyTraiHeo.ViewModel
 
         private void LoadListHangHoa()
         {
-            //listHangHoa.Clear();
-
-            //var listhanghoa = DataProvider.Ins.DB.HANGHOAs.Where(s => s.TenHangHoa.Contains(textTimKiem)).ToList();
-            //foreach (var items in listhanghoa)
-            //{
-            //    int flag = 0;
-            //    foreach (var items2 in listhanghoa)
-            //    {
-            //        if (exLoai== false)
-            //            if ()
-            //            {
-            //                flag = 1;
-            //                break;
-            //            }
-            //    }
-            //    if (flag == 0)
-            //        listHangHoa.Add(items);
-            //}
+            
             listHangHoa.Clear();
             var listhanghoa = DataProvider.Ins.DB.HANGHOAs.Where(s => s.TenHangHoa.Contains(textTimKiem)).ToList();
             if (!string.IsNullOrWhiteSpace(textDonGiaToiDa))
@@ -133,12 +136,12 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 listhanghoa = listhanghoa.Where(s => s.SoLuongTonKho >= int.Parse(textSoLuongToiThieu)).ToList();
             }
-            if (!string.IsNullOrWhiteSpace(textSoLuongToiDa) )
+            if (!string.IsNullOrWhiteSpace(textSoLuongToiDa))
             {
                 listhanghoa = listhanghoa.Where(s => s.SoLuongTonKho <= int.Parse(textSoLuongToiDa)).ToList();
             }
 
-            
+
             foreach (var items in listhanghoa.ToList())
             {
                 int flag = 0;
@@ -184,6 +187,7 @@ namespace QuanLyTraiHeo.ViewModel
         {
             ThemHangHoawindow themhanghoa = new ThemHangHoawindow();
             themhanghoa.ShowDialog();
+            LoadListHangHoa();
         }
 
         private void Edit(Window p)
@@ -194,6 +198,7 @@ namespace QuanLyTraiHeo.ViewModel
             ThongTinHangHoa thongTinHangHoa = new ThongTinHangHoa();
             thongTinHangHoa.DataContext = thongTinHangHoaVM;
             thongTinHangHoa.ShowDialog();
+            LoadListHangHoa();
         }
     }
 }
