@@ -70,6 +70,7 @@ namespace QuanLyTraiHeo.ViewModel
 
         public ICommand OpenCapNhatTaiKhoan { get; set; }
         public ICommand OpenDoiMatKhau { get; set; }
+        public ICommand LogoutCommand { get; set; }
         #endregion
 
         #region Event Command
@@ -83,35 +84,7 @@ namespace QuanLyTraiHeo.ViewModel
         {
             currentWindow = "Trang chủ";
             
-            LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, p => {
-                IsLoaded = true;
-                p.Hide();
-                
-                wLogin wLogin = new wLogin();
-                wLogin.ShowDialog();
-
-                if (wLogin.DataContext == null) return;
-
-                var loginWD = wLogin.DataContext as LoginVM;
-
-                if (loginWD.IsLogin)
-                {
-                    p.Show();
-
-                    NhanVien = loginWD.NhanVien;
-                    MyImage = CapNhatTaiKhoanVM.BytesToBitmapImage(NhanVien.BytesImage);
-
-                    listTHONGBAO = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == NhanVien.MaNhanVien).Take(3));
-
-
-                    loadCountThongBao();
-                }
-                else
-                {
-                    p.Close();
-                }
-
-            });
+            LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, p => { Login(p); });
 
             CodeCommandOpenWindow();
 
@@ -133,6 +106,8 @@ namespace QuanLyTraiHeo.ViewModel
 
             });
             #endregion
+
+            LogoutCommand = new RelayCommand<Window>((p) => { return true; }, p => { Logout(p); });
         }
 
         #region Method
@@ -142,9 +117,13 @@ namespace QuanLyTraiHeo.ViewModel
             OnPropertyChanged("MyImage");
         }
 
-        void loadTHONGBAO()
+        public void loadTHONGBAO()
         {
-
+            var listthongbaocount = listTHONGBAO.Count;
+            listTHONGBAO.Clear();
+            var thongbaos = DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == NhanVien.MaNhanVien).Take(listthongbaocount).ToList();
+            foreach (var thongbao in thongbaos)
+                listTHONGBAO.Add(thongbao);
         }
 
         public void loadCountThongBao()
@@ -157,11 +136,15 @@ namespace QuanLyTraiHeo.ViewModel
         {
             OpenTrangChuWindow = new RelayCommand<Grid>((p) => { return true; }, p => {
                 TrangChuWindow wc = new TrangChuWindow();
+                TrangChuVM vm = new TrangChuVM();
+                (wc as TrangChuWindow).grb_TrangChu.DataContext = vm;
                 wc.Close();
                 Object content = wc.Content;
                 wc.Content = null;
                 p.Children.Clear();
                 p.Children.Add(content as UIElement);
+                
+
                 currentWindow = "Trang chủ";
             });
             OpenQuanLyThongTinCaTheWindow = new RelayCommand<Grid>((p) => { return true; }, p => {
@@ -378,6 +361,42 @@ namespace QuanLyTraiHeo.ViewModel
                 wc.ShowDialog();
             });
         }
+        
+        void Login(Window p)
+        {
+            IsLoaded = true;
+            p.Hide();
+
+            wLogin wLogin = new wLogin();
+            wLogin.ShowDialog();
+
+            if (wLogin.DataContext == null) return;
+
+            var loginWD = wLogin.DataContext as LoginVM;
+
+            if (loginWD.IsLogin)
+            {
+                p.Show();
+
+                NhanVien = loginWD.NhanVien;
+                MyImage = CapNhatTaiKhoanVM.BytesToBitmapImage(NhanVien.BytesImage);
+
+                listTHONGBAO = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == NhanVien.MaNhanVien).Take(3));
+
+
+                loadCountThongBao();
+            }
+            else
+            {
+                p.Close();
+            }
+        }
+
+        void Logout(Window p)
+        {
+            Login(p);
+        }
+
         #endregion
     }
 }

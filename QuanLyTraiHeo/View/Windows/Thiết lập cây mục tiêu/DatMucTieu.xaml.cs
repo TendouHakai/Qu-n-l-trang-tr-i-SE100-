@@ -45,9 +45,9 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
             SoHeoConSong_MucTieu_au = SoHeoConSong_MucTieu;
             SoHeoCaiSua_muctieu_au = SoHeoCaiSua_muctieu;
             SoConChetTruocKhiCaiSua_MucTieu_au = SoConChetTruocKhiCaiSua_MucTieu;
-            ThoiGianMangThai_MucTieu_au = ThoiGianMangThai_MucTieu.ToString();
-            SoNgayCaiSua_MucTieu_au = SoNgayCaiSua_MucTieu.ToString();
-            SoNgayKhongLamViec_MucTieu_au = SoNgayKhongLamViec_MucTieu.ToString();
+            ThoiGianMangThai_MucTieu_au = ThoiGianMangThai_MucTieu;
+            SoNgayCaiSua_MucTieu_au = SoNgayCaiSua_MucTieu;
+            SoNgayKhongLamViec_MucTieu_au = SoNgayKhongLamViec_MucTieu;
             TrungBnhLua_MucTieu_au = TrungBnhLua_MucTieu;
             SoHeoTrongNam_MucTieu_au = SoHeoTrongNam_MucTieu;
             muctieu12.Text = Tylede_muctieu.ToString();
@@ -56,9 +56,9 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
             muctieu.Text = SoHeoConSong_MucTieu.ToString();
             muctieu5.Text = SoHeoCaiSua_muctieu.ToString();
             muctieu4.Text = SoConChetTruocKhiCaiSua_MucTieu.ToString();
-            muctieu8.Text = ThoiGianMangThai_MucTieu.ToString();
-            muctieu7.Text = SoNgayCaiSua_MucTieu.ToString();
-            muctieu9.Text = SoNgayKhongLamViec_MucTieu.ToString();
+            muctieu8.Text = ThoiGianMangThai_MucTieu;
+            muctieu7.Text = SoNgayCaiSua_MucTieu;
+            muctieu9.Text = SoNgayKhongLamViec_MucTieu;
             muctieu6.Text = TrungBnhLua_MucTieu.ToString();
             muctieu10.Text = SoHeoTrongNam_MucTieu.ToString();
             muctieu3.Text = Tylethaydan_au.ToString();

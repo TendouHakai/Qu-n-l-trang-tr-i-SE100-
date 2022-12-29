@@ -174,8 +174,7 @@
     <Compile Include="Model\HEO.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\HEONHAP.cs" />
-    <Compile Include="Model\HEOXUAT.cs" />
+    <Compile Include="Model\HEOPHIEU.cs" />
     <Compile Include="Model\LICHCHUONG.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -249,6 +248,7 @@
     <Compile Include="ViewModel\Account\Account.cs" />
     <Compile Include="Model\TinhTrangHangHoaModel.cs" />
     <Compile Include="Model\TrangThaiPhieuKhoModel.cs" />
+    <Compile Include="ViewModel\CTPhieuSuaChuaVM.cs" />
     <Compile Include="ViewModel\Lập lịch\LapLichPhoiGiongVM.cs" />
     <Compile Include="ViewModel\Phieu\ChiTietPhieuKhoVM.cs" />
     <Compile Include="ViewModel\ChonHangHoaVM.cs" />
@@ -298,6 +298,9 @@
     <Compile Include="View\Windows\Quy Định\QuyDinhWindow.xaml.cs">
       <DependentUpon>QuyDinhWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\Quản lý chuồng nuôi\CTPhieuSuaChuaWindow.xaml.cs">
+      <DependentUpon>CTPhieuSuaChuaWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Quản lý chức vụ\PhanQuyenWindow.xaml.cs">
       <DependentUpon>PhanQuyenWindow.xaml</DependentUpon>
     </Compile>
@@ -339,9 +342,6 @@
     </Compile>
     <Compile Include="View\Windows\Quản lý đàn heo\ChonHeoXuat.xaml.cs">
       <DependentUpon>ChonHeoXuat.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Windows\Quản lý đàn heo\DonGia.xaml.cs">
-      <DependentUpon>DonGia.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Quản lý đàn heo\ThemHeoPhieu.xaml.cs">
       <DependentUpon>ThemHeoPhieu.xaml</DependentUpon>
@@ -540,6 +540,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Windows\Quản lý chuồng nuôi\CTPhieuSuaChuaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\Quản lý chức vụ\PhanQuyenWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -593,10 +597,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\Quản lý đàn heo\ChonHeoXuat.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\Quản lý đàn heo\DonGia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
