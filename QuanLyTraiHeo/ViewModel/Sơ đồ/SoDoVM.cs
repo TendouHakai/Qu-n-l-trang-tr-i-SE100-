@@ -65,7 +65,7 @@ namespace QuanLyTraiHeo.ViewModel
             storyboard.Begin(image);
         }
 
-            void Load()
+        public void Load()
         {
             listArea = new List<string>();
             listTypePigsty = new List<string>();

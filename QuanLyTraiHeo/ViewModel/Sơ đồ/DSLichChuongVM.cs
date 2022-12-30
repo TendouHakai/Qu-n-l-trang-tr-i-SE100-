@@ -31,15 +31,16 @@ namespace QuanLyTraiHeo.ViewModel
 
         #region Event command
         public ICommand LoadedWindowCommand { get; set; }
-
+        public ICommand ClosedWindowCommand { get; set; }
         public ICommand AddCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
         public ICommand TickCommand { get; set; }
         #endregion
 
-        public DSLichChuongVM()
+        public DSLichChuongVM(SoDoVM soDo)
         {
             LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, p => { wd = p as wDSLichChuong; ; Load(); });
+            ClosedWindowCommand = new RelayCommand<Window>((p) => { return true; }, p => { soDo.Load(); });
             AddCommand = new RelayCommand<Window>((p) => { return true; }, p => { ThemLichMoi(); });
             TickCommand = new RelayCommand<Window>((p) => { return true; }, p => { TickIsDone(); });
             DeleteCommand = new RelayCommand<Window>((p) => { return true; }, p => { Delete(); });

@@ -149,11 +149,6 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
 
         private void Confirm_button_Click(object sender, RoutedEventArgs e)
         {
-            if (Datepicker_Ngayphoigiong.SelectedDate.Value < DateTime.Today)
-            {
-                MessageBox.Show("Ngày giao phối phải từ hôm nay trở đi");
-                return;
-            }
 
 
             if (phoigiong == null)
@@ -208,6 +203,12 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
             {
                 //Sửa lịch  
 
+                if (Datepicker_Ngayphoigiong.SelectedDate.Value < DateTime.Today)
+                {
+                    MessageBox.Show("Ngày giao phối phải từ hôm nay trở đi");
+                    return;
+                }
+
                 phoigiong.MaHeoDuc = Pigcode_textd.Text;
                 phoigiong.MaHeoCai = Pigcode_textn.Text;
                 phoigiong.NgayPhoiGiong = Datepicker_Ngayphoigiong.SelectedDate;
@@ -243,11 +244,11 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
                         themheocon.DataContext = new ThemTTHeoVM(themheocon, phoigiong.MaHeoDuc, phoigiong.MaHeoCai, maChuongHeoMe, maGiongHeoCha, DateTime.Today, Convert.ToInt16(Soconchon.Text));
                         themheocon.ShowDialog();
 
-                        if (phoigiong.NgayCaiSua != null)
-                        {
-                            LICHCHUONG lichCaiSua = new LICHCHUONG() { MaChuong = maChuongHeoMe, MaNguoiTao = Account.TaiKhoan.MaNhanVien, TenLich = "Cai sữa heo con", TrangThai = "Chưa làm", NgayLam = phoigiong.NgayCaiSua ?? DateTime.Now, Mota = "Ngày cai sữa heo con" };
-                            DataProvider.Ins.DB.LICHCHUONGs.Add(lichCaiSua);
-                        }
+                        //if (phoigiong.NgayCaiSua != null)
+                        //{
+                        //    LICHCHUONG lichCaiSua = new LICHCHUONG() { MaChuong = maChuongHeoMe, MaNguoiTao = Account.TaiKhoan.MaNhanVien, TenLich = "Cai sữa heo con", TrangThai = "Chưa làm", NgayLam = phoigiong.NgayCaiSua ?? DateTime.Now, Mota = "Ngày cai sữa heo con" };
+                        //    DataProvider.Ins.DB.LICHCHUONGs.Add(lichCaiSua);
+                        //}
 
                     }
 
@@ -320,7 +321,7 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
                 Ngaydethucte.SelectedDate = DateTime.Today;
 
                 THAMSO thamso = DataProvider.Ins.DB.THAMSOes.SingleOrDefault();
-                Ngaycaisua.SelectedDate = DateTime.Today.AddDays(thamso.SoNgayCaiSua);
+                //Ngaycaisua.SelectedDate = DateTime.Today.AddDays(thamso.SoNgayCaiSua);
                 NgayPhoiGiongLai.SelectedDate = Datepicker_Ngayphoigiong.SelectedDate.Value.AddDays(thamso.RePhoiGiongCai);
             }
         }

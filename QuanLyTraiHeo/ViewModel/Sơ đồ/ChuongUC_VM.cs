@@ -1,4 +1,5 @@
 ﻿using QuanLyTraiHeo.Model;
+using QuanLyTraiHeo.View.UC;
 using QuanLyTraiHeo.View.Windows;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace QuanLyTraiHeo.ViewModel
             CHUONGTRAI chuong = p.Tag as CHUONGTRAI;
 
             wDSLichChuong wd = new wDSLichChuong();
-            DSLichChuongVM dsLichChuong = new DSLichChuongVM() { MaChuong = chuong.MaChuong, LoaiChuong = DataProvider.Ins.DB.LOAICHUONGs.Where(x => x.MaLoaiChuong == chuong.MaLoaiChuong).SingleOrDefault().TenLoai, SucChuaToiDa = chuong.SuaChuaToiDa, SoLuongHeo = _SoLuongHeo };
+            DSLichChuongVM dsLichChuong = new DSLichChuongVM(LayWindow(p as IconChuongUC)) { MaChuong = chuong.MaChuong, LoaiChuong = DataProvider.Ins.DB.LOAICHUONGs.Where(x => x.MaLoaiChuong == chuong.MaLoaiChuong).SingleOrDefault().TenLoai, SucChuaToiDa = chuong.SuaChuaToiDa, SoLuongHeo = _SoLuongHeo };
             wd.DataContext = dsLichChuong;
             wd.ShowDialog();
 
@@ -49,6 +50,27 @@ namespace QuanLyTraiHeo.ViewModel
             wd.DataContext = new DSHeoVM(chuong);
             wd.ShowDialog();
 
+        }
+
+        SoDoVM LayWindow(IconChuongUC p)
+        {
+            FrameworkElement window = GetFrameworkElement(p);
+            var w = (Window)window;
+            if (w != null)
+            {
+                return w.DataContext as SoDoVM;
+            }
+            return null;
+        }
+
+        FrameworkElement GetFrameworkElement(IconChuongUC p)
+        {
+            FrameworkElement parent = p;
+            while (parent.Parent != null)
+            {
+                parent = parent.Parent as FrameworkElement;
+            }
+            return parent;
         }
     }
 }

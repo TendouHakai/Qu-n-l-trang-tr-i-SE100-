@@ -71,7 +71,7 @@
                                  Foreground="#F57C00"
                                  Name="IconChamThan"
                                  Kind="ExclamationThick"
-                                 Margin="210,0,0,0">
+                                 Margin="131,0,0,0">
         </materialDesign:PackIcon>
 
     </Grid>
