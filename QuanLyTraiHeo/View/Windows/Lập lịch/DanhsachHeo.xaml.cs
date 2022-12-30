@@ -20,6 +20,7 @@ using System.Data;
 using System.Drawing;
 using ServiceStack.Text;
 using QuanLyTraiHeo.ViewModel;
+using AutoMapper;
 
 namespace QuanLyTraiHeo.View.Windows.Lập_lịch
 {
@@ -46,7 +47,7 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
 
         public int check = 0;
         
-        public DanhsachHeo()
+        public DanhsachHeo(int isformAdd = 1)
         {
             InitializeComponent();
             //pre-check
@@ -56,6 +57,9 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
             loadMaChuong();
             loadDatagrid("All");
             TiemVacxin_CB.ItemsSource = ListThuoc;
+            if(isformAdd==1)
+                ListMaHeo1_.Visibility = Visibility.Collapsed;
+            else ListMaHeo_.Visibility = Visibility.Collapsed;
         }
 
         /*        private void check_click(object sender, RoutedEventArgs e)
@@ -134,6 +138,8 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
             }
             ListMaHeo_.ItemsSource = _listChonHeo;
             ListMaHeo_.Items.Refresh();
+            ListMaHeo1_.ItemsSource = _listChonHeo;
+            ListMaHeo1_.Items.Refresh();
         }
 
         //Ham Tinh Tuoi Heo
@@ -190,6 +196,16 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
                 ListMaHeo_.SelectedItem = item;
             }
         }
+        private void ListViewItem1_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ListMaHeo1_.SelectedItems.Clear();
+            var item = sender as DataGridRow;
+            if (item != null)
+            {
+                item.IsSelected = true;
+                ListMaHeo1_.SelectedItem = item;
+            }
+        }
         //Event click row part 2
         private void ListViewItem_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -223,6 +239,38 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
                 }    
             }
         }
+        private void ListViewItem1_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DataGridRow item = sender as DataGridRow;
+            if (item != null && item.IsSelected)
+            {
+                GetListTenThuoc();
+                LichSuTiem_TB.Clear();
+                ListLichSuTiem.Clear();
+                ChonHeo CH = ListMaHeo1_.SelectedItem as ChonHeo;
+                foreach (LICHTIEMHEO TH in CH.heo.LICHTIEMHEOs)
+                {
+                    //MessageBox.Show("pass");
+                    if (TH.TrangThai == "Đã tiêm")
+                    {
+                        HANGHOA hanghoa = Thuoc_Tiem.First(s => s.lichtiem.MaLichTiem.Equals(TH.MaLichTiem) && s.lichtiem.TrangThai.Equals("Đã tiêm")).hanghoa;
+                        ListLichSuTiem.Add(hanghoa.TenHangHoa + " vào ngày " + Thuoc_Tiem.First(s => s.lichtiem.MaLichTiem.Equals(TH.MaLichTiem)).lichtiem.NgayTiem);
+                    }
+                }
+                if (ListLichSuTiem.IsNullOrEmpty())
+                {
+                    LichSuTiem_TB.Text = "Heo chưa ghi nhận được tiêm.";
+                }
+                else
+                {
+                    foreach (var a in ListLichSuTiem)
+                    {
+
+                        LichSuTiem_TB.Text += "Đã tiêm " + a + "\n";
+                    }
+                }
+            }
+        }
 
         /*//lay danh sach vacxin
         void GetVacxin()
@@ -236,7 +284,11 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
         }*/
         public string TranferCode()
         {
-            heo = (HEO)ListMaHeo_.SelectedItem;
+            ChonHeo chonHeo = (ChonHeo)ListMaHeo1_.SelectedItem;
+            if (chonHeo == null)
+                return null;
+            heo = chonHeo.heo;
+            
             return heo.MaHeo;
         }
 
@@ -417,6 +469,8 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
             }
             ListMaHeo_.ItemsSource = _listChonHeo;
             ListMaHeo_.Items.Refresh();
+            ListMaHeo1_.ItemsSource = _listChonHeo;
+            ListMaHeo1_.Items.Refresh();
         }
 
         private void TbTuoiMin_TextChanged(object sender, TextChangedEventArgs e)

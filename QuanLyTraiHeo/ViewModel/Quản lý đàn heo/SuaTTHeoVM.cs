@@ -42,6 +42,7 @@ namespace QuanLyTraiHeo.ViewModel
         {
             return;
         }
+
         public SuaTTHeoVM(QuanLyThongTinCaTheVM vm)
         {
             SelectedHeo = vm.SelectedHeo;
@@ -66,29 +67,21 @@ namespace QuanLyTraiHeo.ViewModel
             ListChuong = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
 
 
-            XacNhanCommand = new RelayCommand<Window>((p) =>
-            {
-                if (SelectedChuong == null || SelectedGiong == null || SelectedLoai == null)
-                    return false;
-                if (_GioiTinh == null || _TinhTrang == null || _NguonGoc == null || _NgaySinh == null || _TrongLuong == null)
-                    return false;
-                return true;
-            }, p =>
-            {
+            XacNhanCommand = new RelayCommand<Window>((p) => { return NhapDuThongTin(); }, p => {
 
                 if (!KiemTra())
                 {
                     return;
                 }
 
-                if (SelectedChuong.SoLuongHeo < SelectedChuong.SuaChuaToiDa && SelectedHeo.MaChuong != SelectedChuong.MaChuong)
+                if (SelectedChuong.SoLuongHeo < SelectedChuong.SuaChuaToiDa)
                 {
                     SelectedChuong.SoLuongHeo += 1;
                     cu.SoLuongHeo -= 1;
                 }
                 else
                 {
-                    MessageBox.Show("Sức chứa của chuồng không đủ. Heo" + SelectedHeo.MaHeo + " chưa được sửa");
+                    MessageBox.Show("Sức chứa của chuồng không đủ. Thông tin heo" + SelectedHeo.MaHeo + " chưa được sửa");
                     return;
                 }
                 SelectedHeo.GioiTinh = _GioiTinh;
@@ -105,6 +98,16 @@ namespace QuanLyTraiHeo.ViewModel
                 p.Close();
             });
         }
+
+        bool NhapDuThongTin()
+        {
+            if (SelectedChuong == null || SelectedGiong == null || SelectedLoai == null)
+                return false;
+            if (_GioiTinh == null || _TinhTrang == null || _NguonGoc == null || _NgaySinh == null || _TrongLuong == null)
+                return false;
+            return true;
+        }
+
         bool KiemTra()
         {
             string msg;

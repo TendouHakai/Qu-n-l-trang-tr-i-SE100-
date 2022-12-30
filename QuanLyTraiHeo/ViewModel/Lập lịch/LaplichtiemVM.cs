@@ -14,11 +14,12 @@ namespace QuanLyTraiHeo.ViewModel
 {
     public class LaplichtiemVM : BaseViewModel
     {
-        //public ObservableCollection<HEO> ListHeo { get; set; }
-        //public ObservableCollection<LICHTIEMHEO> Lichtiem { get; set; }
-        public List<LICHTIEMHEO> LICHTIEMTEST { get; set; }
-        //public ObservableCollection<LOAIHEO> ListLoai { get; set; }
-        //public ObservableCollection<GIONGHEO> ListGiong { get; set; }
+        public ObservableCollection<HEO> ListHeo { get; set; }
+        public ObservableCollection<LICHTIEMHEO> Lichtiem { get; set; }
+        private ObservableCollection<LICHTIEMHEO> _LICHTIEMTEST { get; set; }
+        public ObservableCollection<LICHTIEMHEO> LICHTIEMTEST { get=>_LICHTIEMTEST; set { LICHTIEMTEST = value; OnPropertyChanged(); } }
+        public ObservableCollection<LOAIHEO> ListLoai { get; set; }
+        public ObservableCollection<GIONGHEO> ListGiong { get; set; }
 
         public string MaTim;
 
@@ -35,11 +36,11 @@ namespace QuanLyTraiHeo.ViewModel
 
         public LaplichtiemVM()
         {
-            //ListHeo = new ObservableCollection<HEO>(DataProvider.Ins.DB.HEOs);
-            //ListLoai = new ObservableCollection<LOAIHEO>(DataProvider.Ins.DB.LOAIHEOs);
-            //ListGiong = new ObservableCollection<GIONGHEO>(DataProvider.Ins.DB.GIONGHEOs);
-            //Lichtiem = new ObservableCollection<LICHTIEMHEO>(DataProvider.Ins.DB.LICHTIEMHEOs);
-            LICHTIEMTEST = new List<LICHTIEMHEO>(DataProvider.Ins.DB.LICHTIEMHEOs);
+            ListHeo = new ObservableCollection<HEO>(DataProvider.Ins.DB.HEOs);
+            ListLoai = new ObservableCollection<LOAIHEO>(DataProvider.Ins.DB.LOAIHEOs);
+            ListGiong = new ObservableCollection<GIONGHEO>(DataProvider.Ins.DB.GIONGHEOs);
+            Lichtiem = new ObservableCollection<LICHTIEMHEO>(DataProvider.Ins.DB.LICHTIEMHEOs);
+            LICHTIEMTEST = new ObservableCollection<LICHTIEMHEO>(DataProvider.Ins.DB.LICHTIEMHEOs);
 
             AddCommand = new RelayCommand<Window>((p) => { return true; }, p =>
             {

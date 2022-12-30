@@ -162,7 +162,39 @@
                     </Style>
                 </DataGrid.ItemContainerStyle>
             </DataGrid>
+            <DataGrid x:Name="ListMaHeo1_" 
+                          ItemsSource ="{Binding _listChonHeo}"
+                            Grid.Row="1" CanUserAddRows="False"
+                            AutoGenerateColumns="False"
+                            HeadersVisibility="All"                               
+                            SelectionUnit="{Binding ElementName=selectionUnitComboBox, Path=SelectedValue}" Background="White">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="ListMaHeo1" Header="Mã heo" 
+                                            Binding="{Binding heo.MaHeo}" IsReadOnly="True"/>
+                    <DataGridTextColumn x:Name="ListTenHeo1" Header="Loại heo" 
+                                            Binding="{Binding heo.LOAIHEO.TenLoaiHeo}" IsReadOnly="True"/>
+                    <DataGridTextColumn x:Name="Tuoi1" Header="Tuổi" 
+                                            Binding="{Binding ShowTuoi}" IsReadOnly="True"/>
+                    <DataGridTemplateColumn x:Name="Trangthai1" Header="Trạng thái" IsReadOnly="True">
 
+                    </DataGridTemplateColumn>
+                    <!--GridViewColumn Header="" Width="160">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Menu>
+                                            <MenuItem x:Name="check" Icon="{materialDesign:PackIcon Kind=Check}"  Width="48" Click="check_click"/>
+                                        </Menu>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn-->
+                </DataGrid.Columns>
+                <DataGrid.ItemContainerStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <EventSetter Event="UIElement.PreviewMouseLeftButtonDown" Handler="ListViewItem1_PreviewMouseLeftButtonDown" />
+                        <EventSetter Event="UIElement.PreviewMouseLeftButtonUp" Handler="ListViewItem1_PreviewMouseLeftButtonUp" />
+                    </Style>
+                </DataGrid.ItemContainerStyle>
+            </DataGrid>
         </Grid>
     </Grid>
 </Window>

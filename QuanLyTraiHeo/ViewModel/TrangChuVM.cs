@@ -238,7 +238,6 @@ namespace QuanLyTraiHeo.ViewModel
                 string tb = "Hiện giờ mùa bệnh " + muabenh.TenDichBenh + " đã tới! Hãy đến xem cách phòng tránh trong quy định mùa bệnh";
                 lstTBMuaBenh.Add(tb);
             }
-            lstTBMuaBenh.Add("c");
         }
 
         void loadSoLuongHeoTot()

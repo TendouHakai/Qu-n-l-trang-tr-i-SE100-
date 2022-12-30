@@ -41,9 +41,10 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
 
         void ShowListHeo()
         {
-            DanhsachHeo ds = new DanhsachHeo();
+            DanhsachHeo ds = new DanhsachHeo(0);
             ds.ShowDialog();
-            textcode.Text = ds.TranferCode();
+            if(ds.TranferCode() != null && ds.TranferCode() != "")
+                textcode.Text = ds.TranferCode();
         }
 
         private void ListHeo_button_Click(object sender, RoutedEventArgs e)
