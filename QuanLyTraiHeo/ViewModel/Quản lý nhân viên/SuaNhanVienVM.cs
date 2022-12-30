@@ -15,9 +15,14 @@ namespace QuanLyTraiHeo.ViewModel
     public class SuaNhanVienVM : BaseViewModel
     {
         public ICommand SuaCommand { get; set; }
+        public ICommand CloseCommand { get; set; }
+        public ICommand ImageChangedCommand { get; set; }
+
         public ObservableCollection<CHUCVU> listChucVu { get; set; }
         public CHUCVU chucvu { get; set; }
         public NHANVIEN TTNhanVien { get; set; }
+        private System.Windows.Media.Imaging.BitmapImage image;
+        public System.Windows.Media.Imaging.BitmapImage MyImage { get => image; set { image = value; OnPropertyChanged(); } }
 
         public SuaNhanVienVM()
         {
@@ -29,9 +34,12 @@ namespace QuanLyTraiHeo.ViewModel
             listChucVu = new ObservableCollection<CHUCVU>();
             LoadListChucVu();
             SuaCommand = new RelayCommand<Window>((p) => { return true; }, p => { Sua(p); });
+            CloseCommand = new RelayCommand<Window>((p) => { return true; }, p => { p.Close(); });
+            ImageChangedCommand = new RelayCommand<object>((p) => { return true; }, p => { ChangeImage(); });
 
             TTNhanVien = nhanVien;
             chucvu = nhanVien.CHUCVU;
+            MyImage = BytesToBitmapImage(TTNhanVien.BytesImage);
 
         }
         private void LoadListChucVu()
@@ -71,6 +79,48 @@ namespace QuanLyTraiHeo.ViewModel
             p.Close();
 
         }
+
+        void ChangeImage()
+        {
+            System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
+            dialog.Filter = "Image (*.jpg)|*.jpg";
+            dialog.InitialDirectory = @"C:\";
+            dialog.Title = "Please select an image file to encrypt.";
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(dialog.FileName);
+                TTNhanVien.BytesImage = (byte[])ImageToByteArray(bitmap);
+                MyImage = BytesToBitmapImage(TTNhanVien.BytesImage);
+            }
+        }
+        public static System.Windows.Media.Imaging.BitmapImage BytesToBitmapImage(byte[] imageData)
+        {
+            if (imageData == null || imageData.Length == 0) return null;
+            var image = new System.Windows.Media.Imaging.BitmapImage();
+            using (var mem = new System.IO.MemoryStream(imageData))
+            {
+                mem.Position = 0;
+                image.BeginInit();
+                image.CreateOptions = System.Windows.Media.Imaging.BitmapCreateOptions.PreservePixelFormat;
+                image.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad;
+                image.UriSource = null;
+                image.StreamSource = mem;
+                image.EndInit();
+            }
+            image.Freeze();
+            return image;
+        }
+
+        public static byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        {
+            using (var ms = new System.IO.MemoryStream())
+            {
+                imageIn.Save(ms, imageIn.RawFormat);
+                return ms.ToArray();
+            }
+        }
+
 
     }
 }

@@ -34,9 +34,9 @@
                 <materialDesign:Card>
                     <StackPanel Orientation="Vertical"
                                 HorizontalAlignment="Center">
-                        <Image Height="270"
-                               Width="270"
-                               Source="{Binding MyImage}"></Image>
+                    <Image Height="270"
+                           Width="270"
+                           Source="{Binding MyImage}"></Image>
                     <TextBlock x:Name="btn_UpdateImage"
                                FontWeight="Bold"
                                TextDecorations="Underline"
