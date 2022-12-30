@@ -404,9 +404,9 @@
                     <GridView>
                         <GridViewColumn Header="Mã hàng hóa" DisplayMemberBinding="{Binding MaHangHoa}" />
                         <GridViewColumn Header="Tên hàng hóa" DisplayMemberBinding="{Binding HANGHOA.TenHangHoa}" />
-                        <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding _soLuong}"/>
-                        <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding _donGia}"/>
-                    </GridView>
+                            <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding _soLuong}"/>
+                            <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding _donGia, StringFormat={}{0:N0}}"/>
+                        </GridView>
                 </ListView.View>
                 <ListView.ContextMenu>
                     <ContextMenu>

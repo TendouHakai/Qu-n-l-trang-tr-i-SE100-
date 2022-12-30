@@ -21,12 +21,12 @@ namespace QuanLyTraiHeo.ViewModel
     {
         LapPhieuKhoVM vm;
         public NHANVIEN NVThucHien { get; set; }
-        private string _dongia;
-        public string dongia { get => _dongia; set { _dongia = value; OnPropertyChanged(); } }
-        private string _soluong;
-        public string soluong { get => _soluong; set { _soluong = value; OnPropertyChanged(); } }
-        private string _soluongKT;
-        public string soluongKT { get => _soluongKT; set { _soluongKT = value; OnPropertyChanged(); } }
+        private int _dongia = 0;
+        public int dongia { get => _dongia; set { _dongia = value; OnPropertyChanged(); } }
+        private int _soluong = 0;
+        public int soluong { get => _soluong; set { _soluong = value; OnPropertyChanged(); } }
+        private int _soluongKT = 0;
+        public int soluongKT { get => _soluongKT; set { _soluongKT = value; OnPropertyChanged(); } }
 
         // Thông tin phiếu
         private string _SoPhieu;
@@ -110,11 +110,11 @@ namespace QuanLyTraiHeo.ViewModel
             #region command sửa đơn giá
             editDonGiacommand = new RelayCommand<TextBox>((p) => { return true; }, p =>
             {
-                if (dongia != null && dongia != "" && selectCTHH != null)
+                if (dongia !=0 && selectCTHH != null)
                 {
-                    selectCTHH.DonGia = int.Parse(dongia);
+                    selectCTHH._donGia = dongia;
                 }
-                dongia = null;
+                dongia = 0;
                 TinhTongTien();
             });
             #endregion
@@ -122,16 +122,16 @@ namespace QuanLyTraiHeo.ViewModel
             #region command sửa số lượng
             editSoLuongcommand = new RelayCommand<TextBox>((p) => { return true; }, p =>
             {
-                if(int.Parse(soluong) > selectCTHH.HANGHOA.SoLuongTonKho)
+                if(soluong > selectCTHH.HANGHOA.SoLuongTonKho)
                 {
                     MessageBox.Show("Số lượng của mặt hàng này không đủ!");
                     return;
                 }
-                if (soluong != null && soluong != "" && selectCTHH != null)
+                if (soluong != 0 && selectCTHH != null)
                 {
-                    selectCTHH.SoLuong = int.Parse(soluong);
+                    selectCTHH._soLuong = soluong;
                 }
-                soluong = null;
+                soluong = 0;
                 TinhTongTien();
             });
             #endregion
@@ -139,11 +139,11 @@ namespace QuanLyTraiHeo.ViewModel
             #region command sửa số lượng kiểm tra
             editSLKTcommand = new RelayCommand<TextBox>((p) => { return true; }, p =>
             {
-                if (soluongKT != null && soluongKT != "" && selectCTKK != null)
+                if (soluongKT != 0 && selectCTKK != null)
                 {
-                    selectCTKK.SoLuongKiemTra = int.Parse(soluongKT);
+                    selectCTKK.SoLuongKiemTra = soluongKT;
                 }
-                soluongKT = null;
+                soluongKT = 0;
                 TinhTongTien();
             });
             #endregion

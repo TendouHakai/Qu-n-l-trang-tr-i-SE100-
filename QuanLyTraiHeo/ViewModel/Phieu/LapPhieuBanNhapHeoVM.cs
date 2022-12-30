@@ -46,7 +46,8 @@ namespace QuanLyTraiHeo.ViewModel
         {
             DateTime Now = DateTime.Now;
             mindate = new DateTime(Now.Year, Now.Month, 1);
-            maxdate = new DateTime(Now.Year, Now.Month, Now.Day + 1);
+            maxdate = new DateTime(Now.Year, Now.Month, Now.Day);
+            maxdate = maxdate.Value.AddDays(1);
             ListTrangThai = new List<string>();
             ListTrangThai.Add("Đã hoàn thành");
             ListTrangThai.Add("Chưa hoàn thành");

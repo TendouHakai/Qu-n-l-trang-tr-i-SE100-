@@ -9,10 +9,12 @@
 
 namespace QuanLyTraiHeo.Model
 {
+    using QuanLyTraiHeo.ViewModel;
     using System;
     using System.Collections.Generic;
-    
-    public partial class PHIEUHANGHOA
+    using System.Data.Entity.ModelConfiguration.Configuration;
+
+    public partial class PHIEUHANGHOA: BaseViewModel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PHIEUHANGHOA()
@@ -25,7 +27,8 @@ namespace QuanLyTraiHeo.Model
         public string MaNhanVien { get; set; }
         public string MaNhanVienNhan { get; set; }
         public string MaDoiTac { get; set; }
-        public string TrangThai { get; set; }
+        private string _TrangThai;
+        public string TrangThai { get=>_TrangThai; set { _TrangThai = value; OnPropertyChanged(); } }
         public string LoaiPhieu { get; set; }
         public Nullable<int> TongTien { get; set; }
     

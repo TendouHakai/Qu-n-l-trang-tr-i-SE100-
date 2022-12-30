@@ -88,7 +88,7 @@
                                     <GridViewColumn Header="Mã" DisplayMemberBinding="{Binding MaHangHoa}"/>
                                     <GridViewColumn Header="Tên mặt hàng" DisplayMemberBinding="{Binding HANGHOA.TenHangHoa}"/>
                                     <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding _soLuong}"/>
-                                    <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding _donGia}"/>
+                                    <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding _donGia, StringFormat={}{0:N0}}"/>
                                 </GridView>
                             </ListView.View>
                             <ListView.ContextMenu>
@@ -98,7 +98,7 @@
                                         <TextBox Name="txtll" materialDesign:HintAssist.Hint="Nhập đơn giá mới" Height="30"
                                          VerticalContentAlignment="Bottom"
                                          PreviewTextInput="NumberValidationTextBox"
-                                                 Text="{Binding dongia, StringFormat='$#,##0.0000;$(#,##0.0000)'}">
+                                                 Text="{Binding dongia, StringFormat={}{0:N0}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                         </TextBox>
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="SubmenuClosed">
@@ -109,7 +109,7 @@
                                     </MenuItem>
                                     <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}" Command="{Binding editDonGiacommand}">
                                         <MenuItem.Header>Sửa số lượng</MenuItem.Header>
-                                        <TextBox materialDesign:HintAssist.Hint="Nhập đơn giá mới" Height="30"
+                                        <TextBox materialDesign:HintAssist.Hint="Nhập số lượng mới" Height="30"
                                          VerticalContentAlignment="Bottom"
                                          PreviewTextInput="NumberValidationTextBox"
                                                  Text="{Binding soluong}">
@@ -459,7 +459,7 @@
                                  IsReadOnly="True"
                                  Height="30"
                                  Margin="30,0,20,11" 
-                                 Text="{Binding TongTien}"
+                                 Text="{Binding TongTien, StringFormat={}{0:N0}}"
                                  />
                     </Grid>
                     <Grid>

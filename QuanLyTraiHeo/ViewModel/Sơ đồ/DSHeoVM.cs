@@ -105,8 +105,6 @@ namespace QuanLyTraiHeo.ViewModel
                 foreach (var item in DataProvider.Ins.DB.LICHPHOIGIONGs.Where(x => x.MaHeoDuc == heo.MaHeo))
                 {
                     dic.Add(item.NgayPhoiGiong, item);
-
-
                 }
             }
             else if (chuong.MaLoaiChuong == "LC03112022000003" && heo.MaLoaiHeo == "LH02112022000002")// Nếu là heo cái và nằm trong chuồng heo đực nái

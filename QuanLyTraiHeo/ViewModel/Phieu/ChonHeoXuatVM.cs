@@ -92,7 +92,8 @@ namespace QuanLyTraiHeo.ViewModel
             }
             DateTime Now = DateTime.Now;
             mindate = new DateTime(Now.Year, Now.Month, 1);
-            maxdate = new DateTime(Now.Year, Now.Month, Now.Day + 1);
+            maxdate = new DateTime(Now.Year, Now.Month, Now.Day);
+            maxdate = maxdate.Value.AddDays(1);
             minTL = (int)ListHeoX.Min(x => x.heo.TrongLuong);
             maxTL = (int)ListHeoX.Max(x => x.heo.TrongLuong);
 

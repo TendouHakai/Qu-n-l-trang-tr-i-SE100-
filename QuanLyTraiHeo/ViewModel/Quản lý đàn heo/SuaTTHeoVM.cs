@@ -147,15 +147,21 @@ namespace QuanLyTraiHeo.ViewModel
                 MessageBox.Show(msg);
                 return false;
             }
-            if (SelectedLoai.TenLoaiHeo.Contains("đực") && (SelectedChuong.MaChuong.Contains("N") && SelectedChuong.MaChuong.Contains("HD")))
+            if (SelectedLoai.TenLoaiHeo.Contains("đực") && (SelectedChuong.MaChuong.Contains("N") || SelectedChuong.MaChuong.Contains("HD")))
             {
                 msg = "Heo đực không thể ở chuồng heo nái khác";
                 MessageBox.Show(msg);
                 return false;
             }
-            if (SelectedLoai.TenLoaiHeo.Contains("thịt") && !SelectedChuong.MaChuong.Contains("T"))
+            if (SelectedLoai.TenLoaiHeo.Contains("thịt") && _GioiTinh == "Đực" && !SelectedChuong.MaChuong.Contains("DT"))
             {
-                msg = "Heo thịt chỉ có thể ở chuồng heo thịt";
+                msg = "Heo đực chỉ có thể ở chuồng heo đực thịt";
+                MessageBox.Show(msg);
+                return false;
+            }
+            else if (SelectedLoai.TenLoaiHeo.Contains("thịt") &&  _GioiTinh == "Cái" && !SelectedChuong.MaChuong.Contains("DT"))
+            {
+                msg = "Heo cái chỉ có thể ở chuồng heo nái thịt";
                 MessageBox.Show(msg);
                 return false;
             }

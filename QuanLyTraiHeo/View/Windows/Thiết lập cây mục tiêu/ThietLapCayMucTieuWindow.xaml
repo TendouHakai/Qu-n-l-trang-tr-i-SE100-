@@ -86,7 +86,7 @@
                                     </TextBlock>
                                     <Label Content="Mục tiêu: " Margin="10,52,0,0"></Label>
                                     <TextBlock x:Name="DoanhThuUocTinh_uoctinh" Text="{Binding thamso.Doanhthu_muctieu, StringFormat={}{0:N0}}" HorizontalAlignment="Left" Margin="70,58,0,0" VerticalAlignment="Top" FontSize="12"/>
-                                    <Label Content="Doanh thu ước tính" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0"/>
+                                    <Label Content="Doanh thu ước tính (VND)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0"/>
                                     <ToggleButton
                         x:Name="DoanhThuUocTinh_button"
                         Style="{StaticResource MaterialDesignActionToggleButton}"
@@ -124,7 +124,7 @@
                                     </Label>
                                     <Label Content="Mục tiêu: " Margin="10,35,0,0"></Label>
                                     <Label x:Name="Soheotrongnam_muctieu" Content="{Binding thamso.SoHeoTrongNam_MucTieu}" HorizontalAlignment="Left" Margin="70,35,0,0" VerticalAlignment="Top" FontSize="12"></Label>
-                                    <Label Content="Heo con cai sữa/nái/năm" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                                    <Label Content="Heo con cai sữa/nái/năm (Con)" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
                                     <ToggleButton
                         x:Name="Soheotrongnam_button"
                         Style="{StaticResource MaterialDesignActionToggleButton}"
@@ -162,7 +162,7 @@
                                     </Label>
                                     <Label Content="Mục tiêu: " Margin="10,35,0,0"></Label>
                                     <Label x:Name="Soheocaisua_muctieu" Content="{Binding thamso.SoHeoCaiSua_muctieu}" HorizontalAlignment="Left" Margin="70,37,0,0" VerticalAlignment="Top" FontSize="12"/>
-                                    <Label x:Name="Soheocaisua_textbox" Content="Số heo con cai sữa/nái" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                                    <Label x:Name="Soheocaisua_textbox" Content="Số heo con cai sữa/nái (Con)" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
                                     <ToggleButton
                         x:Name="Soheocaisua_button"
                         Style="{StaticResource MaterialDesignActionToggleButton}"
@@ -200,7 +200,7 @@
                                     </Label>
                                     <Label Content="Mục tiêu: " Margin="10,35,0,0"></Label>
                                     <Label x:Name="TrungbinhLua_muctieu" Content="{Binding thamso.TrungBnhLua_MucTieu}" HorizontalAlignment="Left" Margin="70,37,0,0" VerticalAlignment="Top" FontSize="12"/>
-                                    <Label x:Name="TrungbinhLua_textbox" Content="Trung bình lứa/nái/năm" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                                    <Label x:Name="TrungbinhLua_textbox" Content="Trung bình lứa/nái/năm (Lứa)" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
                                     <ToggleButton
                         x:Name="TrungbinhLua_button"
                         Style="{StaticResource MaterialDesignActionToggleButton}"
@@ -238,7 +238,7 @@
                                     </Label>
                                     <Label Content="Mục tiêu: " Margin="10,35,0,0"></Label>
                                     <Label x:Name="Soheoconsong_muctieu" Content="{Binding thamso.SoHeoConSong_MucTieu}" HorizontalAlignment="Left" Margin="70,37,0,0" VerticalAlignment="Top" FontSize="12"/>
-                                    <Label x:Name="Soheoconsong_textbox" Content="Số heo con còn sống/lứa" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                                    <Label x:Name="Soheoconsong_textbox" Content="Số heo con còn sống/lứa (Con)" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
                                     <ToggleButton
                         x:Name="Soheoconsong_button"
                         Style="{StaticResource MaterialDesignActionToggleButton}"
@@ -260,7 +260,7 @@
                                     </ToggleButton>
                                 </Grid>
                             </materialDesign:Card>
-                            <materialDesign:Card x:Name="the6" Height="70" Margin="617,365,-16,0" VerticalAlignment="Top" Cursor="Hand">
+                            <materialDesign:Card x:Name="the6" Height="70" Margin="617,365,-28,0" VerticalAlignment="Top" Cursor="Hand">
                                 <Grid Margin="0,0,-8,0">
                                     <Label x:Name="Tylechet" Content="{Binding soheochet}" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14">
                                         <Label.Style>
@@ -276,7 +276,7 @@
                                     </Label>
                                     <Label Content="Mục tiêu: " Margin="10,35,0,0"></Label>
                                     <Label x:Name="Tylechet_muctieu" Content="{Binding thamso.SoConChetTruocKhiCaiSua_MucTieu}" HorizontalAlignment="Left" Margin="70,37,0,0" VerticalAlignment="Top" FontSize="12"/>
-                                    <Label x:Name="Tylechet_textbox" Content="Tỷ lệ heo con chết trước khi cai sữa/lứa" VerticalAlignment="Top" FontSize="10" Margin="10,0,8,0" Height="32"/>
+                                    <Label x:Name="Tylechet_textbox" Content="Tỷ lệ heo con chết trước khi cai sữa/lứa (Con)" VerticalAlignment="Top" FontSize="10" Margin="10,0,8,0" Height="32"/>
                                     <ToggleButton
                         x:Name="Tylechet_button"
                         Style="{StaticResource MaterialDesignActionToggleButton}"
@@ -314,7 +314,7 @@
                                     </Label>
                                     <Label Content="Mục tiêu: " Margin="10,35,0,0"></Label>
                                     <Label x:Name="Soheoconsinhra_lua_muctieu" Content="{Binding thamso.SoHeoConSinhRa_muctieu}" HorizontalAlignment="Left" Margin="70,35,0,0" VerticalAlignment="Top" FontSize="12"/>
-                                    <Label x:Name="Soheoconsinhra_lua_textbox" Content="Số heo con sinh ra/lứa" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                                    <Label x:Name="Soheoconsinhra_lua_textbox" Content="Số heo con sinh ra/lứa (Con)" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
                                     <ToggleButton
                         x:Name="Soheoconsinhra_lua_button"
                         Style="{StaticResource MaterialDesignActionToggleButton}"
@@ -352,7 +352,7 @@
                                     </Label>
                                     <Label Content="Mục tiêu: " Margin="10,35,0,0"></Label>
                                     <Label x:Name="Odeitcon_muctieu" Content="{Binding thamso.ODeItCon_muctieu}" HorizontalAlignment="Left" Margin="70,35,0,0" VerticalAlignment="Top" FontSize="12"/>
-                                    <Label x:Name="Odeitcon_textbox" Content="Ổ đẻ ít con" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                                    <Label x:Name="Odeitcon_textbox" Content="Ổ đẻ ít con (%)" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
                                     <ToggleButton
                         x:Name="Odeitcon_button"
                         Style="{StaticResource MaterialDesignActionToggleButton}"
@@ -374,7 +374,7 @@
                                     </ToggleButton>
                                 </Grid>
                             </materialDesign:Card>
-                            <materialDesign:Card x:Name="the9" Height="70" Margin="10,365,617,0" VerticalAlignment="Top" Width="166" Cursor="Hand">
+                            <materialDesign:Card x:Name="the9" Height="70" Margin="-14,365,626,0" VerticalAlignment="Top" Cursor="Hand">
                                 <Grid Margin="0,0,-0.333,0">
                                     <Label x:Name="SoNgayKhongLamViec" Content="{Binding songayheonaikolamviec}" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14">
                                         <Label.Style>
@@ -392,7 +392,7 @@
                                     <Label x:Name="SoNgayKhongLamViec_muctieu" Content="{Binding thamso.SoNgayKhongLamViec_MucTieu_Min}" HorizontalAlignment="Left" Margin="70,37,0,0" VerticalAlignment="Top" FontSize="12"/>
                                     <Label Content=" -> " Margin="85,35,0,0"></Label>
                                     <Label Content="{Binding thamso.SoNgayKhongLamViec_MucTieu_Max}" HorizontalAlignment="Left" Margin="102,37,0,0" VerticalAlignment="Top" FontSize="12"/>
-                                    <Label x:Name="SoNgayKhongLamViec_textbox" Content="Số ngày heo nái không làm việc" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                                    <Label x:Name="SoNgayKhongLamViec_textbox" Content="Số ngày heo nái không làm việc (Ngày)" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
                                     <ToggleButton
                         x:Name="SoNgayKhongLamViec_button"
                         Style="{StaticResource MaterialDesignActionToggleButton}"
@@ -432,7 +432,7 @@
                                     <Label x:Name="Thoigianmangthai_muctieu" Content="{Binding thamso.ThoiGianMangThai_MucTieu_Min}" HorizontalAlignment="Left" Margin="68,37,0,0" VerticalAlignment="Top" FontSize="12"/>
                                     <Label Content=" -> " Margin="85,35,0,0"></Label>
                                     <Label Content="{Binding thamso.ThoiGianMangThai_MucTieu_Max}" HorizontalAlignment="Left" Margin="102,37,0,0" VerticalAlignment="Top" FontSize="12"/>
-                                    <Label x:Name="Thoigianmangthai_textbox" Content="Thời gian mang thai/lứa" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                                    <Label x:Name="Thoigianmangthai_textbox" Content="Thời gian mang thai/lứa (Ngày)" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
                                     <ToggleButton
                         x:Name="Thoigianmangthai_button"
                         Style="{StaticResource MaterialDesignActionToggleButton}"
@@ -472,7 +472,7 @@
                                     <Label x:Name="Songaycaisua_muctieu" Content="{Binding thamso.SoNgayCaiSua_MucTieu_Min}" HorizontalAlignment="Left" Margin="70,37,0,0" VerticalAlignment="Top" FontSize="12"/>
                                     <Label Content=" -> " Margin="85,35,0,0"></Label>
                                     <Label Content="{Binding thamso.SoNgayCaiSua_MucTieu_Max}" HorizontalAlignment="Left" Margin="102,37,0,0" VerticalAlignment="Top" FontSize="12"/>
-                                    <Label x:Name="Songaycaisua_textbox" Content="Thời gian cho bú/lứa" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                                    <Label x:Name="Songaycaisua_textbox" Content="Thời gian cho bú/lứa (Ngày)" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
                                     <ToggleButton
                         x:Name="Songaycaisua_button"
                         Style="{StaticResource MaterialDesignActionToggleButton}"
@@ -510,7 +510,7 @@
                                     </Label>
                                     <Label Content="Mục tiêu: " Margin="10,35,0,0"></Label>
                                     <Label x:Name="Tylede_muctieu_textbox" Content="{Binding thamso.Tylede_muctieu}" HorizontalAlignment="Left" Margin="70,35,0,0" VerticalAlignment="Top" FontSize="12"/>
-                                    <Label x:Name="Tylede_textbox" Content="Tỷ lệ đẻ" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                                    <Label x:Name="Tylede_textbox" Content="Tỷ lệ đẻ (%)" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
                                     <ToggleButton
                         x:Name="Tylede_button"
                         Style="{StaticResource MaterialDesignActionToggleButton}"
@@ -532,23 +532,7 @@
                                     </ToggleButton>
                                 </Grid>
                             </materialDesign:Card>
-                            <materialDesign:Card x:Name="the13" Height="70" Margin="617,596,10,0" VerticalAlignment="Top" Width="166" Cursor="Hand">
-                                <Grid Margin="0,0,-0.333,0">
-                                    <Label Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DDF22828"/>
-                                    <Label Content="Mục tiêu: " Margin="10,35,0,0"></Label>
-                                    <Label Content="0" HorizontalAlignment="Left" Margin="70,35,0,0" VerticalAlignment="Top" FontSize="12"/>
-                                    <Label Content="Tỷ lệ thay đàn" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
-                                    <ToggleButton
-                        x:Name="temp_button"
-                        Style="{StaticResource MaterialDesignActionToggleButton}"
-                        ToolTip="MaterialDesignActionToggleButton"
-                        materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=QuestionMark}" 
-                        Background="#DDFFFFFF" Margin="0,0,5,7" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="32" IsChecked="False" Cursor="Hand" >
-                                        <Image x:Name="temp_button_image"
-                            Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png" Stretch="UniformToFill" Height="22" Width="22" />
-                                    </ToggleButton>
-                                </Grid>
-                            </materialDesign:Card>
+
                             <Path Stretch="Fill" Fill="black" 
             Data="M -250,110 70,110 45,90 75,90 120,120 75,150 45,150 70,130 -250,130 Z" Margin="235.934,344.244,521.066,0"
             RenderTransformOrigin=".5,.5" Width="36" Height="6" VerticalAlignment="Top">

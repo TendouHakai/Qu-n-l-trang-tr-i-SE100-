@@ -44,7 +44,7 @@
                             IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}"
                                  Text="{Binding MoTa, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox materialDesign:HintAssist.Hint="Tổng tiền" Height="30" Margin="30,0,20,11"
-                                 PreviewTextInput="NumberValidationTextBox"
+                                 PreviewTextInput="CheckIsNumber"
                                  Text="{Binding TienSuaChua, StringFormat={}{0:N0} , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                 </materialDesign:Card>

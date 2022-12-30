@@ -79,7 +79,7 @@ namespace QuanLyTraiHeo.ViewModel
                 
                 ctphieuSuaChua.ShowDialog();
                 if (CTPhieu.LastOrDefault() != null)
-                    TongTien += int.Parse(CTPhieu.LastOrDefault().TienSuaChua);
+                    TongTien += CTPhieu.LastOrDefault().TienSuaChua;
 
             });
             XacNhanCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
@@ -96,7 +96,7 @@ namespace QuanLyTraiHeo.ViewModel
                 cT_PHIEUSUACHUAs.Clear();
                 foreach (var x in CTPhieu)
                 {
-                    var y = new CT_PHIEUSUACHUA() { SoPhieu = SoPhieu, MaChuong = x.MaChuong, MoTa = x.MoTa, ThanhTien = int.Parse(x.TienSuaChua) };
+                    var y = new CT_PHIEUSUACHUA() { SoPhieu = SoPhieu, MaChuong = x.MaChuong, MoTa = x.MoTa, ThanhTien = x.TienSuaChua };
                     DataProvider.Ins.DB.CT_PHIEUSUACHUA.Add(y);
                     DataProvider.Ins.DB.SaveChanges();
                 }
@@ -108,7 +108,7 @@ namespace QuanLyTraiHeo.ViewModel
                 if (listviewSelectedIndex < 0)
                     return;
                 var x = cTPhieuModels[listviewSelectedIndex];
-                TongTien -= int.Parse(x.TienSuaChua);
+                TongTien -= x.TienSuaChua;
                 cTPhieuModels.Remove(x);
             });
             HuyCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>

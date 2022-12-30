@@ -64,7 +64,8 @@ namespace QuanLyTraiHeo.ViewModel
         {
             DateTime Now = DateTime.Now;
             mindate = new DateTime(Now.Year, Now.Month, 1);
-            maxdate = new DateTime(Now.Year, Now.Month, Now.Day+1);
+            maxdate = new DateTime(Now.Year, Now.Month, Now.Day);
+            maxdate = maxdate.Value.AddDays(1);
             ListHeo = new ObservableCollection<HEO>(DataProvider.Ins.DB.HEOs);
             minTL= (int)ListHeo.Min(x => x.TrongLuong);
             maxTL = (int)ListHeo.Max(x => x.TrongLuong);

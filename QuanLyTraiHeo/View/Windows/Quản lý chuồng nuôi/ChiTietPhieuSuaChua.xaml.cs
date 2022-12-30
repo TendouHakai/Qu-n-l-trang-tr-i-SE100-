@@ -29,5 +29,11 @@ namespace QuanLyTraiHeo.View.Windows
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+
+        Regex regex = new Regex("[^0-9]+");
+        private void CheckIsNumber(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = regex.IsMatch(e.Text);
+        }
     }
 }

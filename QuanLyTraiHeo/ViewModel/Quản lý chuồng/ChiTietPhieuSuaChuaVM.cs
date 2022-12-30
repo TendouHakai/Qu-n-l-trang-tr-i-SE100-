@@ -16,14 +16,14 @@ namespace QuanLyTraiHeo.ViewModel
         #region Attributes
         string _MaChuong = "";
         string _MoTa = "";
-        string _TienSuaChua = "";
+        int _TienSuaChua = 0;
         //string _SoPhieu = "";
         #endregion
 
         #region Property
         public string MaChuong { get => _MaChuong; set { _MaChuong = value; OnPropertyChanged(); } }
         public string MoTa { get => _MoTa; set { _MoTa = value; OnPropertyChanged(); } }
-        public string TienSuaChua { get => _TienSuaChua; set { _TienSuaChua = value; OnPropertyChanged(); } }
+        public int TienSuaChua { get => _TienSuaChua; set { _TienSuaChua = value; OnPropertyChanged(); } }
         public ObservableCollection<CHUONGTRAI> ListChuongTrai { get; set; }
         //public string SoPhieu { get => _SoPhieu; set { _SoPhieu = value; OnPropertyChanged(); } }
         #endregion

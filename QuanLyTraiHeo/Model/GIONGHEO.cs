@@ -9,10 +9,11 @@
 
 namespace QuanLyTraiHeo.Model
 {
+    using QuanLyTraiHeo.ViewModel;
     using System;
     using System.Collections.Generic;
     
-    public partial class GIONGHEO
+    public partial class GIONGHEO: BaseViewModel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public GIONGHEO()
@@ -21,7 +22,8 @@ namespace QuanLyTraiHeo.Model
         }
     
         public string MaGiongHeo { get; set; }
-        public string TenGiongHeo { get; set; }
+        private string _TenGiongHeo;
+        public string TenGiongHeo { get=>_TenGiongHeo; set { _TenGiongHeo = value; OnPropertyChanged(); } }
         public string MoTa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

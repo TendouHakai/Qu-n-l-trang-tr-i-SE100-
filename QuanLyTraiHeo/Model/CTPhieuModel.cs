@@ -11,13 +11,13 @@ namespace QuanLyTraiHeo.Model
     {
         private string maChuong = "";
         private string moTa = "";
-        private string tienSuaChua = "";
+        private int tienSuaChua;
         public string MaChuong { get => maChuong; set { maChuong = value; OnPropertyChanged(); } }
         public string MoTa { get => moTa; set { moTa = value; OnPropertyChanged(); } }
-        public string TienSuaChua { get => tienSuaChua; set { tienSuaChua = value; OnPropertyChanged(); } }
+        public int TienSuaChua { get => tienSuaChua; set { tienSuaChua = value; OnPropertyChanged(); } }
         public CTPhieuModel() { }
-        public CTPhieuModel(string a, string b, string c)
-        {
+        public CTPhieuModel(string a, string b, int c) 
+        { 
             MaChuong = a;
             MoTa = b;
             TienSuaChua = c;

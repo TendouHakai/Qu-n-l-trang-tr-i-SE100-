@@ -21,8 +21,8 @@ namespace QuanLyTraiHeo.ViewModel
         public ObservableCollection<LoaiHangHoaModel> listLoaiHangHoa { get; set; }
         public int listviewSelectedIndex { get; set; }
         public string textTimKiem { get; set; }
-        public string textDonGiaToiThieu { get; set; }
-        public string textDonGiaToiDa { get; set; }
+        public int textDonGiaToiThieu { get; set; }
+        public int textDonGiaToiDa { get; set; }
         public string textSoLuongToiThieu { get; set; }
         public string textSoLuongToiDa { get; set; }
         public ICommand ThemHangHoaCommand { get; set; }
@@ -41,6 +41,8 @@ namespace QuanLyTraiHeo.ViewModel
             listLoaiHangHoa = new ObservableCollection<LoaiHangHoaModel>();
             listTinhTrang = new ObservableCollection<TinhTrangHangHoaModel>();
             listviewSelectedIndex = 0;
+            textDonGiaToiThieu = DataProvider.Ins.DB.HANGHOAs.Select(x => x.DonGia).Min().Value;
+            textDonGiaToiDa = DataProvider.Ins.DB.HANGHOAs.Select(x => x.DonGia).Max().Value;
             ThemHangHoaCommand = new RelayCommand<Window>((p) => { return true; }, p => { ThemHangHoa(p); });
             EditCommand = new RelayCommand<Window>((p) => {
                 if (SelectedHangHoa == null)
@@ -123,14 +125,8 @@ namespace QuanLyTraiHeo.ViewModel
             
             listHangHoa.Clear();
             var listhanghoa = DataProvider.Ins.DB.HANGHOAs.Where(s => s.TenHangHoa.Contains(textTimKiem)).ToList();
-            if (!string.IsNullOrWhiteSpace(textDonGiaToiDa))
-            {
-                listhanghoa = listhanghoa.Where(s => s.DonGia <= int.Parse(textDonGiaToiDa)).ToList();
-            }
-            if (!string.IsNullOrWhiteSpace(textDonGiaToiThieu))
-            {
-                listhanghoa = listhanghoa.Where(s => s.DonGia >= int.Parse(textDonGiaToiThieu)).ToList();
-            }
+            listhanghoa = listhanghoa.Where(s => s.DonGia <= textDonGiaToiDa).ToList();
+            listhanghoa = listhanghoa.Where(s => s.DonGia >= textDonGiaToiThieu).ToList();
 
             if (!string.IsNullOrWhiteSpace(textSoLuongToiThieu))
             {

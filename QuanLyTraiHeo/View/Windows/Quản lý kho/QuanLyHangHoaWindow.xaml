@@ -32,7 +32,7 @@
                         <StackPanel Orientation="Vertical" Margin="10,0,0,0">
                             <StackPanel Orientation="Horizontal">
                                 <TextBox 
-                                     Text="{Binding textDonGiaToiThieu, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Text="{Binding textDonGiaToiThieu, StringFormat={}{0:N0}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" 
                                      materialDesign:HintAssist.Hint="Tối thiểu"
                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -50,7 +50,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBox
-                                     Text="{Binding textDonGiaToiDa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Text="{Binding textDonGiaToiDa, StringFormat={}{0:N0}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" 
                                      materialDesign:HintAssist.Hint="Tối đa"
                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -197,7 +197,7 @@
                                     <GridViewColumn Header="Tên hàng hoá"
                                                 DisplayMemberBinding="{Binding TenHangHoa}" />
                                     <GridViewColumn Header="Đơn giá"
-                                                DisplayMemberBinding="{Binding DonGia}" />
+                                                DisplayMemberBinding="{Binding DonGia, StringFormat={}{0:N0}}" />
                                     <GridViewColumn Header="Số lượng tồn kho"
                                                 DisplayMemberBinding="{Binding SoLuongTonKho}" />
                                     <GridViewColumn Header="Tình trạng"

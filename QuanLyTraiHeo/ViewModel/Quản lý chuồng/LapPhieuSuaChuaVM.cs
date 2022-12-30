@@ -68,7 +68,8 @@ namespace QuanLyTraiHeo.ViewModel
 
             DateTime Now = DateTime.Now;
             _NgaySuaChua1 = new DateTime(Now.Year, Now.Month, 1);
-            _NgaySuaChua2 = new DateTime(Now.Year, Now.Month, Now.Day + 1);
+            _NgaySuaChua2 = new DateTime(Now.Year, Now.Month, Now.Day);
+            _NgaySuaChua2 = _NgaySuaChua2.Value.AddDays(1);
             AddCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 PhieuSuaChua phieuSuaChua = new PhieuSuaChua();

@@ -342,7 +342,7 @@ namespace QuanLyTraiHeo.ViewModel
         bool KiemTra()
         {
             string msg;
-            if (HeoAdd.GioiTinh=="Cái" && HeoAdd.LOAIHEO.TenLoaiHeo.Contains("đực"))
+            if (HeoAdd.GioiTinh == "Cái" && HeoAdd.LOAIHEO.TenLoaiHeo.Contains("đực"))
             {
                 msg = "Chọn sai giới tính hoặc loại heo";
                 MessageBox.Show(msg);
@@ -355,13 +355,13 @@ namespace QuanLyTraiHeo.ViewModel
                 return false;
             }
             TimeSpan tuoiheo = (TimeSpan)(DateTime.Now.Date - HeoAdd.NgaySinh);
-            if(tuoiheo.Days < thamso.TuoiNhapDan && HeoAdd.LOAIHEO.TenLoaiHeo != "Heo con")
+            if (tuoiheo.Days < thamso.TuoiNhapDan && HeoAdd.LOAIHEO.TenLoaiHeo != "Heo con")
             {
                 msg = "Heo còn quá nhỏ, chưa thể nhập đàn";
                 MessageBox.Show(msg);
                 return false;
             }
-            if (HeoAdd.MaHeoMe != null && HeoAdd.MaHeoCha != null)
+            if (HeoAdd.MaHeoMe != null || HeoAdd.MaHeoCha != null)
             {
                 if (!(HeoAdd.LOAIHEO.TenLoaiHeo.Contains("con")) && (HeoAdd.MaHeoMe != "Không chọn" && HeoAdd.MaHeoCha != "Không chọn"))
                 {
@@ -369,13 +369,14 @@ namespace QuanLyTraiHeo.ViewModel
                     MessageBox.Show(msg);
                     return false;
                 }
-                if ((HeoAdd.LOAIHEO.TenLoaiHeo.Contains("con")) && (HeoAdd.MaHeoMe == "Không chọn" || HeoAdd.MaHeoCha == "Không chọn"))
+                if ((HeoAdd.LOAIHEO.TenLoaiHeo.Contains("con")) && (HeoAdd.MaHeoMe == null || HeoAdd.MaHeoCha == null))
                 {
                     msg = "Heo con phải có cả heo cha và heo mẹ";
                     MessageBox.Show(msg);
                     return false;
                 }
             }
+
 
 
             if (HeoAdd.LOAIHEO.TenLoaiHeo.Contains("nái") && (!HeoAdd.CHUONGTRAI.MaChuong.Contains("HN") && !HeoAdd.CHUONGTRAI.MaChuong.Contains("HD")))
@@ -390,18 +391,25 @@ namespace QuanLyTraiHeo.ViewModel
                 MessageBox.Show(msg);
                 return false;
             }
-            else if (HeoAdd.LOAIHEO.TenLoaiHeo.Contains("đực") && (HeoAdd.CHUONGTRAI.MaChuong.Contains("N")||HeoAdd.CHUONGTRAI.MaChuong.Contains("HD")))
+            else if (HeoAdd.LOAIHEO.TenLoaiHeo.Contains("đực") && (HeoAdd.CHUONGTRAI.MaChuong.Contains("N") || HeoAdd.CHUONGTRAI.MaChuong.Contains("HD")))
             {
                 msg = "Heo đực không thể ở chuồng heo nái khác";
                 MessageBox.Show(msg);
                 return false;
             }
-            else if (HeoAdd.LOAIHEO.TenLoaiHeo.Contains("thịt") && !HeoAdd.CHUONGTRAI.MaChuong.Contains("T"))
+            else if (HeoAdd.LOAIHEO.TenLoaiHeo.Contains("thịt") && _GioiTinh == "Đực" && !HeoAdd.CHUONGTRAI.MaChuong.Contains("DT"))
             {
-                msg = "Heo thịt chỉ có thể ở chuồng heo thịt";
+                msg = "Heo đực chỉ có thể ở chuồng heo đực thịt";
                 MessageBox.Show(msg);
                 return false;
             }
+            else if (HeoAdd.LOAIHEO.TenLoaiHeo.Contains("thịt") && _GioiTinh == "Cái" && !HeoAdd.CHUONGTRAI.MaChuong.Contains("NT"))
+            {
+                msg = "Heo cái chỉ có thể ở chuồng heo nái thịt";
+                MessageBox.Show(msg);
+                return false;
+            }
+
             return true;
         }
         void ClearForm()
@@ -415,12 +423,14 @@ namespace QuanLyTraiHeo.ViewModel
             MaLoaiHeo=null;
             SelectedGiong=null;
             MaGiongHeo=null;
-            MaHeoCha = MaHeoMe = "Không chọn";
+            MaHeoCha = "Không chọn";
+            MaHeoMe = "Không chọn";
             SelectedChuong=null;
             MaChuong = null;
             HEO X = new HEO();
             X.MaHeo = "Không chọn";
-            SelectedMe = SelectedCha = X;
+            SelectedMe = ListMe.First();
+            SelectedCha = ListCha.First() ;
             NguonGoc = "Sinh trong trang trại";
             TinhTrang = "Sức khoẻ tốt";
         }
@@ -568,6 +578,8 @@ namespace QuanLyTraiHeo.ViewModel
 
                 ////////////Reset lại các trường thông tin để nhập heo mới
                 TrongLuong = 0;
+
+
                 MaHeo = LayMa();
             });
 

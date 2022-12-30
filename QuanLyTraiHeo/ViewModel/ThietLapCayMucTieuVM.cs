@@ -294,9 +294,13 @@ namespace QuanLyTraiHeo.ViewModel
         void SoHeoDe_lua()
         {
             if (SoLuaDe != 0)
-            { soheosinhra = (double)SoConDe / SoLuaDe; }
+            { 
+                soheosinhra = (double)SoConDe / SoLuaDe; 
+                
+            }
             else
             { soheosinhra = 0; }
+            soheosinhra = Math.Round(soheosinhra, 2);
             if (soheosinhra >= thamso.SoHeoConSinhRa_muctieu)
                 issoheosinhra = true;
             else issoheosinhra = false;
@@ -502,6 +506,7 @@ namespace QuanLyTraiHeo.ViewModel
              TrungBnhLua_MucTieu = 2.3;
              SoHeoTrongNam_MucTieu = 22;
         }
+        
     }
 
 

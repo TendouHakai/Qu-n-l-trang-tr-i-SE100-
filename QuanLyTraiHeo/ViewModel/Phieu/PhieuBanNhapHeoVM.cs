@@ -234,6 +234,7 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 SelectedHeo.DonGia = DonGia;
                 DonGia = 0;
+                TongTien = 0;
                 foreach (HEOPHIEU h in ListHeo)
                 {
                     TongTien += h.DonGia * h.heo.TrongLuong;
