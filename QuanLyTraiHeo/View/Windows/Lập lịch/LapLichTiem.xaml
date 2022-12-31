@@ -70,6 +70,7 @@
 
                 <DatePicker x:Name="Datepicker_Ngaytiem" Margin="10,10,0,0"
                           Width="258" HorizontalAlignment="Left"
+                            SelectedDateFormat="Short"
                           materialDesign:HintAssist.Hint="Nhập ngày tiêm"
                           materialDesign:TextFieldAssist.HasClearButton="True"
                           Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Height="60" />
@@ -179,7 +180,7 @@
                     <ListView x:Name="Listtiemheo" ItemsSource="{Binding Lichtiem}" SelectedItem="{Binding MaHeo, Mode=OneWayToSource}" Margin="15,0,10,0" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="Multiple" Height="666">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Ngày tiêm heo" DisplayMemberBinding="{Binding lichtiem.NgayTiem, StringFormat=\{0:d\}}" />
+                                <GridViewColumn Header="Ngày tiêm heo" DisplayMemberBinding="{Binding lichtiem.NgayTiem, StringFormat= {} {0: dd/MM/yyyy}}" />
                                 <GridViewColumn Header="Mã heo" DisplayMemberBinding="{Binding lichtiem.MaHeo}" />
                                 <GridViewColumn Header="Loại heo" DisplayMemberBinding="{Binding lichtiem.HEO.LOAIHEO.TenLoaiHeo}" />
                                 <GridViewColumn Header="Giống heo" DisplayMemberBinding="{Binding lichtiem.HEO.GIONGHEO.TenGiongHeo}" />

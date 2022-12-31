@@ -131,7 +131,7 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Ngày phối giống"
-                                            DisplayMemberBinding="{Binding NgayPhoiGiong, StringFormat=\{0:d\}}" />
+                                            DisplayMemberBinding="{Binding NgayPhoiGiong, StringFormat= {} {0: dd/MM/yyyy}}" />
                             <GridViewColumn Header="Mã heo nái"
                                             DisplayMemberBinding="{Binding Trangthai}" />
                             <GridViewColumn Header="Mã heo nái"
@@ -139,9 +139,9 @@
                             <GridViewColumn Header="Mã heo đực"
                                             DisplayMemberBinding="{Binding MaHeoDuc}" />
                             <GridViewColumn Header="Ngày đẻ dự kiến"
-                                            DisplayMemberBinding="{Binding NgayDuKienDe, StringFormat=\{0:d\}}" />
+                                            DisplayMemberBinding="{Binding NgayDuKienDe, StringFormat= {} {0: dd/MM/yyyy}}" />
                             <GridViewColumn Header="Ngày đẻ thực tế"
-                                            DisplayMemberBinding="{Binding NgayDeThucTe, StringFormat=\{0:d\}}" />
+                                            DisplayMemberBinding="{Binding NgayDeThucTe, StringFormat= {} {0: dd/MM/yyyy}}" />
                             <GridViewColumn Header="Số con đẻ"
                                             DisplayMemberBinding="{Binding SoCon}" />
                             <GridViewColumn Header="Số con chết"
