@@ -168,33 +168,6 @@
                                                VerticalAlignment="Center" />
 
                                 </StackPanel>
-
-                                <StackPanel Margin="10"
-                                            Orientation="Horizontal">
-                                    <TextBlock Text="Lượng thức ăn trung bình 1 ngày là  "
-                                               VerticalAlignment="Center" />
-                                    <TextBox Name="tb_ThucAnTB"
-                                             PreviewTextInput="CheckIsNumber"
-                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                             VerticalAlignment="Top"
-                                             Text="{Binding ThamSo.ThucAnMotNgay, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                                    </TextBox>
-                                    <TextBlock Text="  KG  "
-                                               VerticalAlignment="Center" />
-                                </StackPanel>
-                                <StackPanel Margin="10"
-                                            Orientation="Horizontal">
-                                    <TextBlock Text="Lượng thức ăn tối đa 1 ngày là  "
-                                               VerticalAlignment="Center" />
-                                    <TextBox Name="tb_ThucAnMax"
-                                             PreviewTextInput="CheckIsNumber"
-                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                             VerticalAlignment="Top"
-                                             Text="{Binding ThamSo.ThucAnMax, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                                    </TextBox>
-                                    <TextBlock Text="  KG  "
-                                               VerticalAlignment="Center" />
-                                </StackPanel>
                                 <Button Margin="10"
                                         Content="Lưu thay đổi"
                                         Height="30"

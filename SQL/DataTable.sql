@@ -340,8 +340,6 @@ Create table MuaDichBenh
 	NguyenNhan ntext,
 	BienPhap ntext,
 		constraint PK_MDB_MDB primary key (MaDichBenh)
-
-
 )
 
 
@@ -491,5 +489,4 @@ INSERT INTO ListActionDetail VALUES (N'Quản lý kho ');
 INSERT INTO ListActionDetail VALUES (N'Quản lý tài chính');
 INSERT INTO ListActionDetail VALUES (N'Quản lý cây mục tiêu');
 INSERT INTO ListActionDetail VALUES (N'Quản lý nhật ký');
-
 

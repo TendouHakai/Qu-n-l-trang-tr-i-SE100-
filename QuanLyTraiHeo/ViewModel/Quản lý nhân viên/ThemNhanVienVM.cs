@@ -150,6 +150,7 @@ namespace QuanLyTraiHeo.ViewModel
             newNhanVien.C_Username.ToString().Replace(" ", "");
             newNhanVien.NgayVaoLam = DateTime.Now;
             newNhanVien.MaChucVu = chucvu.MaChucVu;
+            newNhanVien.C_PassWord = "c4ca4238a0b923820dcc509a6f75849b";
             DataProvider.Ins.DB.NHANVIENs.Add(newNhanVien);
             DataProvider.Ins.DB.SaveChanges();
             MessageBox.Show("Thêm nhân viên mới thành công! ", "Thông báo!", MessageBoxButton.OK);

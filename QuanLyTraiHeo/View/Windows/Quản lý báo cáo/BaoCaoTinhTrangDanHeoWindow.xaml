@@ -57,7 +57,17 @@
                                 </TextBox>-->
                             </Grid>
                         </materialDesign:Card>
-                        <lvc:PieChart LegendLocation="Bottom" FontSize="10" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}" Height="250" Margin="10,10,10,0" FontStretch="Medium" Series="{Binding CoCauLoai}" >
+                        <lvc:PieChart LegendLocation="Bottom"
+                                      FontSize="10"
+                                      DataClick="Chart_OnDataClick"
+                                      Hoverable="True"
+                                      Height="250"
+                                      Margin="10,10,10,0"
+                                      FontStretch="Medium"
+                                      Series="{Binding CoCauLoai}">
+                            <lvc:PieChart.DataTooltip>
+                                <lvc:DefaultTooltip BulletSize="20" />
+                            </lvc:PieChart.DataTooltip>
 
                         </lvc:PieChart>
                     </StackPanel>
@@ -82,8 +92,18 @@
                                 </TextBox>-->
                             </Grid>
                         </materialDesign:Card>
-                        <lvc:PieChart LegendLocation="Bottom" FontSize="10" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}" Height="250" Margin="10,10,10,0" FontStretch="Medium" Series="{Binding CoCauGiong}">
-                           
+                        <lvc:PieChart LegendLocation="Bottom"
+                                      FontSize="10"
+                                      DataClick="Chart_OnDataClick"
+                                      Hoverable="True"
+                                      Height="250"
+                                      Margin="10,10,10,0"
+                                      FontStretch="Medium"
+                                      Series="{Binding CoCauGiong}">
+                            <lvc:PieChart.DataTooltip>
+                                <lvc:DefaultTooltip BulletSize="20" />
+                            </lvc:PieChart.DataTooltip>
+
                         </lvc:PieChart>
                     </StackPanel>
                 </materialDesign:Card>

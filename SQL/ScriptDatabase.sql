@@ -104,7 +104,7 @@ INSERT INTO PERMISION_DETAIL VALUES ('PD000017', N'Báo cáo chi tiêu', NULL, '
 
 
 -- Chức vụ
-INSERT INTO CHUCVU VALUES ('CV000001', N'Chủ trang trại ','0', 'PER000001', N'Là người sở hữu và điều hành toàn bộ trang trại')
+INSERT INTO CHUCVU VALUES ('CV000001', N'Chủ trang trại','0', 'PER000001', N'Là người sở hữu và điều hành toàn bộ trang trại')
 INSERT INTO CHUCVU VALUES ('CV000002', N'Nhân viên chăm sóc','25000000', 'PER000002', N'Là người chăm sóc và quản lý các cá thể heo trong trang trại')
 INSERT INTO CHUCVU VALUES ('CV000003', N'Nhân viên kỹ thuật','15000000', 'PER000003', N'Là người xem xét và kiểm tra hệ thống các chuồng nuôi trong trang trại')
 INSERT INTO CHUCVU VALUES ('CV000004', N'Nhân viên kế toán','15000000', 'PER000004', N'Là người quản lý tiền bạc và thống kế chi phí, doanh thu cho trang trại')
@@ -112,7 +112,7 @@ INSERT INTO CHUCVU VALUES ('CV000005', N'Nhân viên kho','15000000', 'PER000005
 INSERT INTO CHUCVU VALUES ('CV000006', N'Quản lý','15000000', 'PER000006', N'Là người điều hành trang trại có thể thay thế cho chủ trang trại tuy nhiên không có quyền nhân sự và thiết lập mục tiêu cho trang trại')
 --SELECT * FROM CHUCVU
 -- Nhân viên
-INSERT INTO NHANVIEN VALUES ('NV000000', N'Hồng Trường Vinh', NULL, 'CV000001', N'Nam', '05/26/2002', N'Ktx khu A DHQG TP hồ chí minh', 'Vinh@gmail.com', '0132654789', '11/02/2022', '1', N'Đang làm việc', 'Admin', 'e3afed0047b08059d0fada10f400c1e5') 
+INSERT INTO NHANVIEN VALUES ('NV000000', N'Admin', NULL, 'CV000001', N'Nam', '05/26/2002', N'Ktx khu A DHQG TP hồ chí minh', 'Vinh@gmail.com', '0132654789', '11/02/2022', '1', N'Đang làm việc', 'Admin', 'e3afed0047b08059d0fada10f400c1e5') 
 INSERT INTO NHANVIEN VALUES ('NV000001', N'Trần Trung Thành', NULL, 'CV000002', N'Nam', '09/11/2002', N'Ktx khu A DHQG TP hồ chí minh', 'TendouHakai@gmail.com', '0123456789', '01/12/1900', '4', N'Đang làm việc', 'Thanh', 'c4ca4238a0b923820dcc509a6f75849b') 
 INSERT INTO NHANVIEN VALUES ('NV000002', N'Triệu Tuấn Tú', NULL, 'CV000002', N'Nam', '05/21/2002', N'Ktx khu A DHQG TP hồ chí minh', 'Vippro@gmail.com', '0258741369', '11/15/2022', '1', N'Đang làm việc', 'Tu', 'c4ca4238a0b923820dcc509a6f75849b') 
 INSERT INTO NHANVIEN VALUES ('NV000003', N'Nguyễn Thành An', NULL, 'CV000002', N'Nam', '03/11/2002', N'Ktx khu A DHQG TP hồ chí minh', 'LoanAnh@gmail.com', '0159362478', '11/27/2022', '2', N'Đang làm việc', 'An', 'c4ca4238a0b923820dcc509a6f75849b') 

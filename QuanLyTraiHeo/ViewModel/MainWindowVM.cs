@@ -42,8 +42,23 @@ namespace QuanLyTraiHeo.ViewModel
         public System.Windows.Media.Imaging.BitmapImage MyImage { get => image; set { image = value; OnPropertyChanged(); } }
         public ObservableCollection<ThongBao> listTHONGBAO { get => _listTHONGBAO; set { _listTHONGBAO = value; OnPropertyChanged(); } }
         public int countThongBaoChuaDoc { get => _countThongBaoChuaDoc; set { _countThongBaoChuaDoc = value; OnPropertyChanged(); } }
-        public ThongBao selectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(); } }  
+        public ThongBao selectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(); } }
+
         #endregion
+        private Visibility heoVisiable;
+        public Visibility HeoVisiable { get => heoVisiable; set { heoVisiable = value; OnPropertyChanged(); } }
+        private Visibility khoVisiable;
+        public Visibility KhoVisiable { get => khoVisiable; set { khoVisiable = value; OnPropertyChanged(); } }
+        private Visibility baocaoVisiable;
+        public Visibility BaoCaoVisiable { get => baocaoVisiable; set { baocaoVisiable = value; OnPropertyChanged(); } }
+        private Visibility nhanvienVisiable;
+        public Visibility NhanVienVisiable { get => nhanvienVisiable; set { nhanvienVisiable = value; OnPropertyChanged(); } }
+        private Visibility nhatkyVisiable;
+        public Visibility NhatKyVisiable { get => nhatkyVisiable; set { nhatkyVisiable = value; OnPropertyChanged(); } }
+        private Visibility caymuctieuVisiable;
+        public Visibility CayMucTieuVisiable { get => caymuctieuVisiable; set { caymuctieuVisiable = value; OnPropertyChanged(); } }
+        private Visibility quydinhVisiable;
+        public Visibility QuyDinhVisiable        { get => quydinhVisiable; set { quydinhVisiable = value; OnPropertyChanged(); } }
 
         #region CommandOpenWindow
         public ICommand OpenTrangChuWindow { get; set; }
@@ -383,7 +398,7 @@ namespace QuanLyTraiHeo.ViewModel
 
                 listTHONGBAO = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == NhanVien.MaNhanVien).Take(3));
 
-
+                LoadAcTion();
                 loadCountThongBao();
             }
             else
@@ -397,6 +412,47 @@ namespace QuanLyTraiHeo.ViewModel
             Login(p);
         }
 
+        void LoadAcTion()
+        {
+            HeoVisiable = Visibility.Collapsed;
+            KhoVisiable = Visibility.Collapsed;
+            BaoCaoVisiable = Visibility.Collapsed;
+            NhanVienVisiable = Visibility.Collapsed;
+            NhatKyVisiable = Visibility.Collapsed;
+            CayMucTieuVisiable = Visibility.Collapsed;
+            QuyDinhVisiable = Visibility.Collapsed;
+            List<PERMISION_DETAIL> actiondetail = NhanVien.CHUCVU.PERMISION.PERMISION_DETAIL.ToList();
+
+            foreach (var i in actiondetail)
+            {
+                if(i.ActionDetail == "Quản lý nhân viên")
+                    NhanVienVisiable = Visibility.Visible;
+                else if (i.ActionDetail == "Quản lý đàn heo")
+                    HeoVisiable = Visibility.Visible;
+                else if (i.ActionDetail == "Quản lý kho")
+                    KhoVisiable = Visibility.Visible;
+                else if (i.ActionDetail == "Quản lý tài chính")
+                    BaoCaoVisiable = Visibility.Visible;
+                else if (i.ActionDetail == "Quản lý cây mục tiêu")
+                    CayMucTieuVisiable = Visibility.Visible;
+                else if (i.ActionDetail == "Quản lý nhật ký")
+                    NhatKyVisiable = Visibility.Visible;
+            }
+
+            if (NhanVien.CHUCVU.MaChucVu.Replace(" ", "") == "CV000001")
+            {
+                HeoVisiable = Visibility.Visible;
+                KhoVisiable = Visibility.Visible;
+                BaoCaoVisiable = Visibility.Visible;
+                NhanVienVisiable = Visibility.Visible;
+                NhatKyVisiable = Visibility.Visible;
+                CayMucTieuVisiable = Visibility.Visible;
+                QuyDinhVisiable = Visibility.Visible;
+            }
+            else
+            {
+            }
+        }
         #endregion
     }
 }

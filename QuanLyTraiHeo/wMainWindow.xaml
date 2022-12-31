@@ -305,41 +305,49 @@
                              Content="{materialDesign:PackIcon Kind=PiggyBank,Size=25}"
                              Foreground="LightGray"
                              ToolTip="Quản lý đàn heo"
+                             Visibility="{Binding HeoVisiable,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                              Selected="MenuDanHeo_Selected" />
                 <ListBoxItem Name="Menu_ChuongNuoi"
                              Content="{materialDesign:PackIcon Kind=Fence,Size=25}"
                              Foreground="LightGray"
                              ToolTip="Quản lý chuồng nuôi"
+                             Visibility="{Binding HeoVisiable,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                              Selected="MenuChuongNuoi_Selected" />
                 <ListBoxItem Name="Menu_Kho"
                              Content="{materialDesign:PackIcon Kind=Warehouse,Size=25}"
                              Foreground="LightGray"
                              ToolTip="Quản lý kho"
+                             Visibility="{Binding KhoVisiable,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                              Selected="MenuKho_Selected" />
                 <ListBoxItem Name="Menu_BaoCao"
                              Content="{materialDesign:PackIcon Kind=Finance,Size=25}"
                              Foreground="LightGray"
                              ToolTip="Quản lý báo cáo"
+                             Visibility="{Binding BaoCaoVisiable,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                              Selected="MenuBaoCao_Selected" />
                 <ListBoxItem Name="Menu_NhanVien"
                              Content="{materialDesign:PackIcon Kind=AccountTie,Size=25}"
                              Foreground="LightGray"
                              ToolTip="Quản lý nhân viên"
+                             Visibility="{Binding NhanVienVisiable,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                              Selected="MenuNhanVien_Selected" />
                 <ListBoxItem Name="Menu_NhatKy"
                              Content="{materialDesign:PackIcon Kind=Notebook,Size=25}"
                              Foreground="LightGray"
                              ToolTip="Quản lý nhật lý"
+                             Visibility="{Binding NhatKyVisiable,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                              Selected="MenuNhatKy_Selected" />
                 <ListBoxItem Name="Menu_CayMucTieu"
                              Content="{materialDesign:PackIcon Kind=BullseyeArrow,Size=25}"
                              Foreground="LightGray"
+                             Visibility="{Binding CayMucTieuVisiable,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                              ToolTip="Thiết lập cây mục tiêu"
                              Selected="MenuCayMucTieu_Selected" />
                 <ListBoxItem Name="Menu_QuyDinh"
                              Content="{materialDesign:PackIcon Kind=cog,Size=25}"
                              Foreground="LightGray"
                              ToolTip="Quy Định"
+                             Visibility="{Binding QuyDinhVisiable,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                              Selected="Menu_QuyDinh_Selected" />
 
             </ListBox>

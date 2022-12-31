@@ -285,17 +285,18 @@
                             <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0">Cơ cấu đàn heo</TextBlock>
                         </Grid>
                     </materialDesign:Card>
-                    <lvc:PieChart Series="{Binding SeriesCoCauHeo}" LegendLocation="Bottom" FontSize="10" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}" Height="189" Margin="10,10,10,0" FontStretch="Medium">
-                        <!--<lvc:PieChart.Series>
-                            <lvc:PieSeries Title="Heo nái" Values="30" DataLabels="True"
-                               LabelPoint="{Binding PointLabel}"/>
-                            <lvc:PieSeries Title="Heo đực giống" Values="20" DataLabels="True" 
-                               LabelPoint="{Binding PointLabel}"/>
-                            <lvc:PieSeries Title="Heo con" Values="100" DataLabels="True" 
-                               LabelPoint="{Binding PointLabel}"/>
-                            <lvc:PieSeries Title="Heo thịt" Values="200" DataLabels="True" 
-                               LabelPoint="{Binding PointLabel}"/>
-                        </lvc:PieChart.Series>-->
+                    <lvc:PieChart Series="{Binding SeriesCoCauHeo}"
+                                  LegendLocation="Bottom"
+                                  FontSize="10"
+                                  DataClick="Chart_OnDataClick"
+                                  Hoverable="True"
+                                  Height="189"
+                                  Margin="10,10,10,0"
+                                  FontStretch="Medium">
+                        <lvc:PieChart.DataTooltip>
+                            <lvc:DefaultTooltip BulletSize="20" />
+                        </lvc:PieChart.DataTooltip>
+
                     </lvc:PieChart>
                 </StackPanel>
             </materialDesign:Card>
@@ -306,17 +307,17 @@
                             <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0">Cơ cấu chuồng nuôi</TextBlock>
                         </Grid>
                     </materialDesign:Card>
-                    <lvc:PieChart Series="{Binding SeriesCoCauChuong}" LegendLocation="Bottom" FontSize="10" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}" Height="190" Margin="10,10,10,0" FontStretch="Medium">
-                        <!--<lvc:PieChart.Series>
-                            <lvc:PieSeries Title="Đang hoạt động" Values="30" DataLabels="True"
-                               LabelPoint="{Binding PointLabel}"/>
-                            <lvc:PieSeries Title="Không sử dụng" Values="20" DataLabels="True" 
-                               LabelPoint="{Binding PointLabel}"/>
-                            <lvc:PieSeries Title="Đang sửa chữa" Values="11" DataLabels="True" 
-                               LabelPoint="{Binding PointLabel}"/>
-                            <lvc:PieSeries Title="Đã hư hỏng" Values="2" DataLabels="True" 
-                               LabelPoint="{Binding PointLabel}"/>
-                        </lvc:PieChart.Series>-->
+                    <lvc:PieChart Series="{Binding SeriesCoCauChuong}"
+                                  LegendLocation="Bottom"
+                                  FontSize="10"
+                                  DataClick="Chart_OnDataClick"
+                                  Hoverable="True"
+                                  Height="190"
+                                  Margin="10,10,10,0"
+                                  FontStretch="Medium">
+                        <lvc:PieChart.DataTooltip>
+                            <lvc:DefaultTooltip BulletSize="20" />
+                        </lvc:PieChart.DataTooltip>
                     </lvc:PieChart>
                 </StackPanel>
             </materialDesign:Card>

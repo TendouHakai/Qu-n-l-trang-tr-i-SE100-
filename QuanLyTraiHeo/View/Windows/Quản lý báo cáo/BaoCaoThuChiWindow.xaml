@@ -81,15 +81,16 @@
                         <lvc:PieChart LegendLocation="Bottom"
                                       FontSize="10"
                                       DataClick="Chart_OnDataClick"
-                                      Hoverable="False"
-                                     
+                                      Hoverable="True"
                                       Height="250"
                                       Margin="10,10,10,20"
                                       FontStretch="Medium"
-                                      Series="{Binding ThuChartViews}"
                                      
+                                      Series="{Binding ThuChartViews}"
                                       >
-                            
+                            <lvc:PieChart.DataTooltip>
+                                <lvc:DefaultTooltip BulletSize="20" />
+                            </lvc:PieChart.DataTooltip>
                         </lvc:PieChart>
                     </StackPanel>
                 </materialDesign:Card>
@@ -137,7 +138,7 @@
                         <lvc:PieChart LegendLocation="Bottom"
                                       FontSize="10"
                                       DataClick="Chart_OnDataClick"
-                                      Hoverable="False"
+                                      Hoverable="True"
                                       Height="250"
                                       Margin="10,10,10,20"
                                       FontStretch="Medium"
@@ -191,7 +192,7 @@
                         <lvc:PieChart LegendLocation="Bottom"
                                       FontSize="10"
                                       DataClick="Chart_OnDataClick"
-                                      Hoverable="False"
+                                      Hoverable="True"
                                       Height="250"
                                       Margin="10,10,10,20"
                                       FontStretch="Medium"
