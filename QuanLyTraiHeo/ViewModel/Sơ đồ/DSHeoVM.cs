@@ -104,14 +104,41 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 foreach (var item in DataProvider.Ins.DB.LICHPHOIGIONGs.Where(x => x.MaHeoDuc == heo.MaHeo))
                 {
-                    dic.Add(item.NgayPhoiGiong, item);
+                    bool isDone = false;
+
+                    while (!isDone)
+                    {
+                        try
+                        {
+                            dic.Add(item.NgayPhoiGiong, item);
+                            isDone = true;
+                        }
+                        catch
+                        {
+                            item.NgayPhoiGiong = item.NgayPhoiGiong.Value.AddHours(1);
+                        }
+                    }
                 }
             }
             else if (chuong.MaLoaiChuong == "LC03112022000003" && heo.MaLoaiHeo == "LH02112022000002")// Nếu là heo cái và nằm trong chuồng heo đực nái
             {
                 foreach (var item in DataProvider.Ins.DB.LICHPHOIGIONGs.Where(x => x.MaHeoCai == heo.MaHeo))
                 {
-                    dic.Add(item.NgayPhoiGiong, item);
+                    bool isDone = false;
+
+                    while (!isDone)
+                    {
+                        try
+                        {
+                            dic.Add(item.NgayPhoiGiong, item);
+                            isDone = true;
+                        }
+                        catch
+                        {
+                            item.NgayPhoiGiong = item.NgayPhoiGiong.Value.AddHours(1);
+                        }
+                    }
+
                 }
             }
             #endregion

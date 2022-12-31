@@ -155,6 +155,12 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
             {
                 //Tạo lịch mới 
 
+                if (Datepicker_Ngayphoigiong.SelectedDate.Value < DateTime.Today)
+                {
+                    MessageBox.Show("Ngày giao phối phải từ hôm nay trở đi");
+                    return;
+                }
+
                 LICHPHOIGIONG lpg = DataProvider.Ins.DB.LICHPHOIGIONGs.Where(x => x.MaHeoCai == Pigcode_textn.Text && x.Trangthai == "Chưa phối giống").SingleOrDefault();
                 if (lpg != null)
                 {
@@ -202,12 +208,6 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
             else
             {
                 //Sửa lịch  
-
-                if (Datepicker_Ngayphoigiong.SelectedDate.Value < DateTime.Today)
-                {
-                    MessageBox.Show("Ngày giao phối phải từ hôm nay trở đi");
-                    return;
-                }
 
                 phoigiong.MaHeoDuc = Pigcode_textd.Text;
                 phoigiong.MaHeoCai = Pigcode_textn.Text;

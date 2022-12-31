@@ -161,8 +161,9 @@ namespace QuanLyTraiHeo.ViewModel
                 MyCustomMessageQueue.Enqueue("Sửa thành công");
             }
 
-
+            int index = listviewSelectedIndex;
             TimKiem();
+            listviewSelectedIndex = index;
         }
         #endregion
 

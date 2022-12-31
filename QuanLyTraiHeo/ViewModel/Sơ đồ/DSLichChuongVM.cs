@@ -40,7 +40,7 @@ namespace QuanLyTraiHeo.ViewModel
         public DSLichChuongVM(SoDoVM soDo)
         {
             LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, p => { wd = p as wDSLichChuong; ; Load(); });
-            ClosedWindowCommand = new RelayCommand<Window>((p) => { return true; }, p => { soDo.Load(); });
+            ClosedWindowCommand = new RelayCommand<Window>((p) => { return true; }, p => { if (soDo == null) return; soDo.Load(); });
             AddCommand = new RelayCommand<Window>((p) => { return true; }, p => { ThemLichMoi(); });
             TickCommand = new RelayCommand<Window>((p) => { return true; }, p => { TickIsDone(); });
             DeleteCommand = new RelayCommand<Window>((p) => { return true; }, p => { Delete(); });
