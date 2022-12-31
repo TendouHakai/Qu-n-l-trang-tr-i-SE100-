@@ -59,8 +59,11 @@ namespace QuanLyTraiHeo.ViewModel
             lstPermission.Clear();
 
             var list = DataProvider.Ins.DB.PERMISIONs.ToList();
+        list.RemoveAt(0);
             foreach (var items in list)
                 lstPermission.Add(items);
+
+         
 
         }
 
